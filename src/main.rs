@@ -33,5 +33,9 @@ fn main() -> Result<(), Box<dyn Error>>{
 
     problem.run(&file_content);
 
+    if args.benchmark{
+        problem.benchmark(&file_content);
+    }
+
     Ok(())
 }
