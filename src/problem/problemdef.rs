@@ -16,7 +16,7 @@ impl dyn Problem{
 
     pub fn benchmark(&self, input: &str){
         let now = Instant::now();
-        const N: u32 = 1000;
+        const N: u32 = 100;
 
         for _ in 0..N{
             self.part_one(input);
