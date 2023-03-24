@@ -1,3 +1,4 @@
+use std::fmt::Debug;
 use std::{collections::HashMap, str::FromStr};
 
 use itertools::Itertools;
@@ -7,12 +8,12 @@ use crate::problem::problemdef::Problem;
 pub struct DayFive {}
 
 #[derive(Debug)]
-struct Line {
-    origin: Vec<i32>,
-    destination: Vec<i32>,
+struct Line<T: Ord + Debug> {
+    origin: Vec<T>,
+    destination: Vec<T>,
 }
 
-impl Line {
+impl Line<i32> {
     fn get_points(&self, consider_diagonals: bool) -> Vec<(i32, i32)> {
         let (a, b, c, d) = (
             self.origin[0],
@@ -33,7 +34,7 @@ impl Line {
                 vec![]
             } else {
                 assert!((a - c).abs() == (b - d).abs());
-                (0..(a - c).abs()+1)
+                (0..(a - c).abs() + 1)
                     .map(|delta| (a + delta * (c - a).signum(), b + (d - b).signum() * delta))
                     .collect()
             }
@@ -44,7 +45,7 @@ impl Line {
 #[derive(Debug)]
 struct ParseLineError;
 
-impl FromStr for Line {
+impl FromStr for Line<i32> {
     type Err = ParseLineError;
 
     fn from_str(s: &str) -> Result<Self, Self::Err> {
@@ -110,7 +111,6 @@ impl Problem for DayFive {
 
         format!("{}", points.iter().filter(|((_x, _y), q)| **q > 1).count())
     }
-
 }
 
 #[cfg(test)]
