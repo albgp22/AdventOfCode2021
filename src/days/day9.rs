@@ -106,6 +106,7 @@ impl Problem for DayNine {
                         if di == 0 && dj == 0 {
                             continue;
                         }
+                        if di.abs()+dj.abs()>1{continue;}
                         if newi >= map.len() {
                             continue;
                         }
