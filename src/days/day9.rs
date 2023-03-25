@@ -2,7 +2,6 @@ extern crate queues;
 use std::collections::HashSet;
 
 use crate::problem::problemdef::Problem;
-use itertools::Itertools;
 use queues::*;
 pub struct DayNine {}
 
@@ -141,7 +140,7 @@ impl Problem for DayNine {
                     }
                     if !basin.contains(&(ii, jj)) {
                         if map[ii][jj] as usize > h {
-                            q.add(((ii, jj), map[ii][jj] as usize));
+                            q.add(((ii, jj), map[ii][jj] as usize)).unwrap();
                         }
                     }
                 }
