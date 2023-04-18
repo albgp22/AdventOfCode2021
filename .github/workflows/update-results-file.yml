@@ -12,17 +12,15 @@ jobs:
     name: "Update Results"
     runs-on: ubuntu-latest
     steps:
-      - name: "📥  Fetching Repository Contents"
-        uses: actions/checkout@main
+      - uses: actions/checkout@v3
 
       - name: Run application
         run: cargo run -r -- --run-all -b > results.txt
 
-      # Runs a set of commands using the runners shell
       - name: Update Results.txt
         run: |
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git config user.name "github-actions[bot]"
+          git config user.name github-actions
+          git config user.email github-actions@github.com
           git add results.txt
-          git commit -am "Automated report for results"
+          git commit -m "Update results.txt"
           git push
