@@ -88,7 +88,9 @@ impl Problem for DayThirteen {
 
     fn part_two(&self, input: &str) -> String {
         let (mut dots, foldings) = Self::read_input(input);
-        for fold in foldings { Self::fold(&mut dots, fold)};
+        for fold in foldings {
+            Self::fold(&mut dots, fold)
+        }
         Self::show_dots(&dots)
     }
 }
