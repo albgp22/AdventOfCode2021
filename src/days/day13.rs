@@ -62,7 +62,6 @@ impl DayThirteen {
                     }
                 }
             }
-            _ => unreachable!(),
         }
         dots.sort();
         dots.dedup();
