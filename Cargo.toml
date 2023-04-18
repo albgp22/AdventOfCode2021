@@ -8,6 +8,7 @@ edition = "2021"
 [dependencies]
 clap = { version = "4.1.11", features = ["derive"] }
 itertools = "0.10.5"
+json_to_table = "0.4.0"
 num = "0.4.0"
 queues = "1.1.0"
 serde = "1.0.160"

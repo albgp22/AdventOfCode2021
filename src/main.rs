@@ -9,6 +9,7 @@ use std::fs;
 
 extern crate serde;
 extern crate serde_json;
+use json_to_table::json_to_table;
 
 #[macro_use]
 extern crate serde_derive;
@@ -88,7 +89,9 @@ fn main() -> Result<(), Box<dyn Error>> {
         }
         if args.benchmark {
             let serialized = serde_json::to_string(&bench_results).unwrap();
-            println!("{}", serialized);
+            println!("{}\n", serialized);
+            let serialized = serde_json::to_value(&bench_results).unwrap();
+            println!("{}", json_to_table(&serialized).to_string());
         }
     } else {
         let p = day_to_problem(args.day).ok_or("Day is not implemented")?;

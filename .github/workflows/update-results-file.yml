@@ -1,0 +1,27 @@
+
+name: update-results-file
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  update-results-file:
+    name: "Update Results"
+    runs-on: ubuntu-latest
+    steps:
+      - name: "📥  Fetching Repository Contents"
+        uses: actions/checkout@main
+
+      - name: Run application
+        run: cargo run -r --verbose -- --run-all -b > results.txt
+
+      # Runs a set of commands using the runners shell
+      - name: Update Results.txt
+        run: |
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git config user.name "github-actions[bot]"
+          git commit -am "Automated report for results"
+          git push
