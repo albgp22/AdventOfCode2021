@@ -108,13 +108,12 @@ impl Mapping {
         contains.iter().all(|(i, deps)| {
             deps.iter()
                 .all(|j| get_num_chars(j).is_subset(&get_num_chars(i)))
-        })&&
-        get_num_chars(&1).is_superset(&get_num_chars(&8).sub(&get_num_chars(&6))) &&
-        get_num_chars(&1).is_superset(&get_num_chars(&8).sub(&get_num_chars(&6))) &&
-        !get_num_chars(&7).is_superset(&get_num_chars(&8).sub(&get_num_chars(&0))) &&
-        get_num_chars(&6).is_superset(&get_num_chars(&8).sub(&get_num_chars(&0))) &&
-        get_num_chars(&5).is_superset(&get_num_chars(&8).sub(&get_num_chars(&0))) &&
-        get_num_chars(&2).is_superset(&get_num_chars(&8).sub(&get_num_chars(&0))) 
+        }) && get_num_chars(&1).is_superset(&get_num_chars(&8).sub(&get_num_chars(&6)))
+            && get_num_chars(&1).is_superset(&get_num_chars(&8).sub(&get_num_chars(&6)))
+            && !get_num_chars(&7).is_superset(&get_num_chars(&8).sub(&get_num_chars(&0)))
+            && get_num_chars(&6).is_superset(&get_num_chars(&8).sub(&get_num_chars(&0)))
+            && get_num_chars(&5).is_superset(&get_num_chars(&8).sub(&get_num_chars(&0)))
+            && get_num_chars(&2).is_superset(&get_num_chars(&8).sub(&get_num_chars(&0)))
     }
 
     fn get(&self, tofind: &HashSet<char>) -> i128 {
@@ -149,16 +148,19 @@ impl Problem for DayEight {
         let digits = parse_input(input);
         format!(
             "{}",
-            digits.iter().map(|(allnums, digits)| {
-                let mapping = Mapping::new(allnums);
-                digits
-                    .iter()
-                    .map(|d| {
-                        let digit_chars = d.chars().collect::<HashSet<_>>();
-                        mapping.get(&digit_chars)
-                    })
-                    .fold(0, |acc, new| acc * 10 + new)
-            }).sum::<i128>()
+            digits
+                .iter()
+                .map(|(allnums, digits)| {
+                    let mapping = Mapping::new(allnums);
+                    digits
+                        .iter()
+                        .map(|d| {
+                            let digit_chars = d.chars().collect::<HashSet<_>>();
+                            mapping.get(&digit_chars)
+                        })
+                        .fold(0, |acc, new| acc * 10 + new)
+                })
+                .sum::<i128>()
         )
     }
 }

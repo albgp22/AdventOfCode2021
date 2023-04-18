@@ -12,7 +12,8 @@ impl Problem for DayOne {
             .map(|i| i.parse::<i32>().unwrap())
             .tuple_windows()
             .filter(|(a, b)| b > a)
-            .count().to_string()
+            .count()
+            .to_string()
     }
 
     fn part_two(&self, input: &str) -> String {
@@ -22,10 +23,11 @@ impl Problem for DayOne {
             .filter(|s| !s.is_empty())
             .map(|i| i.parse::<i32>().unwrap())
             .tuple_windows::<(_, _, _)>()
-            .map(|(a,b,c)| a+b+c)
+            .map(|(a, b, c)| a + b + c)
             .tuple_windows()
             .filter(|(a, b)| b > a)
-            .count().to_string()
+            .count()
+            .to_string()
     }
 }
 

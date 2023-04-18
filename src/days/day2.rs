@@ -4,7 +4,7 @@ use crate::problem::problemdef::Problem;
 
 pub struct DayTwo {}
 
-enum Instruction{
+enum Instruction {
     Forward(i64),
     Down(i64),
     Up(i64),
@@ -21,7 +21,7 @@ impl FromStr for Instruction {
         let ins_base = parts.next().ok_or(ParseInstructionError)?;
         let qua_st = parts.next().ok_or(ParseInstructionError)?;
         let qua: i64 = qua_st.parse().unwrap();
-        let ins = match ins_base{
+        let ins = match ins_base {
             "forward" => Instruction::Forward(qua),
             "down" => Instruction::Down(qua),
             "up" => Instruction::Up(qua),
@@ -42,16 +42,13 @@ impl Problem for DayTwo {
             .into_iter()
             .filter(|s| !s.is_empty())
             .map(|line| line.parse::<Instruction>().unwrap())
-            .for_each(
-                |i|
-                match i {
-                    Instruction::Forward(q) => x+=q,
-                    Instruction::Down(q) => y+=q,
-                    Instruction::Up(q) => y-=q,
-                }
-            );
+            .for_each(|i| match i {
+                Instruction::Forward(q) => x += q,
+                Instruction::Down(q) => y += q,
+                Instruction::Up(q) => y -= q,
+            });
 
-        format!("{}", x*y)
+        format!("{}", x * y)
     }
 
     fn part_two(&self, input: &str) -> String {
@@ -64,19 +61,16 @@ impl Problem for DayTwo {
             .into_iter()
             .filter(|s| !s.is_empty())
             .map(|line| line.parse::<Instruction>().unwrap())
-            .for_each(
-                |i|
-                match i {
-                    Instruction::Forward(q) => {
-                        x+=q;
-                        y+=aim*q;
-                    }
-                    Instruction::Down(q) => aim+=q,
-                    Instruction::Up(q) => aim-=q,
+            .for_each(|i| match i {
+                Instruction::Forward(q) => {
+                    x += q;
+                    y += aim * q;
                 }
-            );
+                Instruction::Down(q) => aim += q,
+                Instruction::Up(q) => aim -= q,
+            });
 
-        format!("{}", x*y)
+        format!("{}", x * y)
     }
 }
 

@@ -36,8 +36,12 @@ where
     occ
 }
 
-fn get_rating(input: impl AsRef<str>, binlen: usize, o2: bool) -> i32{
-    let mut numbers = input.as_ref().split("\n").filter(|&s| !s.is_empty()).collect_vec();
+fn get_rating(input: impl AsRef<str>, binlen: usize, o2: bool) -> i32 {
+    let mut numbers = input
+        .as_ref()
+        .split("\n")
+        .filter(|&s| !s.is_empty())
+        .collect_vec();
     let mut i = 0;
     let mut res = 0;
 
@@ -50,7 +54,19 @@ fn get_rating(input: impl AsRef<str>, binlen: usize, o2: bool) -> i32{
                 .to_string()
                 .parse::<i32>()
                 .unwrap()
-                == if o2 {if mcb[i] != -1 { 1 } else { 0 }}else{if mcb[i] != -1 { 0 } else { 1 }}
+                == if o2 {
+                    if mcb[i] != -1 {
+                        1
+                    } else {
+                        0
+                    }
+                } else {
+                    if mcb[i] != -1 {
+                        0
+                    } else {
+                        1
+                    }
+                }
         });
         i += 1;
     }
@@ -65,7 +81,7 @@ fn get_rating(input: impl AsRef<str>, binlen: usize, o2: bool) -> i32{
     });
 
     res
-} 
+}
 
 impl Problem for DayThree {
     fn part_one(&self, input: &str) -> String {
@@ -97,7 +113,7 @@ impl Problem for DayThree {
         let oxigen = get_rating(input, binlen, true);
         let co2 = get_rating(input, binlen, false);
 
-        format!("{}", oxigen*co2)
+        format!("{}", oxigen * co2)
     }
 }
 

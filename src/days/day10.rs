@@ -85,9 +85,10 @@ impl Problem for DayTen {
                 Self::get_completion(l).iter().rev().fold(0u128, |acc, c| {
                     acc.checked_mul(5).unwrap() + Self::get_score_2(*c)
                 })
-            }).collect_vec();
+            })
+            .collect_vec();
         score_vec.sort();
-        let score = score_vec.get(score_vec.len()/2).unwrap();
+        let score = score_vec.get(score_vec.len() / 2).unwrap();
         format!("{}", score)
     }
 }

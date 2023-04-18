@@ -60,7 +60,7 @@ impl Problem for DaySeven {
 
         format!(
             "{:?}",
-            (lb-1000..lb+1000)
+            (lb - 1000..lb + 1000)
                 .map(|med| (
                     med,
                     positions
@@ -69,7 +69,8 @@ impl Problem for DaySeven {
                         .fold(0i128, |acc, m| acc.checked_add(m).unwrap())
                 ))
                 .min_by(|(_, x), (_, y)| x.cmp(y))
-                .unwrap().1
+                .unwrap()
+                .1
         )
     }
 }
