@@ -7,6 +7,9 @@ on:
   pull_request:
     branches: [ "main" ]
 
+permissions:
+  contents: write
+
 jobs:
   update-results-file:
     name: "Update Results"
@@ -19,8 +22,8 @@ jobs:
 
       - name: Update Results.txt
         run: |
-          git config user.name github-actions
-          git config user.email github-actions@github.com
+          git config user.name 'Alberto'
+          git config user.email 'albgp22@users.noreply.github.com'
           git add results.txt
           git commit -m "Update results.txt"
           git push
