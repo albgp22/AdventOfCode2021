@@ -99,6 +99,8 @@ fn main() -> Result<(), Box<dyn Error>> {
             Ok(Some(br)) => {
                 let serialized = serde_json::to_string_pretty(&br).unwrap();
                 println!("{}", serialized);
+                let serialized = serde_json::to_value(&br).unwrap();
+                println!("{}", json_to_table(&serialized).to_string());
             }
             Ok(None) => {}
             Err(e) => return Err(e),
