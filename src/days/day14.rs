@@ -67,7 +67,7 @@ impl Problem for DayFourteen {
         let cc = Self::count_chars(curr);
         format!(
             "{}",
-            cc.iter().map(|(_k, &v)| v).max().unwrap() - cc.iter().map(|(_k, &v)| v).min().unwrap()
+            cc.values().max().unwrap() - cc.iter().map(|(_k, &v)| v).min().unwrap()
         )
     }
 
@@ -95,7 +95,7 @@ impl Problem for DayFourteen {
                     let newpair2 = format!(
                         "{}{}",
                         rules.get(k).unwrap(),
-                        k.chars().skip(1).next().unwrap(),
+                        k.chars().nth(1).unwrap(),
                     );
                     *pairs_occurrences_inc.entry(k.to_string()).or_insert(0) -= *v;
                     *pairs_occurrences_inc.entry(newpair1).or_insert(0) += *v;
@@ -118,8 +118,8 @@ impl Problem for DayFourteen {
 
         format!(
             "{}",
-            (char_occurrences.iter().map(|(_k, v)| v).max().unwrap()
-                - char_occurrences.iter().map(|(_k, v)| v).min().unwrap())
+            (char_occurrences.values().max().unwrap()
+                - char_occurrences.values().min().unwrap())
                 / 2
         )
     }
