@@ -81,7 +81,6 @@ impl dyn Problem {
 
         BenchmarkResult {
             problem: 0,
-            //durations: durations,
             mean_millis_pt1: mean1,
             var_millis_squared_pt1: var1,
             mean_millis_pt2: mean2,

@@ -1,4 +1,4 @@
-use std::{collections::HashMap, fs::read, hash::Hash};
+use std::collections::HashMap;
 extern crate itertools;
 
 use itertools::Itertools;
@@ -61,7 +61,7 @@ impl Problem for DayFourteen {
     fn part_one(&self, input: &str) -> String {
         let (initial, rules) = Self::read_input(input);
         let mut curr = initial;
-        for _ in 0..10 {
+        for _i in 0..10 {
             curr = Self::step(curr, &rules);
         }
         let cc = Self::count_chars(curr);
@@ -72,6 +72,55 @@ impl Problem for DayFourteen {
     }
 
     fn part_two(&self, input: &str) -> String {
-        format!("")
+        let (initial, rules) = Self::read_input(input);
+
+        let pairs = initial
+            .chars()
+            .tuple_windows()
+            .map(|(a, b)| format!("{}{}", a, b));
+
+        let mut pairs_occurrences = HashMap::new();
+
+        for p in pairs {
+            *pairs_occurrences.entry(p).or_insert(0) += 1;
+        }
+
+        for _ in 0..40 {
+            let mut pairs_occurrences_inc = HashMap::<String, i128>::new();
+
+            for (k, v) in pairs_occurrences.iter() {
+                if rules.contains_key(k) {
+                    let newpair1 =
+                        format!("{}{}", k.chars().next().unwrap(), rules.get(k).unwrap());
+                    let newpair2 = format!(
+                        "{}{}",
+                        rules.get(k).unwrap(),
+                        k.chars().skip(1).next().unwrap(),
+                    );
+                    *pairs_occurrences_inc.entry(k.to_string()).or_insert(0) -= *v;
+                    *pairs_occurrences_inc.entry(newpair1).or_insert(0) += *v;
+                    *pairs_occurrences_inc.entry(newpair2).or_insert(0) += *v;
+                }
+            }
+
+            for (k, v) in pairs_occurrences_inc.iter() {
+                *pairs_occurrences.entry(k.to_string()).or_insert(0) += *v;
+            }
+        }
+
+        let mut char_occurrences = HashMap::new();
+
+        for (k, v) in pairs_occurrences.iter() {
+            for c in k.chars() {
+                *char_occurrences.entry(c).or_insert(0) += *v;
+            }
+        }
+
+        format!(
+            "{}",
+            (char_occurrences.iter().map(|(_k, v)| v).max().unwrap()
+                - char_occurrences.iter().map(|(_k, v)| v).min().unwrap())
+                / 2
+        )
     }
 }
