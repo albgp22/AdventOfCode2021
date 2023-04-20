@@ -1,4 +1,4 @@
-use std::{iter::Peekable, str::Chars};
+use std::{str::Chars};
 
 use crate::problem::problemdef::Problem;
 
@@ -68,10 +68,6 @@ impl DaySixteen {
     fn get_operation_id(i: &Chars) -> i32 {
         let i = i.clone();
         i32::from_str_radix(&i.as_str().to_string()[3..6], 2).unwrap()
-    }
-    fn is_operator_packet(i: &Chars) -> bool {
-        let i = i.clone();
-        !Self::is_literal_value(&i)
     }
     fn get_length_type_id(i: &Chars) -> LengthType {
         let i = i.as_str().to_string();
