@@ -22,7 +22,7 @@ jobs:
           components: rustfmt, clippy
 
       - name: Run application
-        run: cargo +nightly run -r -- --run-all -b > results.txt
+        run: cargo run -r -- --run-all -b > results.txt
 
       - name: Update Results.txt
         run: |
