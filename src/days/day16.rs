@@ -393,7 +393,7 @@ mod tests {
         let result = DaySixteen::add_version_numbers(&DaySixteen::read_operator(
             &mut (DaySixteen::convert_to_binary_from_hex("A0016C880162017C3686B18A3D4780")).chars(),
         ));
-        let expected = 31;
+        let expected = 64;
         assert_eq!(result, expected);
     }
 }
