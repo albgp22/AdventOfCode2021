@@ -17,8 +17,8 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Build
-      run: cargo build -r --verbose
+      run: cargo +nightly build -r --verbose
     - name: Benchmark
-      run: cargo run -r --verbose -- --run-all -b 
+      run: cargo +nightly run -r --verbose -- --run-all -b
     - name: Run tests
-      run: cargo test --verbose
+      run: cargo +nightly test --verbose
