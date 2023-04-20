@@ -1,3 +1,5 @@
+#![feature(iter_next_chunk,iter_advance_by)]
+
 mod days;
 mod problem;
 
@@ -45,6 +47,7 @@ fn day_to_problem(day: usize) -> Option<Box<dyn Problem>> {
         13 => Some(Box::new(day13::DayThirteen {})),
         14 => Some(Box::new(day14::DayFourteen{})),
         15 => Some(Box::new(day15::DayFifteen{})),
+        16 => Some(Box::new(day16::DaySixteen{})),
         _ => None,
     }
 }
