@@ -15,8 +15,14 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
+      - uses: actions-rs/toolchain@v1
+        name: Install nightly
+        with:
+          toolchain: nightly
+          components: rustfmt, clippy
+
       - name: Run application
-        run: cargo run -r -- --run-all -b > results.txt
+        run: cargo +nightly run -r -- --run-all -b > results.txt
 
       - name: Update Results.txt
         run: |
