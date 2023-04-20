@@ -1,4 +1,4 @@
-use std::{str::Chars};
+use std::str::Chars;
 
 use crate::problem::problemdef::Problem;
 
@@ -58,7 +58,6 @@ impl DaySixteen {
         hex.chars().map(Self::to_binary).collect()
     }
     fn is_literal_value(i: &Chars) -> bool {
-        let i = i.clone();
         i.as_str().to_string()[3..6] == "100".to_string()
     }
     fn get_version(i: &Chars) -> i32 {
@@ -86,10 +85,7 @@ impl DaySixteen {
             let chunk = i.next_chunk::<5>().unwrap();
             read_bits += 5;
             wholenumber = format!("{}{}", wholenumber, String::from_iter(chunk[1..5].iter()));
-            match chunk[0] {
-                '0' => break,
-                _ => {}
-            }
+            if chunk[0] == '0' {break;}
         }
 
         LiteralData {
@@ -166,20 +162,16 @@ impl DaySixteen {
         match od {
             Operator::Literal(l) => l.value,
             Operator::Operator(o) => match o.operation {
-                0 => o
-                    .sub_operators
-                    .iter()
-                    .map(|od| Self::evaluate_operator(od))
-                    .sum(),
+                0 => o.sub_operators.iter().map(Self::evaluate_operator).sum(),
                 1 => o
                     .sub_operators
                     .iter()
-                    .map(|od| Self::evaluate_operator(od))
+                    .map(Self::evaluate_operator)
                     .product(),
                 2 => o
                     .sub_operators
                     .iter()
-                    .map(|od| Self::evaluate_operator(od))
+                    .map(Self::evaluate_operator)
                     .min()
                     .unwrap(),
                 3 => o
@@ -223,7 +215,7 @@ impl DaySixteen {
 
 impl Problem for DaySixteen {
     fn part_one(&self, input: &str) -> String {
-        let input = input.split('\n').filter(|l| !l.is_empty()).next().unwrap();
+        let input = input.split('\n').find(|l| !l.is_empty()).unwrap();
         let bin_string = Self::convert_to_binary_from_hex(input);
         let mut bin_iter = bin_string.chars();
 
@@ -233,7 +225,7 @@ impl Problem for DaySixteen {
     }
 
     fn part_two(&self, input: &str) -> String {
-        let input = input.split('\n').filter(|l| !l.is_empty()).next().unwrap();
+        let input = input.split('\n').find(|l| !l.is_empty()).unwrap();
         let bin_string = Self::convert_to_binary_from_hex(input);
         let mut bin_iter = bin_string.chars();
 
