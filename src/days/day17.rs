@@ -18,20 +18,20 @@ impl DaySeventeen {
 impl Problem for DaySeventeen {
     fn part_one(&self, input: &str) -> String {
         let y_re = Regex::new(r"y=(-?\d+)..(-?\d+)").unwrap();
-        let y_cap = y_re.captures_iter(&input).next().unwrap();
-        let ydownlim: i32= y_cap[1].parse().unwrap();
-        let h_max = ((ydownlim.abs() as f64 - 1f64) + 0.5).powi(2) / (2 as f64);
+        let y_cap = y_re.captures_iter(input).next().unwrap();
+        let ydownlim: i32 = y_cap[1].parse().unwrap();
+        let h_max = ((ydownlim.abs() as f64 - 1f64) + 0.5).powi(2) / 2f64;
         format!("{}", h_max.round())
     }
 
     fn part_two(&self, input: &str) -> String {
         let x_re = Regex::new(r"x=(-?\d+)..(-?\d+)").unwrap();
         let y_re = Regex::new(r"y=(-?\d+)..(-?\d+)").unwrap();
-        let x_cap = x_re.captures_iter(&input).next().unwrap();
-        let xdownlim: i128= x_cap[1].parse().unwrap();
+        let x_cap = x_re.captures_iter(input).next().unwrap();
+        let xdownlim: i128 = x_cap[1].parse().unwrap();
         let xuplim: i128 = x_cap[2].parse().unwrap();
-        let y_cap = y_re.captures_iter(&input).next().unwrap();
-        let ydownlim: i128= y_cap[1].parse().unwrap();
+        let y_cap = y_re.captures_iter(input).next().unwrap();
+        let ydownlim: i128 = y_cap[1].parse().unwrap();
         let yuplim: i128 = y_cap[2].parse().unwrap();
 
         let hits = |v0x: i128, v0y: i128| {
