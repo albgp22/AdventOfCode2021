@@ -316,6 +316,57 @@ impl Scan {
 
         matches >= 66
     }
+    fn rotate(&self, o: &Orientation) -> Scan {
+        let my_cos = |k| match k {
+            0 => 1,
+            1 => 0,
+            2 => -1,
+            3 => 0,
+            _ => unreachable!(),
+        };
+        let my_sin = |k| match k {
+            0 => 0,
+            1 => 1,
+            2 => 0,
+            3 => -1,
+            _ => unreachable!(),
+        };
+
+        let rotate_x = |p: &Point, k| Point {
+            x: p.x,
+            y: p.y * my_cos(k) - p.z * my_sin(k),
+            z: p.y * my_sin(k) + p.z * my_cos(k),
+        };
+        let rotate_y = |p: Point, k| Point {
+            x: p.x * my_cos(k) + p.z * my_sin(k),
+            y: p.y,
+            z: p.z * my_cos(k) - p.x * my_sin(k),
+        };
+        let rotate_z = |p: Point, k| Point {
+            x: p.x * my_cos(k) - p.y * my_sin(k),
+            y: p.x * my_sin(k) + p.y * my_cos(k),
+            z: p.z,
+        };
+
+        let mut new_points = self
+            .dots
+            .iter()
+            .map(|p| rotate_x(p, o.rotx))
+            .map(|p| rotate_y(p, o.roty))
+            .map(|p| rotate_z(p, o.rotz))
+            .collect_vec();
+
+        for p in new_points.iter_mut() {
+            p.x = p.x * if o.facx == Forward { 1 } else { -1 };
+            p.y = p.y * if o.facy == Forward { 1 } else { -1 };
+            p.z = p.z * if o.facz == Forward { 1 } else { -1 };
+        }
+
+        Scan {
+            dots: new_points,
+            distances: self.distances.clone(),
+        }
+    }
 }
 
 pub struct DayNineteen {}
@@ -365,6 +416,9 @@ impl DayNineteen {
     }
     fn overlapp(idx1: usize, idx2: usize, s0: &Scan, s1: &Scan) -> Option<(Orientation, Offset)> {
         if s0.overlaps_distances(s1) {
+            for orientation in ALL_ORIENTATIONS{
+                let s1_oriented = s1.rotate(&orientation);
+            }
             //println!("overlapp detected between {} and {}!",idx1,idx2);
         }
         Some((Orientation::default(), Offset { x: 0, y: 0, z: 0 }))
