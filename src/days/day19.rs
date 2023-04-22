@@ -1,4 +1,7 @@
-use std::{collections::{HashMap, HashSet}, str::FromStr};
+use std::{
+    collections::{HashMap, HashSet},
+    str::FromStr,
+};
 
 use itertools::Itertools;
 
@@ -18,24 +21,277 @@ impl FromStr for Point {
     type Err = ParsePointError;
 
     fn from_str(s: &str) -> Result<Self, Self::Err> {
-        let (x, y, z) = s
-            .split(',')
-            .tuples()
-            .next()
-            .ok_or(ParsePointError)?;
+        let (x, y, z) = s.split(',').tuples().next().ok_or(ParsePointError)?;
 
         let x_fromstr = x.parse::<i32>().map_err(|_| ParsePointError)?;
         let y_fromstr = y.parse::<i32>().map_err(|_| ParsePointError)?;
         let z_fromstr = z.parse::<i32>().map_err(|_| ParsePointError)?;
 
-        Ok(Point { x: x_fromstr, y: y_fromstr , z: z_fromstr})
+        Ok(Point {
+            x: x_fromstr,
+            y: y_fromstr,
+            z: z_fromstr,
+        })
     }
 }
 
 type Offset = Point;
 
-#[derive(Debug, Copy, PartialEq, Eq, Clone, Hash)]
-struct Orientation {}
+#[derive(Debug, Copy, PartialEq, Eq, Clone, Hash, Default)]
+enum Facing {
+    #[default]
+    Forward,
+    Backward,
+}
+use Facing::*;
+
+#[derive(Debug, Copy, PartialEq, Eq, Clone, Hash, Default)]
+struct Orientation {
+    rotx: i8,
+    roty: i8,
+    rotz: i8,
+    facx: Facing,
+    facy: Facing,
+    facz: Facing,
+}
+
+#[allow(dead_code)]
+fn get_all_orientations() -> Vec<Orientation> {
+    let mut v = vec![];
+    for rotx in 0..4 {
+        for facx in vec![Backward, Forward] {
+            v.push(Orientation {
+                rotx: rotx,
+                roty: 0,
+                rotz: 0,
+                facx: facx,
+                facy: Forward,
+                facz: Forward,
+            })
+        }
+    }
+    for roty in 0..4 {
+        for facy in vec![Backward, Forward] {
+            v.push(Orientation {
+                rotx: 0,
+                roty: roty,
+                rotz: 0,
+                facx: Forward,
+                facy: facy,
+                facz: Forward,
+            })
+        }
+    }
+    for rotz in 0..4 {
+        for facz in vec![Backward, Forward] {
+            v.push(Orientation {
+                rotx: 0,
+                roty: 0,
+                rotz: rotz,
+                facx: Forward,
+                facy: Forward,
+                facz: facz,
+            })
+        }
+    }
+    assert_eq!(v.len(), 24);
+    v
+}
+
+static ALL_ORIENTATIONS: &'static [Orientation] = &[
+    Orientation {
+        rotx: 0,
+        roty: 0,
+        rotz: 0,
+        facx: Backward,
+        facy: Forward,
+        facz: Forward,
+    },
+    Orientation {
+        rotx: 0,
+        roty: 0,
+        rotz: 0,
+        facx: Forward,
+        facy: Forward,
+        facz: Forward,
+    },
+    Orientation {
+        rotx: 1,
+        roty: 0,
+        rotz: 0,
+        facx: Backward,
+        facy: Forward,
+        facz: Forward,
+    },
+    Orientation {
+        rotx: 1,
+        roty: 0,
+        rotz: 0,
+        facx: Forward,
+        facy: Forward,
+        facz: Forward,
+    },
+    Orientation {
+        rotx: 2,
+        roty: 0,
+        rotz: 0,
+        facx: Backward,
+        facy: Forward,
+        facz: Forward,
+    },
+    Orientation {
+        rotx: 2,
+        roty: 0,
+        rotz: 0,
+        facx: Forward,
+        facy: Forward,
+        facz: Forward,
+    },
+    Orientation {
+        rotx: 3,
+        roty: 0,
+        rotz: 0,
+        facx: Backward,
+        facy: Forward,
+        facz: Forward,
+    },
+    Orientation {
+        rotx: 3,
+        roty: 0,
+        rotz: 0,
+        facx: Forward,
+        facy: Forward,
+        facz: Forward,
+    },
+    Orientation {
+        rotx: 0,
+        roty: 0,
+        rotz: 0,
+        facx: Forward,
+        facy: Backward,
+        facz: Forward,
+    },
+    Orientation {
+        rotx: 0,
+        roty: 0,
+        rotz: 0,
+        facx: Forward,
+        facy: Forward,
+        facz: Forward,
+    },
+    Orientation {
+        rotx: 0,
+        roty: 1,
+        rotz: 0,
+        facx: Forward,
+        facy: Backward,
+        facz: Forward,
+    },
+    Orientation {
+        rotx: 0,
+        roty: 1,
+        rotz: 0,
+        facx: Forward,
+        facy: Forward,
+        facz: Forward,
+    },
+    Orientation {
+        rotx: 0,
+        roty: 2,
+        rotz: 0,
+        facx: Forward,
+        facy: Backward,
+        facz: Forward,
+    },
+    Orientation {
+        rotx: 0,
+        roty: 2,
+        rotz: 0,
+        facx: Forward,
+        facy: Forward,
+        facz: Forward,
+    },
+    Orientation {
+        rotx: 0,
+        roty: 3,
+        rotz: 0,
+        facx: Forward,
+        facy: Backward,
+        facz: Forward,
+    },
+    Orientation {
+        rotx: 0,
+        roty: 3,
+        rotz: 0,
+        facx: Forward,
+        facy: Forward,
+        facz: Forward,
+    },
+    Orientation {
+        rotx: 0,
+        roty: 0,
+        rotz: 0,
+        facx: Forward,
+        facy: Forward,
+        facz: Backward,
+    },
+    Orientation {
+        rotx: 0,
+        roty: 0,
+        rotz: 0,
+        facx: Forward,
+        facy: Forward,
+        facz: Forward,
+    },
+    Orientation {
+        rotx: 0,
+        roty: 0,
+        rotz: 1,
+        facx: Forward,
+        facy: Forward,
+        facz: Backward,
+    },
+    Orientation {
+        rotx: 0,
+        roty: 0,
+        rotz: 1,
+        facx: Forward,
+        facy: Forward,
+        facz: Forward,
+    },
+    Orientation {
+        rotx: 0,
+        roty: 0,
+        rotz: 2,
+        facx: Forward,
+        facy: Forward,
+        facz: Backward,
+    },
+    Orientation {
+        rotx: 0,
+        roty: 0,
+        rotz: 2,
+        facx: Forward,
+        facy: Forward,
+        facz: Forward,
+    },
+    Orientation {
+        rotx: 0,
+        roty: 0,
+        rotz: 3,
+        facx: Forward,
+        facy: Forward,
+        facz: Backward,
+    },
+    Orientation {
+        rotx: 0,
+        roty: 0,
+        rotz: 3,
+        facx: Forward,
+        facy: Forward,
+        facz: Forward,
+    },
+];
 
 #[derive(Debug, PartialEq, Eq, Clone)]
 struct Scan {
@@ -69,18 +325,26 @@ impl DayNineteen {
         let mut v_curr = vec![];
         let mut r = vec![];
         let mut it = input.split('\n').filter(|l| !l.is_empty()).peekable();
-        while let Some(line) = it.next()  {
-            if line.contains("---"){
-                if v_curr.is_empty(){ continue; }
+        while let Some(line) = it.next() {
+            if line.contains("---") {
+                if v_curr.is_empty() {
+                    continue;
+                }
                 let distances = Self::compute_manhattan_distances(&v_curr);
-                r.push(Scan { dots: v_curr, distances: distances });
+                r.push(Scan {
+                    dots: v_curr,
+                    distances: distances,
+                });
                 v_curr = vec![];
-            }else if it.peek().is_none(){
+            } else if it.peek().is_none() {
                 v_curr.push(Point::from_str(line).unwrap());
                 let distances = Self::compute_manhattan_distances(&v_curr);
-                r.push(Scan { dots: v_curr, distances: distances });
+                r.push(Scan {
+                    dots: v_curr,
+                    distances: distances,
+                });
                 v_curr = vec![];
-            }else{
+            } else {
                 v_curr.push(Point::from_str(line).unwrap());
             }
         }
@@ -100,10 +364,10 @@ impl DayNineteen {
         r
     }
     fn overlapp(idx1: usize, idx2: usize, s0: &Scan, s1: &Scan) -> Option<(Orientation, Offset)> {
-        if s0.overlaps_distances(s1){
+        if s0.overlaps_distances(s1) {
             //println!("overlapp detected between {} and {}!",idx1,idx2);
         }
-        Some((Orientation {}, Offset { x: 0, y: 0, z: 0 }))
+        Some((Orientation::default(), Offset { x: 0, y: 0, z: 0 }))
     }
     fn reconstruct(
         scans: &Vec<Scan>,
@@ -123,7 +387,7 @@ impl Problem for DayNineteen {
                 /* Idea:
                 you dont't really need to run this particular pair if there's already a path i--j
                  */
-                let r = Self::overlapp(i,j,&scans[i], &scans[j]);
+                let r = Self::overlapp(i, j, &scans[i], &scans[j]);
                 if r.is_some() {
                     overlaps.insert((i, j), r.unwrap());
                 }
