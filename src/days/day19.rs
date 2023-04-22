@@ -2,12 +2,13 @@ use std::{
     collections::{HashMap, HashSet},
     str::FromStr,
 };
+use log::{debug, error, log_enabled, info, Level};
 
 use itertools::Itertools;
 
 use crate::problem::problemdef::Problem;
 
-#[derive(Debug, Copy, PartialEq, Eq, Clone, Hash)]
+#[derive(Debug, Copy, PartialEq, Eq, Clone, Hash, Default)]
 struct Point {
     x: i32,
     y: i32,
@@ -414,10 +415,26 @@ impl DayNineteen {
         }
         r
     }
-    fn overlapp(idx1: usize, idx2: usize, s0: &Scan, s1: &Scan) -> Option<(Orientation, Offset)> {
+    fn overlapp(_idx1: usize, _idx2: usize, s0: &Scan, s1: &Scan) -> Option<(Orientation, Offset)> {
         if s0.overlaps_distances(s1) {
-            for orientation in ALL_ORIENTATIONS{
+            info!("Overlapp detected between sensors {} and {}", _idx1, _idx2);
+            for orientation in ALL_ORIENTATIONS {
                 let s1_oriented = s1.rotate(&orientation);
+                let mut distances = HashMap::new();
+                let compute_distance = |p1: &Point, p2: &Point| {
+                    (p1.x - p2.x).abs() + (p1.y - p2.y).abs() + (p1.z - p2.z).abs()
+                };
+                for p1 in &s0.dots {
+                    for p2 in &s1_oriented.dots {
+                        let distance = compute_distance(&p1, &p2);
+                        *distances.entry(distance).or_insert(0) += 1;
+                    }
+                }
+                if distances.values().any(|&x| x>=12){
+                    info!("Orientation found between sensors {} and {}: {:?}", _idx1, _idx2, orientation);
+                    return Some((orientation.clone(),Offset::default()));
+                }
+                //println!("{:?}", distances);
             }
             //println!("overlapp detected between {} and {}!",idx1,idx2);
         }
@@ -433,6 +450,7 @@ impl DayNineteen {
 
 impl Problem for DayNineteen {
     fn part_one(&self, input: &str) -> String {
+        env_logger::init();
         let scans = Self::read_input(input);
         let n_sensors = scans.len();
         let mut overlaps = HashMap::new();
