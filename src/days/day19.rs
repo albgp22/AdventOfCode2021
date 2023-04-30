@@ -450,7 +450,6 @@ impl DayNineteen {
 
 impl Problem for DayNineteen {
     fn part_one(&self, input: &str) -> String {
-        env_logger::init();
         let scans = Self::read_input(input);
         let n_sensors = scans.len();
         let mut overlaps = HashMap::new();

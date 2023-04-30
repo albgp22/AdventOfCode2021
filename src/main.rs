@@ -71,6 +71,7 @@ fn run_problem(
 }
 
 fn main() -> Result<(), Box<dyn Error>> {
+    env_logger::init();
     let args = Args::parse();
 
     if args.day == NOPROBLEM && !args.run_all {
