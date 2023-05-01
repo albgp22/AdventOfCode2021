@@ -1,5 +1,3 @@
-use std::fmt::format;
-
 use crate::problem::problemdef::Problem;
 use itertools::Itertools;
 
@@ -70,8 +68,7 @@ impl Cube {
     fn is_part_1(&self) -> bool {
         self.coords
             .iter()
-            .map(|cc| vec![cc.start, cc.end])
-            .flatten()
+            .flat_map(|cc| vec![cc.start, cc.end])
             .all(|c| c.abs() <= 50)
     }
 }
@@ -91,7 +88,7 @@ impl DayTwentyTwo {
                 .next()
                 .unwrap()
                 .split(',')
-                .map(|s| s.trim().replace(&['x', 'y', 'z', '='], ""))
+                .map(|s| s.trim().replace(['x', 'y', 'z', '='], ""))
             {
                 let (x, y) = coord
                     .split("..")
