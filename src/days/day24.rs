@@ -1,12 +1,12 @@
 use crate::problem::problemdef::Problem;
+use gag::Gag;
 use good_lp::{constraint, default_solver, variable, variables, Solution, SolverModel};
-use itertools::Itertools;
-use std::{error::Error, fmt::format};
 
 pub struct DayTwentyFour {}
 
 impl DayTwentyFour {
     fn solve(maximize: bool) -> String {
+        let print_gag = Gag::stdout().unwrap();
         let mut vars = variables!();
         let a1 = vars.add(variable().integer().min(1).max(9));
         let a2 = vars.add(variable().integer().min(1).max(9));
@@ -39,12 +39,13 @@ impl DayTwentyFour {
             .with(constraint![a14 == a1 + 3])
             .solve()
             .unwrap();
-
-        vec![a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11, a12, a13, a14]
+        let r = vec![a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11, a12, a13, a14]
             .iter()
             .map(|a| format!("{}", solution.value(*a).round()))
             .collect::<Vec<String>>()
-            .join("")
+            .join("");
+        drop(print_gag);
+        r
     }
 }
 
