@@ -3,96 +3,96 @@ Part 1 solution:
 1393
 Part 2 solution:
 1359
-Part 1 took 49.11000µs on average
-Part 2 took 53.04000µs on average
+Part 1 took 47.28000µs on average
+Part 2 took 47.14000µs on average
 
 Day 2:
 Part 1 solution:
 2073315
 Part 2 solution:
 1840311528
-Part 1 took 70.08000µs on average
-Part 2 took 69.95000µs on average
+Part 1 took 76.44100µs on average
+Part 2 took 73.85100µs on average
 
 Day 3:
 Part 1 solution:
 3959450
 Part 2 solution:
 7440311
-Part 1 took 459.30500µs on average
-Part 2 took 1.96180ms on average
+Part 1 took 387.83500µs on average
+Part 2 took 1.61568ms on average
 
 Day 4:
 Part 1 solution:
 58412
 Part 2 solution:
 10030
-Part 1 took 303.18300µs on average
-Part 2 took 1.33151ms on average
+Part 1 took 301.35400µs on average
+Part 2 took 1.31500ms on average
 
 Day 5:
 Part 1 solution:
 7438
 Part 2 solution:
 21406
-Part 1 took 10.17285ms on average
-Part 2 took 20.52898ms on average
+Part 1 took 10.16751ms on average
+Part 2 took 20.30040ms on average
 
 Day 6:
 Part 1 solution:
 353274
 Part 2 solution:
 1609314870967
-Part 1 took 6.23000µs on average
-Part 2 took 6.40000µs on average
+Part 1 took 5.60000µs on average
+Part 2 took 5.78000µs on average
 
 Day 7:
 Part 1 solution:
 355989
 Part 2 solution:
 102245489
-Part 1 took 71.64000µs on average
-Part 2 took 5.69588ms on average
+Part 1 took 70.69100µs on average
+Part 2 took 5.79338ms on average
 
 Day 8:
 Part 1 solution:
 452
 Part 2 solution:
 1096964
-Part 1 took 187.88200µs on average
-Part 2 took 14.43884ms on average
+Part 1 took 194.71200µs on average
+Part 2 took 14.88545ms on average
 
 Day 9:
 Part 1 solution:
 504
 Part 2 solution:
 1558722
-Part 1 took 350.46300µs on average
-Part 2 took 15.72260ms on average
+Part 1 took 359.10500µs on average
+Part 2 took 15.57293ms on average
 
 Day 10:
 Part 1 solution:
 299793
 Part 2 solution:
 3654963618
-Part 1 took 241.42200µs on average
-Part 2 took 379.61400µs on average
+Part 1 took 245.67300µs on average
+Part 2 took 389.88500µs on average
 
 Day 11:
 Part 1 solution:
 1773
 Part 2 solution:
 494
-Part 1 took 701.57700µs on average
-Part 2 took 3.31161ms on average
+Part 1 took 706.42900µs on average
+Part 2 took 3.32470ms on average
 
 Day 12:
 Part 1 solution:
 3421
 Part 2 solution:
 84870
-Part 1 took 2.85443ms on average
-Part 2 took 3.65692s on average
+Part 1 took 2.99525ms on average
+Part 2 took 3.30492s on average
 
 Day 13:
 Part 1 solution:
@@ -105,305 +105,406 @@ Part 2 solution:
 #..#.#....#....#....#..#.#..#.#.#..#.#.
 #..#.####.####.####.#..#..##..#..#.#..#
 
-Part 1 took 152.04200µs on average
-Part 2 took 346.19400µs on average
+Part 1 took 154.27200µs on average
+Part 2 took 335.24400µs on average
 
 Day 14:
 Part 1 solution:
 2549
 Part 2 solution:
 2516901104210
-Part 1 took 3.43151ms on average
-Part 2 took 1.48387ms on average
+Part 1 took 3.17916ms on average
+Part 2 took 1.44372ms on average
 
 Day 15:
 Part 1 solution:
 393
 Part 2 solution:
 2823
-Part 1 took 5.02085ms on average
-Part 2 took 228.30385ms on average
+Part 1 took 5.12406ms on average
+Part 2 took 236.29906ms on average
 
 Day 16:
 Part 1 solution:
 3814
 Part 2 solution:
 1675198555015
-Part 1 took 220.95300µs on average
-Part 2 took 220.37200µs on average
+Part 1 took 195.45200µs on average
+Part 2 took 199.06200µs on average
 
 Day 17:
 Part 1 solution:
 10878
 Part 2 solution:
 4716
-Part 1 took 129.77100µs on average
-Part 2 took 2.47632ms on average
+Part 1 took 128.74100µs on average
+Part 2 took 2.46722ms on average
 
 Day 19:
 Part 1 solution:
 0
 Part 2 solution:
 
-Part 1 took 151.67888ms on average
-Part 2 took 360.00000ns on average
+Part 1 took 154.64865ms on average
+Part 2 took 260.00000ns on average
 
 Day 21:
 Part 1 solution:
 512442
 Part 2 solution:
 346642902541848
-Part 1 took 7.33000µs on average
-Part 2 took 4.42923s on average
+Part 1 took 7.31000µs on average
+Part 2 took 4.44616s on average
 
 Day 22:
 Part 1 solution:
 587097
 Part 2 solution:
 1359673068597669
-Part 1 took 3.31651ms on average
-Part 2 took 272.71010ms on average
+Part 1 took 3.29209ms on average
+Part 2 took 272.06402ms on average
 
-[{"problem":1,"mean_millis_pt1":0.0489606,"var_millis_squared_pt1":2.244823999999917e-8,"mean_millis_pt2":0.0529006,"var_millis_squared_pt2":0.00004276912023999997},{"problem":2,"mean_millis_pt1":0.06996079999999999,"var_millis_squared_pt1":1.6364160000000458e-8,"mean_millis_pt2":0.06986079999999999,"var_millis_squared_pt2":1.4404159999999718e-8},{"problem":3,"mean_millis_pt1":0.459225,"var_millis_squared_pt1":0.000040926480599999895,"mean_millis_pt2":1.9616814000000005,"var_millis_squared_pt2":0.00046660073224000015},{"problem":4,"mean_millis_pt1":0.30308340000000006,"var_millis_squared_pt1":0.0000602710162399999,"mean_millis_pt2":1.3313945,"var_millis_squared_pt2":0.00011876268025000048},{"problem":5,"mean_millis_pt1":10.172620900000002,"var_millis_squared_pt1":0.15051716954128985,"mean_millis_pt2":20.5284938,"var_millis_squared_pt2":0.23441236257576023},{"problem":6,"mean_millis_pt1":0.006149999999999999,"var_millis_squared_pt1":3.249999999999993e-8,"mean_millis_pt2":0.0063001,"var_millis_squared_pt2":3.200008999999998e-8},{"problem":7,"mean_millis_pt1":0.07153069999999999,"var_millis_squared_pt1":0.000010000378210000032,"mean_millis_pt2":5.695752100000001,"var_millis_squared_pt2":0.000024678282089999878},{"problem":8,"mean_millis_pt1":0.187662,"var_millis_squared_pt1":0.000026968400000000035,"mean_millis_pt2":14.4387274,"var_millis_squared_pt2":0.07675026291364007},{"problem":9,"mean_millis_pt1":0.3503438,"var_millis_squared_pt1":0.000023575356160000127,"mean_millis_pt2":15.722481399999998,"var_millis_squared_pt2":0.01861328825423997},{"problem":10,"mean_millis_pt1":0.2413226,"var_millis_squared_pt1":1.6638562399999851e-6,"mean_millis_pt2":0.3795341,"var_millis_squared_pt2":0.000010229514089999998},{"problem":11,"mean_millis_pt1":0.7015076,"var_millis_squared_pt1":0.000054762460239999874,"mean_millis_pt2":3.3115260999999996,"var_millis_squared_pt2":0.00101073942229},{"problem":12,"mean_millis_pt1":2.8543220999999996,"var_millis_squared_pt1":0.00017410298208999928,"mean_millis_pt2":3656.9160774999996,"var_millis_squared_pt2":10822.891659359488},{"problem":13,"mean_millis_pt1":0.151912,"var_millis_squared_pt1":0.000018936900000000046,"mean_millis_pt2":0.3460647,"var_millis_squared_pt2":0.00002868293621000005},{"problem":14,"mean_millis_pt1":3.4313761,"var_millis_squared_pt1":0.0001173480940899982,"mean_millis_pt2":1.4837298999999997,"var_millis_squared_pt2":0.00009110526209000041},{"problem":15,"mean_millis_pt1":5.0205675,"var_millis_squared_pt1":0.001704799380450004,"mean_millis_pt2":228.30315530000001,"var_millis_squared_pt2":22.78429582225487},{"problem":16,"mean_millis_pt1":0.220833,"var_millis_squared_pt1":0.000042816099999999985,"mean_millis_pt2":0.22024290000000005,"var_millis_squared_pt2":4.19452809e-6},{"problem":17,"mean_millis_pt1":0.1296717,"var_millis_squared_pt1":0.00003467042220999996,"mean_millis_pt2":2.4761433,"var_millis_squared_pt2":0.00005041987420999876},{"problem":19,"mean_millis_pt1":151.6786064,"var_millis_squared_pt1":0.005650624005039238,"mean_millis_pt2":0.00005,"var_millis_squared_pt2":2.4999999999999992e-9},{"problem":21,"mean_millis_pt1":0.00703,"var_millis_squared_pt1":3.520999999999999e-7,"mean_millis_pt2":4429.232226600001,"var_millis_squared_pt2":0.5873296697353112},{"problem":22,"mean_millis_pt1":3.3161156,"var_millis_squared_pt1":0.015379088045439995,"mean_millis_pt2":272.7096117,"var_millis_squared_pt2":1.2689935469750107}]
+Day 24:
+Part 1 solution:
+69914999975369
+Part 2 solution:
+14911675311114
+Part 1 took 109.00100µs on average
+Part 2 took 107.50100µs on average
+
+[{"problem":1,"mean_millis_pt1":0.047130700000000005,"var_millis_squared_pt1":1.60582099999998e-8,"mean_millis_pt2":0.0470106,"var_millis_squared_pt2":1.2868239999999874e-8},{"problem":2,"mean_millis_pt1":0.076331,"var_millis_squared_pt1":0.00019759010000000004,"mean_millis_pt2":0.0737311,"var_millis_squared_pt2":0.00010090009409000006},{"problem":3,"mean_millis_pt1":0.3877354,"var_millis_squared_pt1":0.000059154136239999855,"mean_millis_pt2":1.6156225000000002,"var_millis_squared_pt2":0.0003522150002499987},{"problem":4,"mean_millis_pt1":0.3012342,"var_millis_squared_pt1":0.00003965804816000005,"mean_millis_pt2":1.3148683,"var_millis_squared_pt2":0.00012267985020999957},{"problem":5,"mean_millis_pt1":10.1672914,"var_millis_squared_pt1":0.16932183087084002,"mean_millis_pt2":20.2999124,"var_millis_squared_pt2":0.11475149865744005},{"problem":6,"mean_millis_pt1":0.0054601,"var_millis_squared_pt1":1.8408089999999954e-8,"mean_millis_pt2":0.005710099999999999,"var_millis_squared_pt2":3.687809000000002e-8},{"problem":7,"mean_millis_pt1":0.07061100000000001,"var_millis_squared_pt1":5.842899999999993e-6,"mean_millis_pt2":5.7932706,"var_millis_squared_pt2":8.285752240001005e-6},{"problem":8,"mean_millis_pt1":0.19451270000000004,"var_millis_squared_pt1":0.000026260806209999994,"mean_millis_pt2":14.885367000000002,"var_millis_squared_pt2":0.1454480923294},{"problem":9,"mean_millis_pt1":0.358995,"var_millis_squared_pt1":0.000018856899999999935,"mean_millis_pt2":15.5727666,"var_millis_squared_pt2":0.0035321874204399632},{"problem":10,"mean_millis_pt1":0.24558340000000004,"var_millis_squared_pt1":0.000011402336239999997,"mean_millis_pt2":0.3898054,"var_millis_squared_pt2":0.000011057840239999978},{"problem":11,"mean_millis_pt1":0.7063498,"var_millis_squared_pt1":0.00006152943636000011,"mean_millis_pt2":3.3246062000000003,"var_millis_squared_pt2":0.0009437475563599966},{"problem":12,"mean_millis_pt1":2.995152,"var_millis_squared_pt1":0.00012407470040000197,"mean_millis_pt2":3304.9236704000004,"var_millis_squared_pt2":6993.7351060235405},{"problem":13,"mean_millis_pt1":0.1541421,"var_millis_squared_pt1":0.00002634761209000002,"mean_millis_pt2":0.3351147,"var_millis_squared_pt2":2.2205062099999937e-6},{"problem":14,"mean_millis_pt1":3.1790645,"var_millis_squared_pt1":0.0002908107402500001,"mean_millis_pt2":1.4436102,"var_millis_squared_pt2":0.00010750706415999993},{"problem":15,"mean_millis_pt1":5.1237818,"var_millis_squared_pt1":0.03021837131095998,"mean_millis_pt2":236.29854699999996,"var_millis_squared_pt2":10.211620956360786},{"problem":16,"mean_millis_pt1":0.1953127,"var_millis_squared_pt1":7.2999062100000335e-6,"mean_millis_pt2":0.1989428,"var_millis_squared_pt2":0.000041761456159999987},{"problem":17,"mean_millis_pt1":0.1286218,"var_millis_squared_pt1":0.00002522824815999998,"mean_millis_pt2":2.4670845,"var_millis_squared_pt2":0.00003055937024999999},{"problem":19,"mean_millis_pt1":154.64829439999997,"var_millis_squared_pt1":0.7076255799304393,"mean_millis_pt2":0.00008000000000000002,"var_millis_squared_pt2":7.599999999999999e-9},{"problem":21,"mean_millis_pt1":0.0070001,"var_millis_squared_pt1":2.5230009e-7,"mean_millis_pt2":4446.1590638,"var_millis_squared_pt2":0.037911309074153986},{"problem":22,"mean_millis_pt1":3.2917505000000005,"var_millis_squared_pt1":0.020764205812450025,"mean_millis_pt2":272.0636673,"var_millis_squared_pt2":0.16577071374520563},{"problem":24,"mean_millis_pt1":0.1088815,"var_millis_squared_pt1":0.000033670740249999964,"mean_millis_pt2":0.1073814,"var_millis_squared_pt2":0.00008252319624000008}]
 
 +--------------------------------------------------------+
-| +------------------------+--------------------------+  |
-| | mean_millis_pt1        |  0.0489606               |  |
-| +------------------------+--------------------------+  |
-| | mean_millis_pt2        |  0.0529006               |  |
-| +------------------------+--------------------------+  |
-| | problem                |  1                       |  |
-| +------------------------+--------------------------+  |
-| | var_millis_squared_pt1 |  2.244823999999917e-8    |  |
-| +------------------------+--------------------------+  |
-| | var_millis_squared_pt2 |  0.00004276912023999997  |  |
-| +------------------------+--------------------------+  |
+| +------------------------+-------------------------+   |
+| | mean_millis_pt1        |  0.047130700000000005   |   |
+| +------------------------+-------------------------+   |
+| | mean_millis_pt2        |  0.0470106              |   |
+| +------------------------+-------------------------+   |
+| | problem                |  1                      |   |
+| +------------------------+-------------------------+   |
+| | var_millis_squared_pt1 |  1.60582099999998e-8    |   |
+| +------------------------+-------------------------+   |
+| | var_millis_squared_pt2 |  1.2868239999999874e-8  |   |
+| +------------------------+-------------------------+   |
 +--------------------------------------------------------+
-| +------------------------+-------------------------+   |
-| | mean_millis_pt1        |  0.06996079999999999    |   |
-| +------------------------+-------------------------+   |
-| | mean_millis_pt2        |  0.06986079999999999    |   |
-| +------------------------+-------------------------+   |
-| | problem                |  2                      |   |
-| +------------------------+-------------------------+   |
-| | var_millis_squared_pt1 |  1.6364160000000458e-8  |   |
-| +------------------------+-------------------------+   |
-| | var_millis_squared_pt2 |  1.4404159999999718e-8  |   |
-| +------------------------+-------------------------+   |
+| +------------------------+--------------------------+  |
+| | mean_millis_pt1        |  0.076331                |  |
+| +------------------------+--------------------------+  |
+| | mean_millis_pt2        |  0.0737311               |  |
+| +------------------------+--------------------------+  |
+| | problem                |  2                       |  |
+| +------------------------+--------------------------+  |
+| | var_millis_squared_pt1 |  0.00019759010000000004  |  |
+| +------------------------+--------------------------+  |
+| | var_millis_squared_pt2 |  0.00010090009409000006  |  |
+| +------------------------+--------------------------+  |
 +--------------------------------------------------------+
 | +------------------------+---------------------------+ |
-| | mean_millis_pt1        |  0.459225                 | |
+| | mean_millis_pt1        |  0.3877354                | |
 | +------------------------+---------------------------+ |
-| | mean_millis_pt2        |  1.9616814000000005       | |
+| | mean_millis_pt2        |  1.6156225000000002       | |
 | +------------------------+---------------------------+ |
 | | problem                |  3                        | |
 | +------------------------+---------------------------+ |
-| | var_millis_squared_pt1 |  0.000040926480599999895  | |
+| | var_millis_squared_pt1 |  0.000059154136239999855  | |
 | +------------------------+---------------------------+ |
-| | var_millis_squared_pt2 |  0.00046660073224000015   | |
+| | var_millis_squared_pt2 |  0.0003522150002499987    | |
 | +------------------------+---------------------------+ |
 +--------------------------------------------------------+
 | +------------------------+--------------------------+  |
-| | mean_millis_pt1        |  0.30308340000000006     |  |
+| | mean_millis_pt1        |  0.3012342               |  |
 | +------------------------+--------------------------+  |
-| | mean_millis_pt2        |  1.3313945               |  |
+| | mean_millis_pt2        |  1.3148683               |  |
 | +------------------------+--------------------------+  |
 | | problem                |  4                       |  |
 | +------------------------+--------------------------+  |
-| | var_millis_squared_pt1 |  0.0000602710162399999   |  |
+| | var_millis_squared_pt1 |  0.00003965804816000005  |  |
 | +------------------------+--------------------------+  |
-| | var_millis_squared_pt2 |  0.00011876268025000048  |  |
+| | var_millis_squared_pt2 |  0.00012267985020999957  |  |
 | +------------------------+--------------------------+  |
 +--------------------------------------------------------+
 | +------------------------+-----------------------+     |
-| | mean_millis_pt1        |  10.172620900000002   |     |
+| | mean_millis_pt1        |  10.1672914           |     |
 | +------------------------+-----------------------+     |
-| | mean_millis_pt2        |  20.5284938           |     |
+| | mean_millis_pt2        |  20.2999124           |     |
 | +------------------------+-----------------------+     |
 | | problem                |  5                    |     |
 | +------------------------+-----------------------+     |
-| | var_millis_squared_pt1 |  0.15051716954128985  |     |
+| | var_millis_squared_pt1 |  0.16932183087084002  |     |
 | +------------------------+-----------------------+     |
-| | var_millis_squared_pt2 |  0.23441236257576023  |     |
+| | var_millis_squared_pt2 |  0.11475149865744005  |     |
 | +------------------------+-----------------------+     |
 +--------------------------------------------------------+
+| +------------------------+-------------------------+   |
+| | mean_millis_pt1        |  0.0054601              |   |
+| +------------------------+-------------------------+   |
+| | mean_millis_pt2        |  0.005710099999999999   |   |
+| +------------------------+-------------------------+   |
+| | problem                |  6                      |   |
+| +------------------------+-------------------------+   |
+| | var_millis_squared_pt1 |  1.8408089999999954e-8  |   |
+| +------------------------+-------------------------+   |
+| | var_millis_squared_pt2 |  3.687809000000002e-8   |   |
+| +------------------------+-------------------------+   |
++--------------------------------------------------------+
 | +------------------------+------------------------+    |
-| | mean_millis_pt1        |  0.006149999999999999  |    |
+| | mean_millis_pt1        |  0.07061100000000001   |    |
 | +------------------------+------------------------+    |
-| | mean_millis_pt2        |  0.0063001             |    |
+| | mean_millis_pt2        |  5.7932706             |    |
 | +------------------------+------------------------+    |
-| | problem                |  6                     |    |
+| | problem                |  7                     |    |
 | +------------------------+------------------------+    |
-| | var_millis_squared_pt1 |  3.249999999999993e-8  |    |
+| | var_millis_squared_pt1 |  5.842899999999993e-6  |    |
 | +------------------------+------------------------+    |
-| | var_millis_squared_pt2 |  3.200008999999998e-8  |    |
+| | var_millis_squared_pt2 |  8.285752240001005e-6  |    |
 | +------------------------+------------------------+    |
 +--------------------------------------------------------+
 | +------------------------+---------------------------+ |
-| | mean_millis_pt1        |  0.07153069999999999      | |
+| | mean_millis_pt1        |  0.19451270000000004      | |
 | +------------------------+---------------------------+ |
-| | mean_millis_pt2        |  5.695752100000001        | |
-| +------------------------+---------------------------+ |
-| | problem                |  7                        | |
-| +------------------------+---------------------------+ |
-| | var_millis_squared_pt1 |  0.000010000378210000032  | |
-| +------------------------+---------------------------+ |
-| | var_millis_squared_pt2 |  0.000024678282089999878  | |
-| +------------------------+---------------------------+ |
-+--------------------------------------------------------+
-| +------------------------+---------------------------+ |
-| | mean_millis_pt1        |  0.187662                 | |
-| +------------------------+---------------------------+ |
-| | mean_millis_pt2        |  14.4387274               | |
+| | mean_millis_pt2        |  14.885367000000002       | |
 | +------------------------+---------------------------+ |
 | | problem                |  8                        | |
 | +------------------------+---------------------------+ |
-| | var_millis_squared_pt1 |  0.000026968400000000035  | |
+| | var_millis_squared_pt1 |  0.000026260806209999994  | |
 | +------------------------+---------------------------+ |
-| | var_millis_squared_pt2 |  0.07675026291364007      | |
+| | var_millis_squared_pt2 |  0.1454480923294          | |
 | +------------------------+---------------------------+ |
 +--------------------------------------------------------+
 | +------------------------+---------------------------+ |
-| | mean_millis_pt1        |  0.3503438                | |
+| | mean_millis_pt1        |  0.358995                 | |
 | +------------------------+---------------------------+ |
-| | mean_millis_pt2        |  15.722481399999998       | |
+| | mean_millis_pt2        |  15.5727666               | |
 | +------------------------+---------------------------+ |
 | | problem                |  9                        | |
 | +------------------------+---------------------------+ |
-| | var_millis_squared_pt1 |  0.000023575356160000127  | |
+| | var_millis_squared_pt1 |  0.000018856899999999935  | |
 | +------------------------+---------------------------+ |
-| | var_millis_squared_pt2 |  0.01861328825423997      | |
+| | var_millis_squared_pt2 |  0.0035321874204399632    | |
 | +------------------------+---------------------------+ |
 +--------------------------------------------------------+
 | +------------------------+---------------------------+ |
-| | mean_millis_pt1        |  0.2413226                | |
+| | mean_millis_pt1        |  0.24558340000000004      | |
 | +------------------------+---------------------------+ |
-| | mean_millis_pt2        |  0.3795341                | |
+| | mean_millis_pt2        |  0.3898054                | |
 | +------------------------+---------------------------+ |
 | | problem                |  10                       | |
 | +------------------------+---------------------------+ |
-| | var_millis_squared_pt1 |  1.6638562399999851e-6    | |
+| | var_millis_squared_pt1 |  0.000011402336239999997  | |
 | +------------------------+---------------------------+ |
-| | var_millis_squared_pt2 |  0.000010229514089999998  | |
-| +------------------------+---------------------------+ |
-+--------------------------------------------------------+
-| +------------------------+---------------------------+ |
-| | mean_millis_pt1        |  0.7015076                | |
-| +------------------------+---------------------------+ |
-| | mean_millis_pt2        |  3.3115260999999996       | |
-| +------------------------+---------------------------+ |
-| | problem                |  11                       | |
-| +------------------------+---------------------------+ |
-| | var_millis_squared_pt1 |  0.000054762460239999874  | |
-| +------------------------+---------------------------+ |
-| | var_millis_squared_pt2 |  0.00101073942229         | |
+| | var_millis_squared_pt2 |  0.000011057840239999978  | |
 | +------------------------+---------------------------+ |
 +--------------------------------------------------------+
 | +------------------------+--------------------------+  |
-| | mean_millis_pt1        |  2.8543220999999996      |  |
+| | mean_millis_pt1        |  0.7063498               |  |
 | +------------------------+--------------------------+  |
-| | mean_millis_pt2        |  3656.9160774999996      |  |
+| | mean_millis_pt2        |  3.3246062000000003      |  |
+| +------------------------+--------------------------+  |
+| | problem                |  11                      |  |
+| +------------------------+--------------------------+  |
+| | var_millis_squared_pt1 |  0.00006152943636000011  |  |
+| +------------------------+--------------------------+  |
+| | var_millis_squared_pt2 |  0.0009437475563599966   |  |
+| +------------------------+--------------------------+  |
++--------------------------------------------------------+
+| +------------------------+--------------------------+  |
+| | mean_millis_pt1        |  2.995152                |  |
+| +------------------------+--------------------------+  |
+| | mean_millis_pt2        |  3304.9236704000004      |  |
 | +------------------------+--------------------------+  |
 | | problem                |  12                      |  |
 | +------------------------+--------------------------+  |
-| | var_millis_squared_pt1 |  0.00017410298208999928  |  |
+| | var_millis_squared_pt1 |  0.00012407470040000197  |  |
 | +------------------------+--------------------------+  |
-| | var_millis_squared_pt2 |  10822.891659359488      |  |
+| | var_millis_squared_pt2 |  6993.7351060235405      |  |
 | +------------------------+--------------------------+  |
 +--------------------------------------------------------+
-| +------------------------+---------------------------+ |
-| | mean_millis_pt1        |  0.151912                 | |
-| +------------------------+---------------------------+ |
-| | mean_millis_pt2        |  0.3460647                | |
-| +------------------------+---------------------------+ |
-| | problem                |  13                       | |
-| +------------------------+---------------------------+ |
-| | var_millis_squared_pt1 |  0.000018936900000000046  | |
-| +------------------------+---------------------------+ |
-| | var_millis_squared_pt2 |  0.00002868293621000005   | |
-| +------------------------+---------------------------+ |
+| +------------------------+--------------------------+  |
+| | mean_millis_pt1        |  0.1541421               |  |
+| +------------------------+--------------------------+  |
+| | mean_millis_pt2        |  0.3351147               |  |
+| +------------------------+--------------------------+  |
+| | problem                |  13                      |  |
+| +------------------------+--------------------------+  |
+| | var_millis_squared_pt1 |  0.00002634761209000002  |  |
+| +------------------------+--------------------------+  |
+| | var_millis_squared_pt2 |  2.2205062099999937e-6   |  |
+| +------------------------+--------------------------+  |
 +--------------------------------------------------------+
 | +------------------------+--------------------------+  |
-| | mean_millis_pt1        |  3.4313761               |  |
+| | mean_millis_pt1        |  3.1790645               |  |
 | +------------------------+--------------------------+  |
-| | mean_millis_pt2        |  1.4837298999999997      |  |
+| | mean_millis_pt2        |  1.4436102               |  |
 | +------------------------+--------------------------+  |
 | | problem                |  14                      |  |
 | +------------------------+--------------------------+  |
-| | var_millis_squared_pt1 |  0.0001173480940899982   |  |
+| | var_millis_squared_pt1 |  0.0002908107402500001   |  |
 | +------------------------+--------------------------+  |
-| | var_millis_squared_pt2 |  0.00009110526209000041  |  |
+| | var_millis_squared_pt2 |  0.00010750706415999993  |  |
 | +------------------------+--------------------------+  |
 +--------------------------------------------------------+
-| +------------------------+------------------------+    |
-| | mean_millis_pt1        |  5.0205675             |    |
-| +------------------------+------------------------+    |
-| | mean_millis_pt2        |  228.30315530000001    |    |
-| +------------------------+------------------------+    |
-| | problem                |  15                    |    |
-| +------------------------+------------------------+    |
-| | var_millis_squared_pt1 |  0.001704799380450004  |    |
-| +------------------------+------------------------+    |
-| | var_millis_squared_pt2 |  22.78429582225487     |    |
-| +------------------------+------------------------+    |
+| +------------------------+-----------------------+     |
+| | mean_millis_pt1        |  5.1237818            |     |
+| +------------------------+-----------------------+     |
+| | mean_millis_pt2        |  236.29854699999996   |     |
+| +------------------------+-----------------------+     |
+| | problem                |  15                   |     |
+| +------------------------+-----------------------+     |
+| | var_millis_squared_pt1 |  0.03021837131095998  |     |
+| +------------------------+-----------------------+     |
+| | var_millis_squared_pt2 |  10.211620956360786   |     |
+| +------------------------+-----------------------+     |
 +--------------------------------------------------------+
 | +------------------------+---------------------------+ |
-| | mean_millis_pt1        |  0.220833                 | |
+| | mean_millis_pt1        |  0.1953127                | |
 | +------------------------+---------------------------+ |
-| | mean_millis_pt2        |  0.22024290000000005      | |
+| | mean_millis_pt2        |  0.1989428                | |
 | +------------------------+---------------------------+ |
 | | problem                |  16                       | |
 | +------------------------+---------------------------+ |
-| | var_millis_squared_pt1 |  0.000042816099999999985  | |
+| | var_millis_squared_pt1 |  7.2999062100000335e-6    | |
 | +------------------------+---------------------------+ |
-| | var_millis_squared_pt2 |  4.19452809e-6            | |
+| | var_millis_squared_pt2 |  0.000041761456159999987  | |
 | +------------------------+---------------------------+ |
 +--------------------------------------------------------+
 | +------------------------+--------------------------+  |
-| | mean_millis_pt1        |  0.1296717               |  |
+| | mean_millis_pt1        |  0.1286218               |  |
 | +------------------------+--------------------------+  |
-| | mean_millis_pt2        |  2.4761433               |  |
+| | mean_millis_pt2        |  2.4670845               |  |
 | +------------------------+--------------------------+  |
 | | problem                |  17                      |  |
 | +------------------------+--------------------------+  |
-| | var_millis_squared_pt1 |  0.00003467042220999996  |  |
+| | var_millis_squared_pt1 |  0.00002522824815999998  |  |
 | +------------------------+--------------------------+  |
-| | var_millis_squared_pt2 |  0.00005041987420999876  |  |
+| | var_millis_squared_pt2 |  0.00003055937024999999  |  |
 | +------------------------+--------------------------+  |
 +--------------------------------------------------------+
-| +------------------------+-------------------------+   |
-| | mean_millis_pt1        |  151.6786064            |   |
-| +------------------------+-------------------------+   |
-| | mean_millis_pt2        |  0.00005                |   |
-| +------------------------+-------------------------+   |
-| | problem                |  19                     |   |
-| +------------------------+-------------------------+   |
-| | var_millis_squared_pt1 |  0.005650624005039238   |   |
-| +------------------------+-------------------------+   |
-| | var_millis_squared_pt2 |  2.4999999999999992e-9  |   |
-| +------------------------+-------------------------+   |
+| +------------------------+--------------------------+  |
+| | mean_millis_pt1        |  154.64829439999997      |  |
+| +------------------------+--------------------------+  |
+| | mean_millis_pt2        |  0.00008000000000000002  |  |
+| +------------------------+--------------------------+  |
+| | problem                |  19                      |  |
+| +------------------------+--------------------------+  |
+| | var_millis_squared_pt1 |  0.7076255799304393      |  |
+| +------------------------+--------------------------+  |
+| | var_millis_squared_pt2 |  7.599999999999999e-9    |  |
+| +------------------------+--------------------------+  |
 +--------------------------------------------------------+
 | +------------------------+------------------------+    |
-| | mean_millis_pt1        |  0.00703               |    |
+| | mean_millis_pt1        |  0.0070001             |    |
 | +------------------------+------------------------+    |
-| | mean_millis_pt2        |  4429.232226600001     |    |
+| | mean_millis_pt2        |  4446.1590638          |    |
 | +------------------------+------------------------+    |
 | | problem                |  21                    |    |
 | +------------------------+------------------------+    |
-| | var_millis_squared_pt1 |  3.520999999999999e-7  |    |
+| | var_millis_squared_pt1 |  2.5230009e-7          |    |
 | +------------------------+------------------------+    |
-| | var_millis_squared_pt2 |  0.5873296697353112    |    |
+| | var_millis_squared_pt2 |  0.037911309074153986  |    |
 | +------------------------+------------------------+    |
 +--------------------------------------------------------+
 | +------------------------+------------------------+    |
-| | mean_millis_pt1        |  3.3161156             |    |
+| | mean_millis_pt1        |  3.2917505000000005    |    |
 | +------------------------+------------------------+    |
-| | mean_millis_pt2        |  272.7096117           |    |
+| | mean_millis_pt2        |  272.0636673           |    |
 | +------------------------+------------------------+    |
 | | problem                |  22                    |    |
 | +------------------------+------------------------+    |
-| | var_millis_squared_pt1 |  0.015379088045439995  |    |
+| | var_millis_squared_pt1 |  0.020764205812450025  |    |
 | +------------------------+------------------------+    |
-| | var_millis_squared_pt2 |  1.2689935469750107    |    |
+| | var_millis_squared_pt2 |  0.16577071374520563   |    |
 | +------------------------+------------------------+    |
 +--------------------------------------------------------+
+| +------------------------+---------------------------+ |
+| | mean_millis_pt1        |  0.1088815                | |
+| +------------------------+---------------------------+ |
+| | mean_millis_pt2        |  0.1073814                | |
+| +------------------------+---------------------------+ |
+| | problem                |  24                       | |
+| +------------------------+---------------------------+ |
+| | var_millis_squared_pt1 |  0.000033670740249999964  | |
+| +------------------------+---------------------------+ |
+| | var_millis_squared_pt2 |  0.00008252319624000008   | |
+| +------------------------+---------------------------+ |
++--------------------------------------------------------+
+                               0 GUB,                  0 SOS.
+ 
+Using DUAL simplex for phase 1 and PRIMAL simplex for phase 2.
+The primal and dual simplex pricing strategy set to 'Devex'.
+ 
+
+Relaxed solution             1491753 after          7 iter is B&B base.
+ 
+Feasible solution            1491753 after          7 iter,         0 nodes (gap 0.0%)
+ 
+Optimal solution             1491753 after          7 iter,         0 nodes (gap 0.0%).
+
+Excellent numeric accuracy ||*|| = 0
+
+ MEMO: lp_solve version 5.5.2.0 for 64 bit OS, with 64 bit REAL variables.
+      In the total iteration count 7, 0 (0.0%) were bound flips.
+      There were 0 refactorizations, 0 triggered by time and 0 by density.
+       ... on average 7.0 major pivots per refactorization.
+      The largest [LUSOL v2.2.1.0] fact(B) had 8 NZ entries, 1.0x largest basis.
+      The maximum B&B level was 1, 0.0x MIP order, 1 at the optimal solution.
+      The constraint matrix inf-norm is 1, with a dynamic range of 1.
+      Time to load data was 0.000 seconds, presolve used 0.000 seconds,
+       ... 0.000 seconds in simplex solver, in total 0.000 seconds.
+
+Model name:  '' - run #1    
+Objective:   Minimize(R0)
+ 
+SUBMITTED
+Model size:        7 constraints,      14 variables,           14 non-zeros.
+Sets:                                   0 GUB,                  0 SOS.
+ 
+Using DUAL simplex for phase 1 and PRIMAL simplex for phase 2.
+The primal and dual simplex pricing strategy set to 'Devex'.
+ 
+
+Relaxed solution             1491753 after          7 iter is B&B base.
+ 
+Feasible solution            1491753 after          7 iter,         0 nodes (gap 0.0%)
+ 
+Optimal solution             1491753 after          7 iter,         0 nodes (gap 0.0%).
+
+Excellent numeric accuracy ||*|| = 0
+
+ MEMO: lp_solve version 5.5.2.0 for 64 bit OS, with 64 bit REAL variables.
+      In the total iteration count 7, 0 (0.0%) were bound flips.
+      There were 0 refactorizations, 0 triggered by time and 0 by density.
+       ... on average 7.0 major pivots per refactorization.
+      The largest [LUSOL v2.2.1.0] fact(B) had 8 NZ entries, 1.0x largest basis.
+      The maximum B&B level was 1, 0.0x MIP order, 1 at the optimal solution.
+      The constraint matrix inf-norm is 1, with a dynamic range of 1.
+      Time to load data was 0.000 seconds, presolve used 0.000 seconds,
+       ... 0.000 seconds in simplex solver, in total 0.000 seconds.
+
+Model name:  '' - run #1    
+Objective:   Minimize(R0)
+ 
+SUBMITTED
+Model size:        7 constraints,      14 variables,           14 non-zeros.
+Sets:                                   0 GUB,                  0 SOS.
+ 
+Using DUAL simplex for phase 1 and PRIMAL simplex for phase 2.
+The primal and dual simplex pricing strategy set to 'Devex'.
+ 
+
+Relaxed solution             1491753 after          7 iter is B&B base.
+ 
+Feasible solution            1491753 after          7 iter,         0 nodes (gap 0.0%)
+ 
+Optimal solution             1491753 after          7 iter,         0 nodes (gap 0.0%).
+
+Excellent numeric accuracy ||*|| = 0
+
+ MEMO: lp_solve version 5.5.2.0 for 64 bit OS, with 64 bit REAL variables.
+      In the total iteration count 7, 0 (0.0%) were bound flips.
+      There were 0 refactorizations, 0 triggered by time and 0 by density.
+       ... on average 7.0 major pivots per refactorization.
+      The largest [LUSOL v2.2.1.0] fact(B) had 8 NZ entries, 1.0x largest basis.
+      The maximum B&B level was 1, 0.0x MIP order, 1 at the optimal solution.
+      The constraint matrix inf-norm is 1, with a dynamic range of 1.
+      Time to load data was 0.000 seconds, presolve used 0.000 seconds,
+       ... 0.000 seconds in simplex solver, in total 0.000 seconds.
