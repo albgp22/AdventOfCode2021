@@ -3,96 +3,96 @@ Part 1 solution:
 1393
 Part 2 solution:
 1359
-Part 1 took 51.79100µs on average
-Part 2 took 51.35100µs on average
+Part 1 took 57.83100µs on average
+Part 2 took 56.23100µs on average
 
 Day 2:
 Part 1 solution:
 2073315
 Part 2 solution:
 1840311528
-Part 1 took 59.50100µs on average
-Part 2 took 59.80100µs on average
+Part 1 took 66.41200µs on average
+Part 2 took 66.66200µs on average
 
 Day 3:
 Part 1 solution:
 3959450
 Part 2 solution:
 7440311
-Part 1 took 348.68900µs on average
-Part 2 took 1.41636ms on average
+Part 1 took 378.33100µs on average
+Part 2 took 1.60474ms on average
 
 Day 4:
 Part 1 solution:
 58412
 Part 2 solution:
 10030
-Part 1 took 258.37600µs on average
-Part 2 took 1.06746ms on average
+Part 1 took 296.35800µs on average
+Part 2 took 1.29626ms on average
 
 Day 5:
 Part 1 solution:
 7438
 Part 2 solution:
 21406
-Part 1 took 8.97746ms on average
-Part 2 took 18.49719ms on average
+Part 1 took 10.28092ms on average
+Part 2 took 20.88047ms on average
 
 Day 6:
 Part 1 solution:
 353274
 Part 2 solution:
 1609314870967
-Part 1 took 4.98000µs on average
-Part 2 took 5.18000µs on average
+Part 1 took 5.78000µs on average
+Part 2 took 5.91000µs on average
 
 Day 7:
 Part 1 solution:
 355989
 Part 2 solution:
 102245489
-Part 1 took 61.11100µs on average
-Part 2 took 5.02381ms on average
+Part 1 took 70.25200µs on average
+Part 2 took 5.66981ms on average
 
 Day 8:
 Part 1 solution:
 452
 Part 2 solution:
 1096964
-Part 1 took 174.16400µs on average
-Part 2 took 12.83813ms on average
+Part 1 took 191.90300µs on average
+Part 2 took 14.73051ms on average
 
 Day 9:
 Part 1 solution:
 504
 Part 2 solution:
 1558722
-Part 1 took 336.23800µs on average
-Part 2 took 13.69875ms on average
+Part 1 took 356.35500µs on average
+Part 2 took 15.51078ms on average
 
 Day 10:
 Part 1 solution:
 299793
 Part 2 solution:
 3654963618
-Part 1 took 220.75500µs on average
-Part 2 took 346.79900µs on average
+Part 1 took 248.53300µs on average
+Part 2 took 386.48600µs on average
 
 Day 11:
 Part 1 solution:
 1773
 Part 2 solution:
 494
-Part 1 took 628.97600µs on average
-Part 2 took 2.94652ms on average
+Part 1 took 697.60000µs on average
+Part 2 took 3.30562ms on average
 
 Day 12:
 Part 1 solution:
 3421
 Part 2 solution:
 84870
-Part 1 took 2.62373ms on average
-Part 2 took 2.95991s on average
+Part 1 took 2.98938ms on average
+Part 2 took 3.32643s on average
 
 Day 13:
 Part 1 solution:
@@ -105,285 +105,305 @@ Part 2 solution:
 #..#.#....#....#....#..#.#..#.#.#..#.#.
 #..#.####.####.####.#..#..##..#..#.#..#
 
-Part 1 took 127.63300µs on average
-Part 2 took 283.56700µs on average
+Part 1 took 157.44300µs on average
+Part 2 took 338.37800µs on average
 
 Day 14:
 Part 1 solution:
 2549
 Part 2 solution:
 2516901104210
-Part 1 took 2.79440ms on average
-Part 2 took 1.27337ms on average
+Part 1 took 3.16356ms on average
+Part 2 took 1.42016ms on average
 
 Day 15:
 Part 1 solution:
 393
 Part 2 solution:
 2823
-Part 1 took 4.41480ms on average
-Part 2 took 199.99569ms on average
+Part 1 took 5.07210ms on average
+Part 2 took 259.52849ms on average
 
 Day 16:
 Part 1 solution:
 3814
 Part 2 solution:
 1675198555015
-Part 1 took 173.88400µs on average
-Part 2 took 172.49400µs on average
+Part 1 took 194.75300µs on average
+Part 2 took 196.79400µs on average
 
 Day 17:
 Part 1 solution:
 10878
 Part 2 solution:
 4716
-Part 1 took 112.91200µs on average
-Part 2 took 2.17772ms on average
+Part 1 took 128.77200µs on average
+Part 2 took 2.47765ms on average
 
 Day 19:
 Part 1 solution:
 0
 Part 2 solution:
 
-Part 1 took 133.55780ms on average
-Part 2 took 220.00000ns on average
+Part 1 took 152.37327ms on average
+Part 2 took 190.00000ns on average
 
 Day 21:
 Part 1 solution:
 512442
 Part 2 solution:
 346642902541848
-Part 1 took 6.62000µs on average
-Part 2 took 3.91345s on average
+Part 1 took 7.67000µs on average
+Part 2 took 4.44063s on average
 
-[{"problem":1,"mean_millis_pt1":0.0516613,"var_millis_squared_pt1":1.705442099999996e-7,"mean_millis_pt2":0.0512713,"var_millis_squared_pt2":0.000023331298209999975},{"problem":2,"mean_millis_pt1":0.0594216,"var_millis_squared_pt1":2.95962400000003e-8,"mean_millis_pt2":0.059721500000000004,"var_millis_squared_pt2":7.150025000000043e-8},{"problem":3,"mean_millis_pt1":0.3485791,"var_millis_squared_pt1":0.0005888328064899997,"mean_millis_pt2":1.4162968,"var_millis_squared_pt2":0.0003442040845600015},{"problem":4,"mean_millis_pt1":0.2582967,"var_millis_squared_pt1":0.00003088273420999992,"mean_millis_pt2":1.0673676999999997,"var_millis_squared_pt2":0.0001220163842100005},{"problem":5,"mean_millis_pt1":8.977253300000001,"var_millis_squared_pt1":0.13030248733381022,"mean_millis_pt2":18.4968808,"var_millis_squared_pt2":0.027467827377359828},{"problem":6,"mean_millis_pt1":0.0048501,"var_millis_squared_pt1":1.251009000000002e-8,"mean_millis_pt2":0.0050702,"var_millis_squared_pt2":3.621216000000002e-8},{"problem":7,"mean_millis_pt1":0.0610316,"var_millis_squared_pt1":3.5282442399999893e-6,"mean_millis_pt2":5.0237106,"var_millis_squared_pt2":0.00013771518444000472},{"problem":8,"mean_millis_pt1":0.17396450000000002,"var_millis_squared_pt1":0.000014024400250000005,"mean_millis_pt2":12.838063700000001,"var_millis_squared_pt2":0.07123103496661014},{"problem":9,"mean_millis_pt1":0.3361287,"var_millis_squared_pt1":0.000029354252210000118,"mean_millis_pt2":13.698646000000002,"var_millis_squared_pt2":0.0006773991606000185},{"problem":10,"mean_millis_pt1":0.2206558,"var_millis_squared_pt1":9.149020159999958e-6,"mean_millis_pt2":0.34671900000000005,"var_millis_squared_pt2":3.280899999999995e-6},{"problem":11,"mean_millis_pt1":0.6288963,"var_millis_squared_pt1":0.000056972872210000015,"mean_millis_pt2":2.9464566000000003,"var_millis_squared_pt2":0.0006879644246400061},{"problem":12,"mean_millis_pt1":2.6236582,"var_millis_squared_pt1":0.000029741704159999897,"mean_millis_pt2":2959.9112545999997,"var_millis_squared_pt2":11978.055370100097},{"problem":13,"mean_millis_pt1":0.12756320000000002,"var_millis_squared_pt1":0.000013250076159999999,"mean_millis_pt2":0.283487,"var_millis_squared_pt2":0.000013553600000000044},{"problem":14,"mean_millis_pt1":2.7943089999999997,"var_millis_squared_pt1":0.00017211994040000118,"mean_millis_pt2":1.2732514,"var_millis_squared_pt2":0.000029425624239999786},{"problem":15,"mean_millis_pt1":4.414549,"var_millis_squared_pt1":0.004360163423000006,"mean_millis_pt2":199.9951777,"var_millis_squared_pt2":12.545484363149436},{"problem":16,"mean_millis_pt1":0.1737343,"var_millis_squared_pt1":0.00002635952220999995,"mean_millis_pt2":0.1723743,"var_millis_squared_pt2":3.6629382100000203e-6},{"problem":17,"mean_millis_pt1":0.1128027,"var_millis_squared_pt1":0.00003539262020999999,"mean_millis_pt2":2.1776136999999998,"var_millis_squared_pt2":0.00002191559620999993},{"problem":19,"mean_millis_pt1":133.5576374,"var_millis_squared_pt1":0.0014199910042401159,"mean_millis_pt2":0.00005,"var_millis_squared_pt2":1.4499999999999999e-8},{"problem":21,"mean_millis_pt1":0.0063501,"var_millis_squared_pt1":3.0445009000000006e-7,"mean_millis_pt2":3913.4527530999994,"var_millis_squared_pt2":0.2577151786146673}]
+Day 22:
+Part 1 solution:
+[Cube { at: ON, coords: [Interval { start: -5, end: 46 }, Interval { start: -32, end: 20 }, Interval { start: -18, end: 26 }] }, Cube { at: ON, coords: [Interval { start: -47, end: -1 }, Interval { start: -28, end: 19 }, Interval { start: -49, end: 3 }] }, Cube { at: ON, coords: [Interval { start: -19, end: 30 }, Interval { start: -22, end: 31 }, Interval { start: -20, end: 33 }] }, Cube { at: ON, coords: [Interval { start: -27, end: 19 }, Interval { start: -38, end: 7 }, Interval { start: -9, end: 35 }] }, Cube { at: ON, coords: [Interval { start: -37, end: 7 }, Interval { start: -11, end: 34 }, Interval { start: -44, end: 7 }] }, Cube { at: ON, coords: [Interval { start: -18, end: 27 }, Interval { start: -13, end: 39 }, Interval { start: 1, end: 45 }] }, Cube { at: ON, coords: [Interval { start: -8, end: 37 }, Interval { start: -35, end: 13 }, Interval { start: -29, end: 21 }] }, Cube { at: ON, coords: [Interval { start: -8, end: 46 }, Interval { start: -46, end: 3 }, Interval { start: -18, end: 30 }] }, Cube { at: ON, coords: [Interval { start: -34, end: 10 }, Interval { start: 0, end: 48 }, Interval { start: -40, end: 14 }] }, Cube { at: ON, coords: [Interval { start: -9, end: 40 }, Interval { start: -42, end: 5 }, Interval { start: -1, end: 44 }] }, Cube { at: OFF, coords: [Interval { start: 6, end: 25 }, Interval { start: 6, end: 16 }, Interval { start: 12, end: 23 }] }, Cube { at: ON, coords: [Interval { start: -28, end: 26 }, Interval { start: -35, end: 9 }, Interval { start: -19, end: 35 }] }, Cube { at: OFF, coords: [Interval { start: 7, end: 17 }, Interval { start: -38, end: -28 }, Interval { start: 26, end: 45 }] }, Cube { at: ON, coords: [Interval { start: -22, end: 32 }, Interval { start: -8, end: 36 }, Interval { start: -38, end: 13 }] }, Cube { at: OFF, coords: [Interval { start: 30, end: 41 }, Interval { start: -42, end: -29 }, Interval { start: 8, end: 27 }] }, Cube { at: ON, coords: [Interval { start: -24, end: 23 }, Interval { start: -18, end: 28 }, Interval { start: -10, end: 43 }] }, Cube { at: OFF, coords: [Interval { start: 26, end: 36 }, Interval { start: 16, end: 32 }, Interval { start: -47, end: -32 }] }, Cube { at: ON, coords: [Interval { start: -49, end: 2 }, Interval { start: -19, end: 28 }, Interval { start: -3, end: 45 }] }, Cube { at: OFF, coords: [Interval { start: -38, end: -22 }, Interval { start: 1, end: 12 }, Interval { start: 1, end: 16 }] }, Cube { at: ON, coords: [Interval { start: -39, end: 8 }, Interval { start: -5, end: 49 }, Interval { start: -28, end: 18 }] }, Cube { at: ON, coords: [Interval { start: 51548, end: 69612 }, Interval { start: -60212, end: -36528 }, Interval { start: -25189, end: -16754 }] }, Cube { at: ON, coords: [Interval { start: -59209, end: -41074 }, Interval { start: -47258, end: -18479 }, Interval { start: 43187, end: 67447 }] }, Cube { at: ON, coords: [Interval { start: -7732, end: 15267 }, Interval { start: 28887, end: 44205 }, Interval { start: -78972, end: -69135 }] }, Cube { at: ON, coords: [Interval { start: -56485, end: -41367 }, Interval { start: 35643, end: 60725 }, Interval { start: 9955, end: 38448 }] }, Cube { at: ON, coords: [Interval { start: -45609, end: -30383 }, Interval { start: 42538, end: 67043 }, Interval { start: -62848, end: -27707 }] }, Cube { at: ON, coords: [Interval { start: 16585, end: 38511 }, Interval { start: 61520, end: 81118 }, Interval { start: 35888, end: 62067 }] }, Cube { at: ON, coords: [Interval { start: -67525, end: -48645 }, Interval { start: 7892, end: 19788 }, Interval { start: -59876, end: -45177 }] }, Cube { at: ON, coords: [Interval { start: -78784, end: -51262 }, Interval { start: 32167, end: 54511 }, Interval { start: 4045, end: 30666 }] }, Cube { at: ON, coords: [Interval { start: -58038, end: -30559 }, Interval { start: -34516, end: -9371 }, Interval { start: -74896, end: -49631 }] }, Cube { at: ON, coords: [Interval { start: 59490, end: 71576 }, Interval { start: -46392, end: -27677 }, Interval { start: -19354, end: 4915 }] }, Cube { at: ON, coords: [Interval { start: 2789, end: 22240 }, Interval { start: -85959, end: -62180 }, Interval { start: 18830, end: 28722 }] }, Cube { at: ON, coords: [Interval { start: -57568, end: -43338 }, Interval { start: 63096, end: 75178 }, Interval { start: 926, end: 32659 }] }, Cube { at: ON, coords: [Interval { start: -36402, end: -25163 }, Interval { start: 56158, end: 72356 }, Interval { start: -34059, end: -23691 }] }, Cube { at: ON, coords: [Interval { start: 19381, end: 37737 }, Interval { start: 52036, end: 68217 }, Interval { start: 29949, end: 43546 }] }, Cube { at: ON, coords: [Interval { start: 37800, end: 56883 }, Interval { start: -65115, end: -54626 }, Interval { start: 7625, end: 22209 }] }, Cube { at: ON, coords: [Interval { start: 29861, end: 55671 }, Interval { start: -70522, end: -59084 }, Interval { start: -9952, end: 22480 }] }, Cube { at: ON, coords: [Interval { start: -4943, end: 4619 }, Interval { start: -82644, end: -55578 }, Interval { start: -47007, end: -23182 }] }, Cube { at: ON, coords: [Interval { start: -77849, end: -71032 }, Interval { start: 16058, end: 44694 }, Interval { start: -1827, end: 11132 }] }, Cube { at: ON, coords: [Interval { start: -23897, end: 4513 }, Interval { start: -32899, end: -19780 }, Interval { start: 74118, end: 93642 }] }, Cube { at: ON, coords: [Interval { start: -60931, end: -43684 }, Interval { start: 41018, end: 76777 }, Interval { start: -3631, end: 29159 }] }, Cube { at: ON, coords: [Interval { start: -69808, end: -59244 }, Interval { start: -51812, end: -25532 }, Interval { start: -45864, end: -9434 }] }, Cube { at: ON, coords: [Interval { start: -15717, end: 2260 }, Interval { start: 35502, end: 45822 }, Interval { start: -72800, end: -64438 }] }, Cube { at: ON, coords: [Interval { start: -43443, end: -25264 }, Interval { start: -34577, end: -4572 }, Interval { start: -71311, end: -49556 }] }, Cube { at: ON, coords: [Interval { start: 33953, end: 53184 }, Interval { start: -24517, end: -12192 }, Interval { start: 67205, end: 70115 }] }, Cube { at: ON, coords: [Interval { start: -41613, end: -10171 }, Interval { start: -90989, end: -64734 }, Interval { start: 1939, end: 27480 }] }, Cube { at: ON, coords: [Interval { start: 46293, end: 54347 }, Interval { start: 34679, end: 57929 }, Interval { start: 41751, end: 66847 }] }, Cube { at: ON, coords: [Interval { start: -76583, end: -57535 }, Interval { start: -48670, end: -21474 }, Interval { start: 5815, end: 29534 }] }, Cube { at: ON, coords: [Interval { start: -80510, end: -57928 }, Interval { start: -29414, end: -6514 }, Interval { start: -37580, end: -9861 }] }, Cube { at: ON, coords: [Interval { start: 34411, end: 44577 }, Interval { start: 45833, end: 60226 }, Interval { start: 34129, end: 52711 }] }, Cube { at: ON, coords: [Interval { start: -54987, end: -24702 }, Interval { start: 35411, end: 65161 }, Interval { start: 22013, end: 51876 }] }, Cube { at: ON, coords: [Interval { start: 63172, end: 82294 }, Interval { start: 1664, end: 5780 }, Interval { start: -28578, end: -11907 }] }, Cube { at: ON, coords: [Interval { start: -67996, end: -54355 }, Interval { start: -44787, end: -25403 }, Interval { start: 37322, end: 54489 }] }, Cube { at: ON, coords: [Interval { start: -88986, end: -66707 }, Interval { start: -438, end: 8596 }, Interval { start: 15392, end: 26773 }] }, Cube { at: ON, coords: [Interval { start: 24230, end: 44153 }, Interval { start: 30762, end: 34631 }, Interval { start: -74945, end: -53755 }] }, Cube { at: ON, coords: [Interval { start: 35628, end: 53039 }, Interval { start: 15552, end: 30471 }, Interval { start: -73777, end: -45796 }] }, Cube { at: ON, coords: [Interval { start: -52060, end: -30732 }, Interval { start: -42710, end: -35117 }, Interval { start: -69599, end: -56932 }] }, Cube { at: ON, coords: [Interval { start: -25002, end: 1751 }, Interval { start: -81083, end: -59751 }, Interval { start: -50786, end: -30720 }] }, Cube { at: ON, coords: [Interval { start: -73739, end: -54969 }, Interval { start: 31242, end: 54593 }, Interval { start: -15062, end: -5453 }] }, Cube { at: ON, coords: [Interval { start: -47432, end: -33101 }, Interval { start: -76534, end: -50415 }, Interval { start: 14492, end: 27925 }] }, Cube { at: ON, coords: [Interval { start: -41274, end: -24626 }, Interval { start: 13752, end: 36312 }, Interval { start: -77251, end: -62098 }] }, Cube { at: ON, coords: [Interval { start: -6015, end: 10536 }, Interval { start: 65091, end: 87672 }, Interval { start: -8552, end: 19147 }] }, Cube { at: ON, coords: [Interval { start: 10536, end: 33835 }, Interval { start: -45299, end: -21530 }, Interval { start: 60435, end: 67449 }] }, Cube { at: ON, coords: [Interval { start: -6943, end: 11903 }, Interval { start: -12128, end: 16312 }, Interval { start: -90681, end: -78248 }] }, Cube { at: ON, coords: [Interval { start: 19487, end: 42357 }, Interval { start: 47438, end: 82073 }, Interval { start: 21946, end: 53196 }] }, Cube { at: ON, coords: [Interval { start: -21443, end: -4774 }, Interval { start: -40617, end: -24129 }, Interval { start: 54316, end: 78982 }] }, Cube { at: ON, coords: [Interval { start: 63707, end: 77304 }, Interval { start: -38874, end: -28037 }, Interval { start: -18266, end: 6915 }] }, Cube { at: ON, coords: [Interval { start: -6608, end: 25825 }, Interval { start: 72777, end: 97505 }, Interval { start: -17109, end: 11691 }] }, Cube { at: ON, coords: [Interval { start: 2889, end: 21341 }, Interval { start: 65169, end: 90385 }, Interval { start: 18937, end: 38113 }] }, Cube { at: ON, coords: [Interval { start: -77060, end: -67800 }, Interval { start: -51373, end: -14093 }, Interval { start: -8648, end: 14762 }] }, Cube { at: ON, coords: [Interval { start: 42229, end: 66044 }, Interval { start: -60623, end: -46142 }, Interval { start: -54862, end: -31092 }] }, Cube { at: ON, coords: [Interval { start: -31747, end: -1959 }, Interval { start: -56945, end: -43565 }, Interval { start: -66618, end: -51357 }] }, Cube { at: ON, coords: [Interval { start: 40909, end: 51753 }, Interval { start: -30080, end: -16886 }, Interval { start: 48239, end: 61214 }] }, Cube { at: ON, coords: [Interval { start: 69140, end: 93786 }, Interval { start: 5799, end: 19749 }, Interval { start: -6841, end: 872 }] }, Cube { at: ON, coords: [Interval { start: -6320, end: 9006 }, Interval { start: -86599, end: -63122 }, Interval { start: -13738, end: 12967 }] }, Cube { at: ON, coords: [Interval { start: -8408, end: 7465 }, Interval { start: 4860, end: 11903 }, Interval { start: 77529, end: 78985 }] }, Cube { at: ON, coords: [Interval { start: -72765, end: -50331 }, Interval { start: 6535, end: 18747 }, Interval { start: -58335, end: -51186 }] }, Cube { at: ON, coords: [Interval { start: -4003, end: 16109 }, Interval { start: 51255, end: 89213 }, Interval { start: -55782, end: -20348 }] }, Cube { at: ON, coords: [Interval { start: -80053, end: -69750 }, Interval { start: -4588, end: 15466 }, Interval { start: 21830, end: 30736 }] }, Cube { at: ON, coords: [Interval { start: 65397, end: 85386 }, Interval { start: 6545, end: 33466 }, Interval { start: -21152, end: -13938 }] }, Cube { at: ON, coords: [Interval { start: -11846, end: -3287 }, Interval { start: -25751, end: -7512 }, Interval { start: 65275, end: 84910 }] }, Cube { at: ON, coords: [Interval { start: -8452, end: 15638 }, Interval { start: -14228, end: 5220 }, Interval { start: -90071, end: -73008 }] }, Cube { at: ON, coords: [Interval { start: 33452, end: 61442 }, Interval { start: -19321, end: 15551 }, Interval { start: 49363, end: 80378 }] }, Cube { at: ON, coords: [Interval { start: 20735, end: 47619 }, Interval { start: 58344, end: 71302 }, Interval { start: 21735, end: 41485 }] }, Cube { at: ON, coords: [Interval { start: 11894, end: 17984 }, Interval { start: 31286, end: 38843 }, Interval { start: 69448, end: 84141 }] }, Cube { at: ON, coords: [Interval { start: -28901, end: -20476 }, Interval { start: 56147, end: 81693 }, Interval { start: 25668, end: 51544 }] }, Cube { at: ON, coords: [Interval { start: 6892, end: 29595 }, Interval { start: 64220, end: 87570 }, Interval { start: -4733, end: 20349 }] }, Cube { at: ON, coords: [Interval { start: -19082, end: 4923 }, Interval { start: -77762, end: -69631 }, Interval { start: -38618, end: -23768 }] }, Cube { at: ON, coords: [Interval { start: 36297, end: 71252 }, Interval { start: -46927, end: -22141 }, Interval { start: 43163, end: 67184 }] }, Cube { at: ON, coords: [Interval { start: 37857, end: 43987 }, Interval { start: -40548, end: -13497 }, Interval { start: 55402, end: 60685 }] }, Cube { at: ON, coords: [Interval { start: -18613, end: 3908 }, Interval { start: 63432, end: 84514 }, Interval { start: -37998, end: -30669 }] }, Cube { at: ON, coords: [Interval { start: 12594, end: 38169 }, Interval { start: 66206, end: 86022 }, Interval { start: -39692, end: -17639 }] }, Cube { at: ON, coords: [Interval { start: -32769, end: -1538 }, Interval { start: -49140, end: -26552 }, Interval { start: -79489, end: -51197 }] }, Cube { at: ON, coords: [Interval { start: 53359, end: 70274 }, Interval { start: 26290, end: 55000 }, Interval { start: -47687, end: -20020 }] }, Cube { at: ON, coords: [Interval { start: -66712, end: -35804 }, Interval { start: -77484, end: -56383 }, Interval { start: 2674, end: 24161 }] }, Cube { at: ON, coords: [Interval { start: -43228, end: -29410 }, Interval { start: 45851, end: 81707 }, Interval { start: -40520, end: -25586 }] }, Cube { at: ON, coords: [Interval { start: -20560, end: -9751 }, Interval { start: 51994, end: 82219 }, Interval { start: 31331, end: 68243 }] }, Cube { at: ON, coords: [Interval { start: -21397, end: -2481 }, Interval { start: 41154, end: 66963 }, Interval { start: 49167, end: 79202 }] }, Cube { at: ON, coords: [Interval { start: -16407, end: 13119 }, Interval { start: 48433, end: 79148 }, Interval { start: 34394, end: 65994 }] }, Cube { at: ON, coords: [Interval { start: -36116, end: -19914 }, Interval { start: -17493, end: -1274 }, Interval { start: -83827, end: -59340 }] }, Cube { at: ON, coords: [Interval { start: -65917, end: -60015 }, Interval { start: -22232, end: -8123 }, Interval { start: 44955, end: 52754 }] }, Cube { at: ON, coords: [Interval { start: 35522, end: 62422 }, Interval { start: -47708, end: -41694 }, Interval { start: 30631, end: 52175 }] }, Cube { at: ON, coords: [Interval { start: -19027, end: -16358 }, Interval { start: -69201, end: -59790 }, Interval { start: 40059, end: 63066 }] }, Cube { at: ON, coords: [Interval { start: -11051, end: 9182 }, Interval { start: 40384, end: 59830 }, Interval { start: -82502, end: -64612 }] }, Cube { at: ON, coords: [Interval { start: 45221, end: 58438 }, Interval { start: -57873, end: -30492 }, Interval { start: -62317, end: -37220 }] }, Cube { at: ON, coords: [Interval { start: 20911, end: 38767 }, Interval { start: -83455, end: -67100 }, Interval { start: 15685, end: 42250 }] }, Cube { at: ON, coords: [Interval { start: -85424, end: -62312 }, Interval { start: 15633, end: 41768 }, Interval { start: -11400, end: 1596 }] }, Cube { at: ON, coords: [Interval { start: -22319, end: 1952 }, Interval { start: 14052, end: 20241 }, Interval { start: -80323, end: -60026 }] }, Cube { at: ON, coords: [Interval { start: -36511, end: -3117 }, Interval { start: 76591, end: 88287 }, Interval { start: -7433, end: 10958 }] }, Cube { at: ON, coords: [Interval { start: -66952, end: -44475 }, Interval { start: 14319, end: 31064 }, Interval { start: -58790, end: -36803 }] }, Cube { at: ON, coords: [Interval { start: 54959, end: 76207 }, Interval { start: -35201, end: -16191 }, Interval { start: -16849, end: -5914 }] }, Cube { at: ON, coords: [Interval { start: 1597, end: 26993 }, Interval { start: -10079, end: 6267 }, Interval { start: 63496, end: 85390 }] }, Cube { at: ON, coords: [Interval { start: 16494, end: 39087 }, Interval { start: -17926, end: 9408 }, Interval { start: -96055, end: -57690 }] }, Cube { at: ON, coords: [Interval { start: 61259, end: 85576 }, Interval { start: 1205, end: 18753 }, Interval { start: -43630, end: -35549 }] }, Cube { at: ON, coords: [Interval { start: 9246, end: 42812 }, Interval { start: 4903, end: 18157 }, Interval { start: -91998, end: -64639 }] }, Cube { at: ON, coords: [Interval { start: 56336, end: 60328 }, Interval { start: 38496, end: 41872 }, Interval { start: -45204, end: -16725 }] }, Cube { at: ON, coords: [Interval { start: 38207, end: 53167 }, Interval { start: 32557, end: 48679 }, Interval { start: -45752, end: -31483 }] }, Cube { at: ON, coords: [Interval { start: 35536, end: 40478 }, Interval { start: 59087, end: 82670 }, Interval { start: -22132, end: -8228 }] }, Cube { at: ON, coords: [Interval { start: 30311, end: 65221 }, Interval { start: 28463, end: 49610 }, Interval { start: -56548, end: -43899 }] }, Cube { at: ON, coords: [Interval { start: 39910, end: 64396 }, Interval { start: -15554, end: 6772 }, Interval { start: -77870, end: -61149 }] }, Cube { at: ON, coords: [Interval { start: 63583, end: 81517 }, Interval { start: -27533, end: 4944 }, Interval { start: -25021, end: 2998 }] }, Cube { at: ON, coords: [Interval { start: 33270, end: 48936 }, Interval { start: 29978, end: 53349 }, Interval { start: -64005, end: -46652 }] }, Cube { at: ON, coords: [Interval { start: -56719, end: -45447 }, Interval { start: 48476, end: 70535 }, Interval { start: 19845, end: 43624 }] }, Cube { at: ON, coords: [Interval { start: -18909, end: -4514 }, Interval { start: -33630, end: -18313 }, Interval { start: -81121, end: -68081 }] }, Cube { at: ON, coords: [Interval { start: 31236, end: 49957 }, Interval { start: 37375, end: 64529 }, Interval { start: 40066, end: 50479 }] }, Cube { at: ON, coords: [Interval { start: 23928, end: 60990 }, Interval { start: 47394, end: 71017 }, Interval { start: -38356, end: -19687 }] }, Cube { at: ON, coords: [Interval { start: 14948, end: 29328 }, Interval { start: 10910, end: 33468 }, Interval { start: -80969, end: -58848 }] }, Cube { at: ON, coords: [Interval { start: -3772, end: 13969 }, Interval { start: -63212, end: -52751 }, Interval { start: -57568, end: -40117 }] }, Cube { at: ON, coords: [Interval { start: -87668, end: -65329 }, Interval { start: 5661, end: 25191 }, Interval { start: -16217, end: -2548 }] }, Cube { at: ON, coords: [Interval { start: -85618, end: -61349 }, Interval { start: -28751, end: 724 }, Interval { start: -55669, end: -27090 }] }, Cube { at: ON, coords: [Interval { start: 31666, end: 50666 }, Interval { start: 61760, end: 79239 }, Interval { start: -5421, end: 13325 }] }, Cube { at: ON, coords: [Interval { start: -43549, end: -16273 }, Interval { start: 11600, end: 29339 }, Interval { start: 58406, end: 69643 }] }, Cube { at: ON, coords: [Interval { start: -71478, end: -49781 }, Interval { start: 27481, end: 49069 }, Interval { start: 11039, end: 36531 }] }, Cube { at: ON, coords: [Interval { start: -17921, end: 763 }, Interval { start: -88151, end: -58003 }, Interval { start: 30178, end: 41080 }] }, Cube { at: ON, coords: [Interval { start: 46026, end: 66776 }, Interval { start: 14383, end: 45440 }, Interval { start: 40733, end: 70614 }] }, Cube { at: ON, coords: [Interval { start: 6163, end: 18610 }, Interval { start: 34482, end: 54360 }, Interval { start: 60951, end: 89457 }] }, Cube { at: ON, coords: [Interval { start: 19365, end: 38532 }, Interval { start: -76528, end: -64410 }, Interval { start: 11243, end: 32396 }] }, Cube { at: ON, coords: [Interval { start: 43561, end: 71092 }, Interval { start: 37565, end: 67440 }, Interval { start: -7400, end: 10989 }] }, Cube { at: ON, coords: [Interval { start: -78980, end: -62759 }, Interval { start: -37937, end: -18712 }, Interval { start: -1174, end: 20466 }] }, Cube { at: ON, coords: [Interval { start: -84895, end: -61183 }, Interval { start: -49742, end: -11414 }, Interval { start: -40817, end: -27778 }] }, Cube { at: ON, coords: [Interval { start: -4950, end: 15040 }, Interval { start: -68419, end: -47571 }, Interval { start: -53761, end: -38955 }] }, Cube { at: ON, coords: [Interval { start: 49075, end: 58693 }, Interval { start: 47622, end: 72167 }, Interval { start: -38355, end: -14042 }] }, Cube { at: ON, coords: [Interval { start: -251, end: 24365 }, Interval { start: -83737, end: -52646 }, Interval { start: -46887, end: -23747 }] }, Cube { at: ON, coords: [Interval { start: 7867, end: 22830 }, Interval { start: -69902, end: -54281 }, Interval { start: 39203, end: 56857 }] }, Cube { at: ON, coords: [Interval { start: 9363, end: 26818 }, Interval { start: -90361, end: -66389 }, Interval { start: 498, end: 11013 }] }, Cube { at: ON, coords: [Interval { start: -83134, end: -56144 }, Interval { start: -28208, end: -24507 }, Interval { start: -54343, end: -27431 }] }, Cube { at: ON, coords: [Interval { start: 6218, end: 37705 }, Interval { start: -46023, end: -13463 }, Interval { start: 63985, end: 73956 }] }, Cube { at: ON, coords: [Interval { start: 18495, end: 39411 }, Interval { start: -26282, end: 5248 }, Interval { start: -88148, end: -58497 }] }, Cube { at: ON, coords: [Interval { start: -45343, end: -35708 }, Interval { start: 60706, end: 70020 }, Interval { start: 5612, end: 17818 }] }, Cube { at: ON, coords: [Interval { start: -84718, end: -59568 }, Interval { start: -43294, end: -5711 }, Interval { start: -6416, end: 2360 }] }, Cube { at: ON, coords: [Interval { start: 31112, end: 44903 }, Interval { start: 68718, end: 77761 }, Interval { start: -9607, end: 6150 }] }, Cube { at: ON, coords: [Interval { start: 38564, end: 51370 }, Interval { start: -58071, end: -40868 }, Interval { start: 16841, end: 56101 }] }, Cube { at: ON, coords: [Interval { start: -90218, end: -62438 }, Interval { start: -16396, end: 15602 }, Interval { start: 7324, end: 40169 }] }, Cube { at: ON, coords: [Interval { start: 22063, end: 40035 }, Interval { start: -82841, end: -51548 }, Interval { start: -12200, end: -2319 }] }, Cube { at: ON, coords: [Interval { start: 61862, end: 68317 }, Interval { start: -58231, end: -29405 }, Interval { start: -30145, end: -16073 }] }, Cube { at: ON, coords: [Interval { start: -35659, end: -26115 }, Interval { start: -80307, end: -58295 }, Interval { start: -7971, end: 4817 }] }, Cube { at: ON, coords: [Interval { start: 65798, end: 82975 }, Interval { start: 16152, end: 37978 }, Interval { start: -13348, end: 9888 }] }, Cube { at: ON, coords: [Interval { start: -22630, end: -2020 }, Interval { start: 61028, end: 82758 }, Interval { start: 17882, end: 53557 }] }, Cube { at: ON, coords: [Interval { start: -67183, end: -35832 }, Interval { start: 53346, end: 61736 }, Interval { start: -12538, end: -3992 }] }, Cube { at: ON, coords: [Interval { start: 17561, end: 43947 }, Interval { start: -691, end: 17483 }, Interval { start: -80636, end: -71364 }] }, Cube { at: ON, coords: [Interval { start: -85254, end: -57085 }, Interval { start: -45670, end: -26674 }, Interval { start: -35836, end: -16893 }] }, Cube { at: ON, coords: [Interval { start: 50248, end: 59220 }, Interval { start: 51067, end: 53406 }, Interval { start: 5200, end: 24299 }] }, Cube { at: ON, coords: [Interval { start: -66088, end: -58018 }, Interval { start: -54019, end: -18590 }, Interval { start: 22979, end: 55616 }] }, Cube { at: ON, coords: [Interval { start: -21580, end: -1226 }, Interval { start: -70163, end: -50890 }, Interval { start: 35971, end: 58676 }] }, Cube { at: ON, coords: [Interval { start: -28699, end: -7879 }, Interval { start: 58342, end: 80552 }, Interval { start: -2944, end: 4892 }] }, Cube { at: ON, coords: [Interval { start: 32137, end: 37434 }, Interval { start: 57922, end: 89847 }, Interval { start: -11139, end: 4540 }] }, Cube { at: ON, coords: [Interval { start: -30782, end: -26050 }, Interval { start: -71857, end: -56160 }, Interval { start: 25962, end: 45221 }] }, Cube { at: ON, coords: [Interval { start: 3458, end: 14941 }, Interval { start: 39444, end: 54613 }, Interval { start: -78667, end: -51181 }] }, Cube { at: ON, coords: [Interval { start: -80957, end: -61391 }, Interval { start: -50519, end: -44099 }, Interval { start: 558, end: 36217 }] }, Cube { at: ON, coords: [Interval { start: 56295, end: 67502 }, Interval { start: -52211, end: -21726 }, Interval { start: -38237, end: -23495 }] }, Cube { at: ON, coords: [Interval { start: -59221, end: -26440 }, Interval { start: -8835, end: 8022 }, Interval { start: -69874, end: -51958 }] }, Cube { at: ON, coords: [Interval { start: 9703, end: 31412 }, Interval { start: -66797, end: -44997 }, Interval { start: -69333, end: -41279 }] }, Cube { at: ON, coords: [Interval { start: -25059, end: -4256 }, Interval { start: 50641, end: 81219 }, Interval { start: 41651, end: 53960 }] }, Cube { at: ON, coords: [Interval { start: -78241, end: -51194 }, Interval { start: 31612, end: 49911 }, Interval { start: 8201, end: 31693 }] }, Cube { at: ON, coords: [Interval { start: 54112, end: 76706 }, Interval { start: 12410, end: 48082 }, Interval { start: -4849, end: 18133 }] }, Cube { at: ON, coords: [Interval { start: -69337, end: -38953 }, Interval { start: 49176, end: 56256 }, Interval { start: 23632, end: 36858 }] }, Cube { at: ON, coords: [Interval { start: -2661, end: 28887 }, Interval { start: -70999, end: -53499 }, Interval { start: -62680, end: -47815 }] }, Cube { at: ON, coords: [Interval { start: -47941, end: -29732 }, Interval { start: 70681, end: 92846 }, Interval { start: 11502, end: 17530 }] }, Cube { at: ON, coords: [Interval { start: 42289, end: 62010 }, Interval { start: 36246, end: 60613 }, Interval { start: 27169, end: 37328 }] }, Cube { at: ON, coords: [Interval { start: -91319, end: -65281 }, Interval { start: -12414, end: -1137 }, Interval { start: -562, end: 33562 }] }, Cube { at: ON, coords: [Interval { start: 67610, end: 87861 }, Interval { start: -16375, end: 5387 }, Interval { start: 4908, end: 37520 }] }, Cube { at: ON, coords: [Interval { start: -64941, end: -37494 }, Interval { start: 12789, end: 19739 }, Interval { start: 43684, end: 59305 }] }, Cube { at: ON, coords: [Interval { start: -48315, end: -23707 }, Interval { start: -63379, end: -46409 }, Interval { start: -52056, end: -50037 }] }, Cube { at: ON, coords: [Interval { start: 39998, end: 55060 }, Interval { start: -23924, end: 174 }, Interval { start: 47043, end: 74650 }] }, Cube { at: ON, coords: [Interval { start: 15519, end: 54000 }, Interval { start: -37758, end: -7362 }, Interval { start: 56719, end: 86415 }] }, Cube { at: ON, coords: [Interval { start: -48899, end: -33632 }, Interval { start: -70284, end: -38768 }, Interval { start: -35439, end: -12719 }] }, Cube { at: ON, coords: [Interval { start: -32719, end: -19579 }, Interval { start: -72481, end: -55178 }, Interval { start: 22036, end: 45341 }] }, Cube { at: ON, coords: [Interval { start: 3957, end: 31100 }, Interval { start: -43843, end: -7496 }, Interval { start: -77904, end: -55904 }] }, Cube { at: ON, coords: [Interval { start: 58913, end: 74866 }, Interval { start: 427, end: 13237 }, Interval { start: -32194, end: -25180 }] }, Cube { at: ON, coords: [Interval { start: 14045, end: 39458 }, Interval { start: 57126, end: 69184 }, Interval { start: -56733, end: -40909 }] }, Cube { at: ON, coords: [Interval { start: -33890, end: -15281 }, Interval { start: -87080, end: -60332 }, Interval { start: -7896, end: 17708 }] }, Cube { at: ON, coords: [Interval { start: -62854, end: -44941 }, Interval { start: 25995, end: 33486 }, Interval { start: -40656, end: -31936 }] }, Cube { at: ON, coords: [Interval { start: -92186, end: -67248 }, Interval { start: -31617, end: -10693 }, Interval { start: -13091, end: 10422 }] }, Cube { at: ON, coords: [Interval { start: -20335, end: -1607 }, Interval { start: 33592, end: 61801 }, Interval { start: 49129, end: 66118 }] }, Cube { at: ON, coords: [Interval { start: 4923, end: 21291 }, Interval { start: 56686, end: 89367 }, Interval { start: 13440, end: 33655 }] }, Cube { at: ON, coords: [Interval { start: -85603, end: -58549 }, Interval { start: -57595, end: -29882 }, Interval { start: -29310, end: 7688 }] }, Cube { at: ON, coords: [Interval { start: -31013, end: -12004 }, Interval { start: 65998, end: 87119 }, Interval { start: 20798, end: 38505 }] }, Cube { at: ON, coords: [Interval { start: -31477, end: 631 }, Interval { start: -4218, end: 13444 }, Interval { start: 64468, end: 96359 }] }, Cube { at: ON, coords: [Interval { start: -53080, end: -23970 }, Interval { start: -67988, end: -50724 }, Interval { start: 35761, end: 56920 }] }, Cube { at: ON, coords: [Interval { start: -3114, end: 31515 }, Interval { start: -8351, end: 9393 }, Interval { start: 59128, end: 93321 }] }, Cube { at: ON, coords: [Interval { start: -55700, end: -34434 }, Interval { start: 2745, end: 17959 }, Interval { start: 61954, end: 88396 }] }, Cube { at: ON, coords: [Interval { start: -11042, end: 14693 }, Interval { start: -54901, end: -21447 }, Interval { start: 67817, end: 81842 }] }, Cube { at: ON, coords: [Interval { start: 21055, end: 36006 }, Interval { start: -87302, end: -60889 }, Interval { start: -15547, end: 1734 }] }, Cube { at: ON, coords: [Interval { start: -54134, end: -40995 }, Interval { start: -47264, end: -26058 }, Interval { start: -60793, end: -32468 }] }, Cube { at: ON, coords: [Interval { start: 58900, end: 84612 }, Interval { start: 19801, end: 52338 }, Interval { start: -29863, end: -5113 }] }, Cube { at: ON, coords: [Interval { start: 51518, end: 67122 }, Interval { start: -73957, end: -44881 }, Interval { start: -21799, end: 377 }] }, Cube { at: ON, coords: [Interval { start: -76186, end: -60253 }, Interval { start: -52998, end: -32671 }, Interval { start: -10966, end: 22158 }] }, Cube { at: ON, coords: [Interval { start: -85814, end: -69675 }, Interval { start: -16314, end: -1479 }, Interval { start: 12576, end: 29151 }] }, Cube { at: ON, coords: [Interval { start: -17279, end: -7487 }, Interval { start: 69461, end: 82491 }, Interval { start: -43685, end: -20033 }] }, Cube { at: ON, coords: [Interval { start: 40521, end: 54246 }, Interval { start: 27004, end: 54142 }, Interval { start: 29821, end: 43721 }] }, Cube { at: ON, coords: [Interval { start: 39205, end: 48927 }, Interval { start: -76831, end: -53845 }, Interval { start: 10907, end: 30764 }] }, Cube { at: ON, coords: [Interval { start: -33186, end: -8425 }, Interval { start: -25334, end: -12643 }, Interval { start: -90320, end: -73208 }] }, Cube { at: ON, coords: [Interval { start: -28871, end: -10579 }, Interval { start: 52805, end: 71984 }, Interval { start: 40782, end: 48756 }] }, Cube { at: ON, coords: [Interval { start: -84199, end: -69384 }, Interval { start: -24294, end: 10470 }, Interval { start: -31795, end: -504 }] }, Cube { at: ON, coords: [Interval { start: 14215, end: 35943 }, Interval { start: -68234, end: -54826 }, Interval { start: -40696, end: -26587 }] }, Cube { at: ON, coords: [Interval { start: -1154, end: 8736 }, Interval { start: 541, end: 27118 }, Interval { start: -92688, end: -67093 }] }, Cube { at: ON, coords: [Interval { start: -78094, end: -57999 }, Interval { start: 30080, end: 50610 }, Interval { start: 14623, end: 47207 }] }, Cube { at: ON, coords: [Interval { start: -71351, end: -61777 }, Interval { start: 32493, end: 36723 }, Interval { start: -43154, end: -20385 }] }, Cube { at: ON, coords: [Interval { start: 29680, end: 49711 }, Interval { start: 64389, end: 80775 }, Interval { start: -14976, end: -7530 }] }, Cube { at: ON, coords: [Interval { start: 21466, end: 32444 }, Interval { start: -71107, end: -49184 }, Interval { start: 32025, end: 47710 }] }, Cube { at: ON, coords: [Interval { start: -13395, end: 2005 }, Interval { start: 55307, end: 82256 }, Interval { start: 13571, end: 32919 }] }, Cube { at: OFF, coords: [Interval { start: -75925, end: -51372 }, Interval { start: 38378, end: 56338 }, Interval { start: 4726, end: 22058 }] }, Cube { at: OFF, coords: [Interval { start: -81435, end: -61321 }, Interval { start: -19944, end: 14261 }, Interval { start: -12909, end: 5888 }] }, Cube { at: ON, coords: [Interval { start: -28811, end: -418 }, Interval { start: -60179, end: -36825 }, Interval { start: 60339, end: 82792 }] }, Cube { at: ON, coords: [Interval { start: -56836, end: -42864 }, Interval { start: 51509, end: 69993 }, Interval { start: -38353, end: -9466 }] }, Cube { at: OFF, coords: [Interval { start: 33241, end: 47683 }, Interval { start: -57215, end: -42041 }, Interval { start: -66120, end: -48804 }] }, Cube { at: OFF, coords: [Interval { start: 5602, end: 32171 }, Interval { start: 67207, end: 82648 }, Interval { start: 687, end: 19684 }] }, Cube { at: ON, coords: [Interval { start: -77530, end: -54996 }, Interval { start: -18932, end: 14116 }, Interval { start: -41205, end: -26951 }] }, Cube { at: OFF, coords: [Interval { start: -26770, end: 539 }, Interval { start: 34948, end: 50177 }, Interval { start: 48516, end: 78552 }] }, Cube { at: OFF, coords: [Interval { start: -46087, end: -28406 }, Interval { start: -34280, end: -25940 }, Interval { start: -88646, end: -67393 }] }, Cube { at: OFF, coords: [Interval { start: 18159, end: 44447 }, Interval { start: 61027, end: 74243 }, Interval { start: 11037, end: 47721 }] }, Cube { at: ON, coords: [Interval { start: 12856, end: 22197 }, Interval { start: -77260, end: -63311 }, Interval { start: 9644, end: 14020 }] }, Cube { at: ON, coords: [Interval { start: 73356, end: 83326 }, Interval { start: -28895, end: -11586 }, Interval { start: -12672, end: -9461 }] }, Cube { at: OFF, coords: [Interval { start: 67712, end: 93385 }, Interval { start: 4383, end: 29307 }, Interval { start: -20971, end: -918 }] }, Cube { at: ON, coords: [Interval { start: -45997, end: -33017 }, Interval { start: -73653, end: -54744 }, Interval { start: -45919, end: -18834 }] }, Cube { at: ON, coords: [Interval { start: 60720, end: 69779 }, Interval { start: -36283, end: -5920 }, Interval { start: -50708, end: -27954 }] }, Cube { at: ON, coords: [Interval { start: 19053, end: 47867 }, Interval { start: 2081, end: 28770 }, Interval { start: 64876, end: 71876 }] }, Cube { at: ON, coords: [Interval { start: -527, end: 17979 }, Interval { start: 54470, end: 79654 }, Interval { start: -40446, end: -35448 }] }, Cube { at: ON, coords: [Interval { start: 57634, end: 74279 }, Interval { start: -12554, end: -1277 }, Interval { start: -32432, end: -15188 }] }, Cube { at: OFF, coords: [Interval { start: -5832, end: -3671 }, Interval { start: -73172, end: -56981 }, Interval { start: -55793, end: -43538 }] }, Cube { at: ON, coords: [Interval { start: -1264, end: 8465 }, Interval { start: -42248, end: -24987 }, Interval { start: -89062, end: -53822 }] }, Cube { at: OFF, coords: [Interval { start: -15774, end: 21815 }, Interval { start: 27050, end: 48731 }, Interval { start: 56418, end: 72513 }] }, Cube { at: OFF, coords: [Interval { start: -46133, end: -21613 }, Interval { start: 66137, end: 75384 }, Interval { start: 6208, end: 30313 }] }, Cube { at: ON, coords: [Interval { start: 33118, end: 53938 }, Interval { start: -65582, end: -37843 }, Interval { start: -37735, end: -12944 }] }, Cube { at: OFF, coords: [Interval { start: -49999, end: -44727 }, Interval { start: -6444, end: 11058 }, Interval { start: 56795, end: 82782 }] }, Cube { at: ON, coords: [Interval { start: 48809, end: 67169 }, Interval { start: 19871, end: 40744 }, Interval { start: -52762, end: -34126 }] }, Cube { at: OFF, coords: [Interval { start: -83411, end: -59176 }, Interval { start: 25797, end: 45572 }, Interval { start: -40278, end: -27145 }] }, Cube { at: OFF, coords: [Interval { start: 32616, end: 41066 }, Interval { start: -9846, end: 22502 }, Interval { start: 65723, end: 76470 }] }, Cube { at: ON, coords: [Interval { start: -20460, end: -2811 }, Interval { start: -83364, end: -60153 }, Interval { start: 29259, end: 46240 }] }, Cube { at: ON, coords: [Interval { start: -4678, end: 31497 }, Interval { start: -66769, end: -42660 }, Interval { start: 47122, end: 52963 }] }, Cube { at: OFF, coords: [Interval { start: -79373, end: -44004 }, Interval { start: 15610, end: 27145 }, Interval { start: -60155, end: -24820 }] }, Cube { at: ON, coords: [Interval { start: -75928, end: -66979 }, Interval { start: -38564, end: -25541 }, Interval { start: -19893, end: -6451 }] }, Cube { at: ON, coords: [Interval { start: -40648, end: -20377 }, Interval { start: -16448, end: 15340 }, Interval { start: 68020, end: 86613 }] }, Cube { at: OFF, coords: [Interval { start: -62245, end: -35670 }, Interval { start: -31396, end: -7005 }, Interval { start: -65944, end: -45697 }] }, Cube { at: ON, coords: [Interval { start: -13973, end: 20255 }, Interval { start: 11258, end: 38206 }, Interval { start: -88464, end: -74070 }] }, Cube { at: ON, coords: [Interval { start: -79431, end: -61223 }, Interval { start: -24640, end: 2553 }, Interval { start: -45829, end: -35435 }] }, Cube { at: ON, coords: [Interval { start: -4924, end: 9129 }, Interval { start: -80374, end: -53014 }, Interval { start: 26057, end: 45688 }] }, Cube { at: OFF, coords: [Interval { start: 6404, end: 27786 }, Interval { start: 47552, end: 72969 }, Interval { start: -56049, end: -33886 }] }, Cube { at: OFF, coords: [Interval { start: -60433, end: -45352 }, Interval { start: 54256, end: 72101 }, Interval { start: -1351, end: 13871 }] }, Cube { at: ON, coords: [Interval { start: 14354, end: 49643 }, Interval { start: 33977, end: 50411 }, Interval { start: -78584, end: -53528 }] }, Cube { at: OFF, coords: [Interval { start: -1250, end: 19190 }, Interval { start: -69591, end: -51054 }, Interval { start: 32606, end: 57993 }] }, Cube { at: ON, coords: [Interval { start: 44601, end: 65261 }, Interval { start: -22387, end: -4877 }, Interval { start: -47514, end: -27914 }] }, Cube { at: OFF, coords: [Interval { start: -76961, end: -53337 }, Interval { start: 11751, end: 35762 }, Interval { start: 26662, end: 51798 }] }, Cube { at: ON, coords: [Interval { start: -6110, end: 17117 }, Interval { start: 35295, end: 55448 }, Interval { start: 49203, end: 65916 }] }, Cube { at: ON, coords: [Interval { start: -26314, end: 7333 }, Interval { start: -10014, end: -190 }, Interval { start: -96699, end: -63078 }] }, Cube { at: ON, coords: [Interval { start: 5073, end: 27938 }, Interval { start: 48893, end: 68369 }, Interval { start: 46606, end: 53060 }] }, Cube { at: OFF, coords: [Interval { start: 9161, end: 32324 }, Interval { start: 31253, end: 49108 }, Interval { start: 59376, end: 78095 }] }, Cube { at: OFF, coords: [Interval { start: -76724, end: -46080 }, Interval { start: -37471, end: -7527 }, Interval { start: 39313, end: 59143 }] }, Cube { at: ON, coords: [Interval { start: -12104, end: 25230 }, Interval { start: 43873, end: 63566 }, Interval { start: 54973, end: 71127 }] }, Cube { at: ON, coords: [Interval { start: -72007, end: -40895 }, Interval { start: -29918, end: -2483 }, Interval { start: -65639, end: -46254 }] }, Cube { at: OFF, coords: [Interval { start: 23116, end: 41418 }, Interval { start: -16707, end: 518 }, Interval { start: 66003, end: 82373 }] }, Cube { at: OFF, coords: [Interval { start: 7546, end: 31315 }, Interval { start: -236, end: 14978 }, Interval { start: 73882, end: 88170 }] }, Cube { at: OFF, coords: [Interval { start: 2975, end: 26627 }, Interval { start: -28535, end: 4054 }, Interval { start: 65551, end: 79183 }] }, Cube { at: OFF, coords: [Interval { start: -63548, end: -40819 }, Interval { start: 4251, end: 34856 }, Interval { start: -69125, end: -53738 }] }, Cube { at: OFF, coords: [Interval { start: 36116, end: 53160 }, Interval { start: 18391, end: 43033 }, Interval { start: 53283, end: 69572 }] }, Cube { at: OFF, coords: [Interval { start: -8169, end: -7213 }, Interval { start: 17466, end: 44306 }, Interval { start: 53116, end: 81956 }] }, Cube { at: ON, coords: [Interval { start: 43606, end: 72143 }, Interval { start: 38753, end: 51975 }, Interval { start: 30789, end: 41812 }] }, Cube { at: ON, coords: [Interval { start: 35845, end: 48867 }, Interval { start: -15869, end: 989 }, Interval { start: -69562, end: -58096 }] }, Cube { at: ON, coords: [Interval { start: -67758, end: -55029 }, Interval { start: -56935, end: -34340 }, Interval { start: -16747, end: 14847 }] }, Cube { at: ON, coords: [Interval { start: 45091, end: 70880 }, Interval { start: 18972, end: 32828 }, Interval { start: -58444, end: -56030 }] }, Cube { at: OFF, coords: [Interval { start: 11622, end: 45729 }, Interval { start: -11464, end: 15892 }, Interval { start: 55396, end: 77935 }] }, Cube { at: OFF, coords: [Interval { start: 30723, end: 44124 }, Interval { start: -50216, end: -38776 }, Interval { start: -58362, end: -52717 }] }, Cube { at: OFF, coords: [Interval { start: 53359, end: 57764 }, Interval { start: -28444, end: -7054 }, Interval { start: 47399, end: 61343 }] }, Cube { at: ON, coords: [Interval { start: -72327, end: -61742 }, Interval { start: 36941, end: 63691 }, Interval { start: -9967, end: 9016 }] }, Cube { at: ON, coords: [Interval { start: 1184, end: 28614 }, Interval { start: -72042, end: -59895 }, Interval { start: 29436, end: 49413 }] }, Cube { at: OFF, coords: [Interval { start: -69303, end: -45932 }, Interval { start: -34340, end: -25505 }, Interval { start: -38098, end: -33099 }] }, Cube { at: ON, coords: [Interval { start: 59045, end: 88304 }, Interval { start: -30319, end: -10678 }, Interval { start: 11682, end: 39990 }] }, Cube { at: OFF, coords: [Interval { start: 53524, end: 67731 }, Interval { start: -68251, end: -44887 }, Interval { start: 882, end: 10308 }] }, Cube { at: OFF, coords: [Interval { start: -32029, end: -15563 }, Interval { start: -76737, end: -44100 }, Interval { start: -50442, end: -39369 }] }, Cube { at: OFF, coords: [Interval { start: 194, end: 33756 }, Interval { start: -81633, end: -73368 }, Interval { start: -43607, end: -17799 }] }, Cube { at: OFF, coords: [Interval { start: -48326, end: -13807 }, Interval { start: 53400, end: 85780 }, Interval { start: -5482, end: 17259 }] }, Cube { at: ON, coords: [Interval { start: -4836, end: 8518 }, Interval { start: -88585, end: -59292 }, Interval { start: -38817, end: -19966 }] }, Cube { at: OFF, coords: [Interval { start: -39059, end: -5289 }, Interval { start: -38701, end: -18212 }, Interval { start: 62298, end: 87934 }] }, Cube { at: ON, coords: [Interval { start: 38636, end: 52369 }, Interval { start: -67782, end: -55060 }, Interval { start: -39916, end: -24812 }] }, Cube { at: OFF, coords: [Interval { start: 41566, end: 50837 }, Interval { start: 22379, end: 30551 }, Interval { start: -65974, end: -50435 }] }, Cube { at: ON, coords: [Interval { start: -83246, end: -64136 }, Interval { start: -29788, end: 2021 }, Interval { start: 25088, end: 51721 }] }, Cube { at: OFF, coords: [Interval { start: -7306, end: 17520 }, Interval { start: 73996, end: 76916 }, Interval { start: -44293, end: -10369 }] }, Cube { at: ON, coords: [Interval { start: -64653, end: -52809 }, Interval { start: 14691, end: 34105 }, Interval { start: -58569, end: -42334 }] }, Cube { at: ON, coords: [Interval { start: 15682, end: 33355 }, Interval { start: 50316, end: 82171 }, Interval { start: 27668, end: 43094 }] }, Cube { at: OFF, coords: [Interval { start: -29490, end: -20692 }, Interval { start: 51678, end: 60437 }, Interval { start: 39101, end: 53564 }] }, Cube { at: OFF, coords: [Interval { start: 19272, end: 37050 }, Interval { start: 13981, end: 31882 }, Interval { start: 67811, end: 82763 }] }, Cube { at: OFF, coords: [Interval { start: 24474, end: 43806 }, Interval { start: -53159, end: -30998 }, Interval { start: 29529, end: 55383 }] }, Cube { at: ON, coords: [Interval { start: -90714, end: -55089 }, Interval { start: 14725, end: 45316 }, Interval { start: -1160, end: 12104 }] }, Cube { at: ON, coords: [Interval { start: -64836, end: -35562 }, Interval { start: -8351, end: 5014 }, Interval { start: -71436, end: -52114 }] }, Cube { at: OFF, coords: [Interval { start: 30933, end: 47732 }, Interval { start: -64548, end: -62131 }, Interval { start: 6870, end: 17374 }] }, Cube { at: ON, coords: [Interval { start: -77680, end: -53166 }, Interval { start: 8312, end: 40487 }, Interval { start: 36033, end: 43235 }] }, Cube { at: ON, coords: [Interval { start: -5863, end: 28121 }, Interval { start: 14413, end: 32208 }, Interval { start: -86695, end: -63943 }] }, Cube { at: ON, coords: [Interval { start: 32413, end: 51029 }, Interval { start: -68162, end: -40475 }, Interval { start: -64026, end: -40258 }] }, Cube { at: ON, coords: [Interval { start: -48144, end: -41618 }, Interval { start: -28042, end: -10133 }, Interval { start: -64990, end: -50925 }] }, Cube { at: ON, coords: [Interval { start: 73532, end: 98724 }, Interval { start: -21663, end: 8040 }, Interval { start: 662, end: 20743 }] }, Cube { at: OFF, coords: [Interval { start: 51689, end: 54423 }, Interval { start: 40915, end: 69007 }, Interval { start: 3378, end: 19020 }] }, Cube { at: OFF, coords: [Interval { start: -3711, end: 20642 }, Interval { start: 66808, end: 81277 }, Interval { start: -32665, end: -18224 }] }, Cube { at: OFF, coords: [Interval { start: 29497, end: 56099 }, Interval { start: -59154, end: -38611 }, Interval { start: 32874, end: 69747 }] }, Cube { at: OFF, coords: [Interval { start: -32780, end: 2492 }, Interval { start: -81309, end: -65288 }, Interval { start: -52012, end: -28083 }] }, Cube { at: OFF, coords: [Interval { start: 12238, end: 28287 }, Interval { start: 60040, end: 85737 }, Interval { start: 2251, end: 20540 }] }, Cube { at: OFF, coords: [Interval { start: -78514, end: -47095 }, Interval { start: -52287, end: -24038 }, Interval { start: -51482, end: -20767 }] }, Cube { at: ON, coords: [Interval { start: -2476, end: 22624 }, Interval { start: 76854, end: 93819 }, Interval { start: -16182, end: 1908 }] }, Cube { at: ON, coords: [Interval { start: 25782, end: 55736 }, Interval { start: 61375, end: 79709 }, Interval { start: 9605, end: 31807 }] }, Cube { at: ON, coords: [Interval { start: -12247, end: 16212 }, Interval { start: -75039, end: -64291 }, Interval { start: -43708, end: -25037 }] }, Cube { at: OFF, coords: [Interval { start: -26281, end: -4119 }, Interval { start: 31802, end: 45275 }, Interval { start: 61617, end: 72578 }] }, Cube { at: OFF, coords: [Interval { start: -77629, end: -55347 }, Interval { start: -37694, end: -22601 }, Interval { start: -48750, end: -25744 }] }, Cube { at: ON, coords: [Interval { start: -41090, end: -17088 }, Interval { start: -42730, end: -21946 }, Interval { start: -71684, end: -44738 }] }, Cube { at: OFF, coords: [Interval { start: 21171, end: 52548 }, Interval { start: -73087, end: -62415 }, Interval { start: -24139, end: 4853 }] }, Cube { at: ON, coords: [Interval { start: -10430, end: 13741 }, Interval { start: -87082, end: -60233 }, Interval { start: 29057, end: 37997 }] }, Cube { at: OFF, coords: [Interval { start: -33776, end: -18921 }, Interval { start: -9022, end: 10689 }, Interval { start: 60785, end: 92622 }] }, Cube { at: OFF, coords: [Interval { start: -17316, end: -5440 }, Interval { start: -46992, end: -37935 }, Interval { start: -72734, end: -65376 }] }, Cube { at: OFF, coords: [Interval { start: -25276, end: -1515 }, Interval { start: -4036, end: 5863 }, Interval { start: -94213, end: -63783 }] }, Cube { at: ON, coords: [Interval { start: 6018, end: 30570 }, Interval { start: -75934, end: -59098 }, Interval { start: -3614, end: 21349 }] }, Cube { at: OFF, coords: [Interval { start: 47020, end: 60774 }, Interval { start: 16941, end: 24239 }, Interval { start: 52244, end: 74152 }] }, Cube { at: ON, coords: [Interval { start: -28035, end: -8076 }, Interval { start: -83562, end: -56357 }, Interval { start: 20214, end: 35904 }] }, Cube { at: OFF, coords: [Interval { start: -4864, end: 9282 }, Interval { start: -58885, end: -52290 }, Interval { start: 46576, end: 71092 }] }, Cube { at: OFF, coords: [Interval { start: -38607, end: -25227 }, Interval { start: -10107, end: 20288 }, Interval { start: 56552, end: 78626 }] }, Cube { at: ON, coords: [Interval { start: -49296, end: -38783 }, Interval { start: 1776, end: 37729 }, Interval { start: -68328, end: -54075 }] }, Cube { at: OFF, coords: [Interval { start: 27839, end: 40291 }, Interval { start: -2748, end: 5372 }, Interval { start: -73179, end: -64910 }] }, Cube { at: OFF, coords: [Interval { start: 57012, end: 63558 }, Interval { start: 33773, end: 63448 }, Interval { start: 12538, end: 30013 }] }, Cube { at: ON, coords: [Interval { start: 7376, end: 22139 }, Interval { start: 46931, end: 53925 }, Interval { start: 40614, end: 77423 }] }, Cube { at: ON, coords: [Interval { start: -36815, end: -4231 }, Interval { start: -79653, end: -53534 }, Interval { start: -54320, end: -30272 }] }, Cube { at: OFF, coords: [Interval { start: -72451, end: -44505 }, Interval { start: 11708, end: 45028 }, Interval { start: 30438, end: 48099 }] }, Cube { at: ON, coords: [Interval { start: 19422, end: 54740 }, Interval { start: 61056, end: 68389 }, Interval { start: 11710, end: 35395 }] }, Cube { at: ON, coords: [Interval { start: 34256, end: 51333 }, Interval { start: 24928, end: 52293 }, Interval { start: -65652, end: -36708 }] }, Cube { at: OFF, coords: [Interval { start: 11235, end: 22363 }, Interval { start: 1316, end: 13305 }, Interval { start: -95660, end: -75393 }] }, Cube { at: ON, coords: [Interval { start: 40699, end: 63818 }, Interval { start: -71842, end: -49029 }, Interval { start: -4105, end: 24818 }] }, Cube { at: OFF, coords: [Interval { start: -56129, end: -51451 }, Interval { start: -4050, end: 32239 }, Interval { start: -62360, end: -48415 }] }, Cube { at: OFF, coords: [Interval { start: 7724, end: 42005 }, Interval { start: -8468, end: 7046 }, Interval { start: 67268, end: 89366 }] }, Cube { at: ON, coords: [Interval { start: -50038, end: -29191 }, Interval { start: 190, end: 9704 }, Interval { start: -85587, end: -62369 }] }, Cube { at: ON, coords: [Interval { start: 52569, end: 76812 }, Interval { start: 29834, end: 57890 }, Interval { start: -5460, end: 24255 }] }, Cube { at: OFF, coords: [Interval { start: 3998, end: 24292 }, Interval { start: -20205, end: 10100 }, Interval { start: 77120, end: 86720 }] }, Cube { at: OFF, coords: [Interval { start: -12018, end: 6886 }, Interval { start: -28175, end: -5906 }, Interval { start: 63737, end: 83970 }] }, Cube { at: ON, coords: [Interval { start: 64370, end: 76913 }, Interval { start: 20946, end: 44292 }, Interval { start: -15861, end: -5899 }] }, Cube { at: OFF, coords: [Interval { start: 3647, end: 21883 }, Interval { start: -73520, end: -66435 }, Interval { start: 19047, end: 38036 }] }, Cube { at: ON, coords: [Interval { start: 26881, end: 35736 }, Interval { start: 50047, end: 83360 }, Interval { start: 27009, end: 43013 }] }, Cube { at: ON, coords: [Interval { start: -54204, end: -46977 }, Interval { start: -58133, end: -44730 }, Interval { start: 25366, end: 34727 }] }, Cube { at: ON, coords: [Interval { start: 60963, end: 72747 }, Interval { start: -40989, end: -1428 }, Interval { start: 27149, end: 44298 }] }, Cube { at: ON, coords: [Interval { start: -86903, end: -63974 }, Interval { start: 15796, end: 44312 }, Interval { start: 14110, end: 31846 }] }, Cube { at: ON, coords: [Interval { start: 30800, end: 51265 }, Interval { start: 67817, end: 83500 }, Interval { start: 7398, end: 35684 }] }, Cube { at: ON, coords: [Interval { start: 26115, end: 46933 }, Interval { start: -78183, end: -68457 }, Interval { start: 16590, end: 22235 }] }, Cube { at: ON, coords: [Interval { start: 50801, end: 69558 }, Interval { start: 14960, end: 41009 }, Interval { start: -52573, end: -42699 }] }, Cube { at: ON, coords: [Interval { start: -76762, end: -62114 }, Interval { start: -41535, end: -30916 }, Interval { start: 30799, end: 36061 }] }, Cube { at: OFF, coords: [Interval { start: -36971, end: -16432 }, Interval { start: 69302, end: 80179 }, Interval { start: 5427, end: 37800 }] }, Cube { at: ON, coords: [Interval { start: -59304, end: -42151 }, Interval { start: 38961, end: 75025 }, Interval { start: 19077, end: 30930 }] }, Cube { at: OFF, coords: [Interval { start: -68878, end: -43214 }, Interval { start: -38416, end: -34281 }, Interval { start: -56876, end: -32491 }] }, Cube { at: OFF, coords: [Interval { start: -41227, end: -30387 }, Interval { start: 67997, end: 78440 }, Interval { start: -18866, end: -4078 }] }, Cube { at: ON, coords: [Interval { start: -18264, end: 4145 }, Interval { start: 25638, end: 53883 }, Interval { start: 55825, end: 72054 }] }, Cube { at: OFF, coords: [Interval { start: -34237, end: -23188 }, Interval { start: -18538, end: -14122 }, Interval { start: -84576, end: -66422 }] }, Cube { at: ON, coords: [Interval { start: 48651, end: 72652 }, Interval { start: -75451, end: -55934 }, Interval { start: -5750, end: 21478 }] }, Cube { at: OFF, coords: [Interval { start: 8517, end: 15398 }, Interval { start: -47195, end: -20040 }, Interval { start: -91462, end: -57328 }] }, Cube { at: OFF, coords: [Interval { start: 1946, end: 24398 }, Interval { start: -9423, end: -7809 }, Interval { start: -98479, end: -63063 }] }, Cube { at: OFF, coords: [Interval { start: 48647, end: 64112 }, Interval { start: -44400, end: -36389 }, Interval { start: 43567, end: 50295 }] }, Cube { at: ON, coords: [Interval { start: -53108, end: -28792 }, Interval { start: -18105, end: 16521 }, Interval { start: -79485, end: -50653 }] }, Cube { at: ON, coords: [Interval { start: 10610, end: 28165 }, Interval { start: 74425, end: 88696 }, Interval { start: -15151, end: 11655 }] }, Cube { at: ON, coords: [Interval { start: 26563, end: 41972 }, Interval { start: -44034, end: -22600 }, Interval { start: -75006, end: -53514 }] }, Cube { at: ON, coords: [Interval { start: 8785, end: 23672 }, Interval { start: -17501, end: 1486 }, Interval { start: 70023, end: 87851 }] }, Cube { at: OFF, coords: [Interval { start: -23526, end: -2495 }, Interval { start: -9907, end: 13959 }, Interval { start: -86018, end: -74132 }] }, Cube { at: ON, coords: [Interval { start: 39471, end: 66769 }, Interval { start: -76484, end: -41637 }, Interval { start: 4179, end: 30148 }] }, Cube { at: ON, coords: [Interval { start: 3968, end: 41357 }, Interval { start: -12766, end: 21564 }, Interval { start: -83232, end: -58999 }] }, Cube { at: OFF, coords: [Interval { start: 5657, end: 25453 }, Interval { start: 69672, end: 92433 }, Interval { start: -5865, end: 1093 }] }, Cube { at: ON, coords: [Interval { start: 196, end: 22654 }, Interval { start: -76890, end: -45710 }, Interval { start: 30347, end: 50177 }] }, Cube { at: ON, coords: [Interval { start: 53591, end: 67443 }, Interval { start: 641, end: 12115 }, Interval { start: -53289, end: -40127 }] }, Cube { at: ON, coords: [Interval { start: 38502, end: 45974 }, Interval { start: 26606, end: 37157 }, Interval { start: -73606, end: -59489 }] }, Cube { at: OFF, coords: [Interval { start: -28470, end: -4391 }, Interval { start: 65949, end: 75960 }, Interval { start: -52362, end: -18690 }] }, Cube { at: OFF, coords: [Interval { start: -12052, end: 12226 }, Interval { start: -43285, end: -11455 }, Interval { start: -76126, end: -67446 }] }, Cube { at: OFF, coords: [Interval { start: 28539, end: 47924 }, Interval { start: 30936, end: 61611 }, Interval { start: 39553, end: 62922 }] }, Cube { at: ON, coords: [Interval { start: -51301, end: -29348 }, Interval { start: -61136, end: -41356 }, Interval { start: -62122, end: -40860 }] }, Cube { at: OFF, coords: [Interval { start: -10842, end: 12256 }, Interval { start: -4453, end: 28219 }, Interval { start: 62816, end: 90429 }] }, Cube { at: OFF, coords: [Interval { start: -65177, end: -46992 }, Interval { start: -996, end: 14455 }, Interval { start: 43331, end: 66866 }] }, Cube { at: OFF, coords: [Interval { start: -41471, end: -34895 }, Interval { start: -87935, end: -53932 }, Interval { start: -15068, end: 10098 }] }, Cube { at: OFF, coords: [Interval { start: 64368, end: 85731 }, Interval { start: 20782, end: 34222 }, Interval { start: 20343, end: 56619 }] }, Cube { at: ON, coords: [Interval { start: -66495, end: -37890 }, Interval { start: 53669, end: 66986 }, Interval { start: 16753, end: 25052 }] }, Cube { at: OFF, coords: [Interval { start: -55523, end: -37167 }, Interval { start: -50099, end: -14312 }, Interval { start: -62328, end: -40509 }] }, Cube { at: ON, coords: [Interval { start: 46869, end: 65044 }, Interval { start: 2893, end: 32395 }, Interval { start: 48728, end: 67114 }] }, Cube { at: OFF, coords: [Interval { start: -22730, end: -6869 }, Interval { start: -89892, end: -55716 }, Interval { start: -39058, end: -9375 }] }, Cube { at: ON, coords: [Interval { start: -35338, end: -10108 }, Interval { start: -79088, end: -61919 }, Interval { start: -52266, end: -26583 }] }, Cube { at: ON, coords: [Interval { start: -87579, end: -54734 }, Interval { start: 3661, end: 13979 }, Interval { start: -43516, end: -26852 }] }, Cube { at: ON, coords: [Interval { start: -26237, end: 6696 }, Interval { start: 31736, end: 52895 }, Interval { start: -88832, end: -51997 }] }, Cube { at: ON, coords: [Interval { start: -6261, end: 18171 }, Interval { start: 35455, end: 40829 }, Interval { start: -82724, end: -51885 }] }, Cube { at: OFF, coords: [Interval { start: -84061, end: -53865 }, Interval { start: -37690, end: -28185 }, Interval { start: 17406, end: 27387 }] }, Cube { at: ON, coords: [Interval { start: 22146, end: 33574 }, Interval { start: -8382, end: 21678 }, Interval { start: 60530, end: 93596 }] }, Cube { at: OFF, coords: [Interval { start: -34985, end: -14118 }, Interval { start: -85401, end: -53871 }, Interval { start: -27449, end: -20505 }] }, Cube { at: ON, coords: [Interval { start: -65653, end: -57152 }, Interval { start: -41709, end: -26255 }, Interval { start: -55300, end: -30989 }] }, Cube { at: ON, coords: [Interval { start: -41289, end: -18827 }, Interval { start: -54843, end: -30751 }, Interval { start: 43268, end: 77728 }] }, Cube { at: ON, coords: [Interval { start: 52348, end: 65143 }, Interval { start: -66867, end: -47070 }, Interval { start: -18590, end: -2919 }] }, Cube { at: ON, coords: [Interval { start: 25408, end: 46684 }, Interval { start: 52219, end: 74706 }, Interval { start: -45724, end: -26197 }] }, Cube { at: OFF, coords: [Interval { start: 36306, end: 61505 }, Interval { start: 1854, end: 18823 }, Interval { start: 51517, end: 71882 }] }, Cube { at: ON, coords: [Interval { start: 28807, end: 42884 }, Interval { start: -44933, end: -19495 }, Interval { start: -81888, end: -68452 }] }, Cube { at: OFF, coords: [Interval { start: -22712, end: 10868 }, Interval { start: -91624, end: -66163 }, Interval { start: -29698, end: 2061 }] }, Cube { at: ON, coords: [Interval { start: -44614, end: -22060 }, Interval { start: -12205, end: 6362 }, Interval { start: -75228, end: -67848 }] }, Cube { at: OFF, coords: [Interval { start: 69181, end: 83413 }, Interval { start: 22509, end: 30155 }, Interval { start: -5505, end: 7620 }] }, Cube { at: OFF, coords: [Interval { start: -541, end: 33061 }, Interval { start: -29171, end: -1387 }, Interval { start: -89039, end: -65688 }] }, Cube { at: OFF, coords: [Interval { start: 56369, end: 86895 }, Interval { start: 25436, end: 32999 }, Interval { start: -36190, end: -5946 }] }, Cube { at: ON, coords: [Interval { start: -80106, end: -58102 }, Interval { start: 4812, end: 40730 }, Interval { start: -39905, end: -27846 }] }, Cube { at: OFF, coords: [Interval { start: 38087, end: 49836 }, Interval { start: 12311, end: 28936 }, Interval { start: 56763, end: 70449 }] }, Cube { at: OFF, coords: [Interval { start: -45431, end: -9536 }, Interval { start: 27172, end: 52966 }, Interval { start: 54708, end: 70851 }] }, Cube { at: ON, coords: [Interval { start: -49616, end: -21967 }, Interval { start: 25466, end: 55138 }, Interval { start: -65862, end: -49517 }] }, Cube { at: ON, coords: [Interval { start: -3678, end: 22714 }, Interval { start: -89185, end: -68818 }, Interval { start: -38953, end: -22111 }] }, Cube { at: ON, coords: [Interval { start: 57043, end: 82773 }, Interval { start: -61228, end: -42569 }, Interval { start: 6701, end: 17395 }] }, Cube { at: ON, coords: [Interval { start: 45714, end: 76420 }, Interval { start: -58263, end: -27644 }, Interval { start: -39439, end: -20345 }] }, Cube { at: ON, coords: [Interval { start: -69167, end: -43379 }, Interval { start: 7904, end: 39678 }, Interval { start: -72903, end: -43716 }] }, Cube { at: OFF, coords: [Interval { start: -87370, end: -55908 }, Interval { start: 41125, end: 52870 }, Interval { start: -338, end: 26930 }] }, Cube { at: ON, coords: [Interval { start: -20884, end: 1182 }, Interval { start: -87244, end: -73126 }, Interval { start: -17967, end: -8207 }] }, Cube { at: OFF, coords: [Interval { start: -89696, end: -61051 }, Interval { start: -48909, end: -27178 }, Interval { start: -319, end: 19788 }] }, Cube { at: OFF, coords: [Interval { start: 11134, end: 25390 }, Interval { start: 40961, end: 62596 }, Interval { start: -79259, end: -41800 }] }]
+Part 2 solution:
+
+Part 1 took 491.00500µs on average
+Part 2 took 180.00000ns on average
+
+[{"problem":1,"mean_millis_pt1":0.057671700000000006,"var_millis_squared_pt1":2.6122210000000518e-8,"mean_millis_pt2":0.0561017,"var_millis_squared_pt2":6.020209999999947e-9},{"problem":2,"mean_millis_pt1":0.066302,"var_millis_squared_pt1":1.1400000000000319e-7,"mean_millis_pt2":0.066552,"var_millis_squared_pt2":1.2450000000000115e-7},{"problem":3,"mean_millis_pt1":0.37826119999999996,"var_millis_squared_pt1":0.00002861150015999999,"mean_millis_pt2":1.6046173,"var_millis_squared_pt2":0.00028619073821000015},{"problem":4,"mean_millis_pt1":0.2962487,"var_millis_squared_pt1":0.00003212518421000007,"mean_millis_pt2":1.2961483,"var_millis_squared_pt2":0.0001176657144099992},{"problem":5,"mean_millis_pt1":10.2806933,"var_millis_squared_pt1":0.14940930063281016,"mean_millis_pt2":20.880176,"var_millis_squared_pt2":0.006056539186000027},{"problem":6,"mean_millis_pt1":0.0056800999999999996,"var_millis_squared_pt1":1.3564089999999987e-8,"mean_millis_pt2":0.0058002,"var_millis_squared_pt2":3.602016000000004e-8},{"problem":7,"mean_millis_pt1":0.0701321,"var_millis_squared_pt1":5.634914089999984e-6,"mean_millis_pt2":5.6696578,"var_millis_squared_pt2":0.00004078922116000119},{"problem":8,"mean_millis_pt1":0.191663,"var_millis_squared_pt1":0.000024810960199999936,"mean_millis_pt2":14.730429400000002,"var_millis_squared_pt2":0.0717970845366401},{"problem":9,"mean_millis_pt1":0.3562756,"var_millis_squared_pt1":0.000018098496240000045,"mean_millis_pt2":15.5106516,"var_millis_squared_pt2":0.003609580309040064},{"problem":10,"mean_millis_pt1":0.2484439,"var_millis_squared_pt1":2.1746480900000005e-6,"mean_millis_pt2":0.386386,"var_millis_squared_pt2":9.565600000000027e-6},{"problem":11,"mean_millis_pt1":0.6975309000000001,"var_millis_squared_pt1":0.00011966976409000006,"mean_millis_pt2":3.3055115,"var_millis_squared_pt2":0.0007484670204500024},{"problem":12,"mean_millis_pt1":2.9892833,"var_millis_squared_pt1":0.00008457792021000226,"mean_millis_pt2":3326.4305393999994,"var_millis_squared_pt2":6249.589933854937},{"problem":13,"mean_millis_pt1":0.1573638,"var_millis_squared_pt1":0.000016601684159999984,"mean_millis_pt2":0.3382582,"var_millis_squared_pt2":2.474540160000013e-6},{"problem":14,"mean_millis_pt1":3.1634363,"var_millis_squared_pt1":0.00036143492441000156,"mean_millis_pt2":1.4200143000000003,"var_millis_squared_pt2":0.00005267699220999931},{"problem":15,"mean_millis_pt1":5.071752399999999,"var_millis_squared_pt1":0.002870302577640005,"mean_millis_pt2":259.52807019999995,"var_millis_squared_pt2":350.594798045266},{"problem":16,"mean_millis_pt1":0.1946138,"var_millis_squared_pt1":9.475624160000014e-6,"mean_millis_pt2":0.19663400000000003,"var_millis_squared_pt2":0.000029579040199999985},{"problem":17,"mean_millis_pt1":0.1286526,"var_millis_squared_pt1":0.0000739823802399999,"mean_millis_pt2":2.4775506,"var_millis_squared_pt2":0.000059241500239998266},{"problem":19,"mean_millis_pt1":152.37310259999998,"var_millis_squared_pt1":0.0011598137526400835,"mean_millis_pt2":0.00006000000000000001,"var_millis_squared_pt2":4.399999999999999e-9},{"problem":21,"mean_millis_pt1":0.007360200000000002,"var_millis_squared_pt1":1.17027616e-6,"mean_millis_pt2":4440.6331643,"var_millis_squared_pt2":1.4716702090672091},{"problem":22,"mean_millis_pt1":0.49086570000000007,"var_millis_squared_pt1":8.248256210000054e-6,"mean_millis_pt2":0.00007000000000000001,"var_millis_squared_pt2":2.099999999999999e-9}]
 
 +--------------------------------------------------------+
-| +------------------------+---------------------------+ |
-| | mean_millis_pt1        |  0.0516613                | |
-| +------------------------+---------------------------+ |
-| | mean_millis_pt2        |  0.0512713                | |
-| +------------------------+---------------------------+ |
-| | problem                |  1                        | |
-| +------------------------+---------------------------+ |
-| | var_millis_squared_pt1 |  1.705442099999996e-7     | |
-| +------------------------+---------------------------+ |
-| | var_millis_squared_pt2 |  0.000023331298209999975  | |
-| +------------------------+---------------------------+ |
-+--------------------------------------------------------+
-| +------------------------+------------------------+    |
-| | mean_millis_pt1        |  0.0594216             |    |
-| +------------------------+------------------------+    |
-| | mean_millis_pt2        |  0.059721500000000004  |    |
-| +------------------------+------------------------+    |
-| | problem                |  2                     |    |
-| +------------------------+------------------------+    |
-| | var_millis_squared_pt1 |  2.95962400000003e-8   |    |
-| +------------------------+------------------------+    |
-| | var_millis_squared_pt2 |  7.150025000000043e-8  |    |
-| +------------------------+------------------------+    |
+| +------------------------+-------------------------+   |
+| | mean_millis_pt1        |  0.057671700000000006   |   |
+| +------------------------+-------------------------+   |
+| | mean_millis_pt2        |  0.0561017              |   |
+| +------------------------+-------------------------+   |
+| | problem                |  1                      |   |
+| +------------------------+-------------------------+   |
+| | var_millis_squared_pt1 |  2.6122210000000518e-8  |   |
+| +------------------------+-------------------------+   |
+| | var_millis_squared_pt2 |  6.020209999999947e-9   |   |
+| +------------------------+-------------------------+   |
 +--------------------------------------------------------+
 | +------------------------+-------------------------+   |
-| | mean_millis_pt1        |  0.3485791              |   |
+| | mean_millis_pt1        |  0.066302               |   |
 | +------------------------+-------------------------+   |
-| | mean_millis_pt2        |  1.4162968              |   |
+| | mean_millis_pt2        |  0.066552               |   |
 | +------------------------+-------------------------+   |
-| | problem                |  3                      |   |
+| | problem                |  2                      |   |
 | +------------------------+-------------------------+   |
-| | var_millis_squared_pt1 |  0.0005888328064899997  |   |
+| | var_millis_squared_pt1 |  1.1400000000000319e-7  |   |
 | +------------------------+-------------------------+   |
-| | var_millis_squared_pt2 |  0.0003442040845600015  |   |
+| | var_millis_squared_pt2 |  1.2450000000000115e-7  |   |
 | +------------------------+-------------------------+   |
 +--------------------------------------------------------+
 | +------------------------+--------------------------+  |
-| | mean_millis_pt1        |  0.2582967               |  |
+| | mean_millis_pt1        |  0.37826119999999996     |  |
 | +------------------------+--------------------------+  |
-| | mean_millis_pt2        |  1.0673676999999997      |  |
+| | mean_millis_pt2        |  1.6046173               |  |
+| +------------------------+--------------------------+  |
+| | problem                |  3                       |  |
+| +------------------------+--------------------------+  |
+| | var_millis_squared_pt1 |  0.00002861150015999999  |  |
+| +------------------------+--------------------------+  |
+| | var_millis_squared_pt2 |  0.00028619073821000015  |  |
+| +------------------------+--------------------------+  |
++--------------------------------------------------------+
+| +------------------------+--------------------------+  |
+| | mean_millis_pt1        |  0.2962487               |  |
+| +------------------------+--------------------------+  |
+| | mean_millis_pt2        |  1.2961483               |  |
 | +------------------------+--------------------------+  |
 | | problem                |  4                       |  |
 | +------------------------+--------------------------+  |
-| | var_millis_squared_pt1 |  0.00003088273420999992  |  |
+| | var_millis_squared_pt1 |  0.00003212518421000007  |  |
 | +------------------------+--------------------------+  |
-| | var_millis_squared_pt2 |  0.0001220163842100005   |  |
+| | var_millis_squared_pt2 |  0.0001176657144099992   |  |
 | +------------------------+--------------------------+  |
 +--------------------------------------------------------+
 | +------------------------+------------------------+    |
-| | mean_millis_pt1        |  8.977253300000001     |    |
+| | mean_millis_pt1        |  10.2806933            |    |
 | +------------------------+------------------------+    |
-| | mean_millis_pt2        |  18.4968808            |    |
+| | mean_millis_pt2        |  20.880176             |    |
 | +------------------------+------------------------+    |
 | | problem                |  5                     |    |
 | +------------------------+------------------------+    |
-| | var_millis_squared_pt1 |  0.13030248733381022   |    |
+| | var_millis_squared_pt1 |  0.14940930063281016   |    |
 | +------------------------+------------------------+    |
-| | var_millis_squared_pt2 |  0.027467827377359828  |    |
-| +------------------------+------------------------+    |
-+--------------------------------------------------------+
-| +------------------------+------------------------+    |
-| | mean_millis_pt1        |  0.0048501             |    |
-| +------------------------+------------------------+    |
-| | mean_millis_pt2        |  0.0050702             |    |
-| +------------------------+------------------------+    |
-| | problem                |  6                     |    |
-| +------------------------+------------------------+    |
-| | var_millis_squared_pt1 |  1.251009000000002e-8  |    |
-| +------------------------+------------------------+    |
-| | var_millis_squared_pt2 |  3.621216000000002e-8  |    |
+| | var_millis_squared_pt2 |  0.006056539186000027  |    |
 | +------------------------+------------------------+    |
 +--------------------------------------------------------+
+| +------------------------+-------------------------+   |
+| | mean_millis_pt1        |  0.0056800999999999996  |   |
+| +------------------------+-------------------------+   |
+| | mean_millis_pt2        |  0.0058002              |   |
+| +------------------------+-------------------------+   |
+| | problem                |  6                      |   |
+| +------------------------+-------------------------+   |
+| | var_millis_squared_pt1 |  1.3564089999999987e-8  |   |
+| +------------------------+-------------------------+   |
+| | var_millis_squared_pt2 |  3.602016000000004e-8   |   |
+| +------------------------+-------------------------+   |
++--------------------------------------------------------+
 | +------------------------+--------------------------+  |
-| | mean_millis_pt1        |  0.0610316               |  |
+| | mean_millis_pt1        |  0.0701321               |  |
 | +------------------------+--------------------------+  |
-| | mean_millis_pt2        |  5.0237106               |  |
+| | mean_millis_pt2        |  5.6696578               |  |
 | +------------------------+--------------------------+  |
 | | problem                |  7                       |  |
 | +------------------------+--------------------------+  |
-| | var_millis_squared_pt1 |  3.5282442399999893e-6   |  |
+| | var_millis_squared_pt1 |  5.634914089999984e-6    |  |
 | +------------------------+--------------------------+  |
-| | var_millis_squared_pt2 |  0.00013771518444000472  |  |
+| | var_millis_squared_pt2 |  0.00004078922116000119  |  |
 | +------------------------+--------------------------+  |
 +--------------------------------------------------------+
 | +------------------------+---------------------------+ |
-| | mean_millis_pt1        |  0.17396450000000002      | |
+| | mean_millis_pt1        |  0.191663                 | |
 | +------------------------+---------------------------+ |
-| | mean_millis_pt2        |  12.838063700000001       | |
+| | mean_millis_pt2        |  14.730429400000002       | |
 | +------------------------+---------------------------+ |
 | | problem                |  8                        | |
 | +------------------------+---------------------------+ |
-| | var_millis_squared_pt1 |  0.000014024400250000005  | |
+| | var_millis_squared_pt1 |  0.000024810960199999936  | |
 | +------------------------+---------------------------+ |
-| | var_millis_squared_pt2 |  0.07123103496661014      | |
+| | var_millis_squared_pt2 |  0.0717970845366401       | |
 | +------------------------+---------------------------+ |
 +--------------------------------------------------------+
 | +------------------------+---------------------------+ |
-| | mean_millis_pt1        |  0.3361287                | |
+| | mean_millis_pt1        |  0.3562756                | |
 | +------------------------+---------------------------+ |
-| | mean_millis_pt2        |  13.698646000000002       | |
+| | mean_millis_pt2        |  15.5106516               | |
 | +------------------------+---------------------------+ |
 | | problem                |  9                        | |
 | +------------------------+---------------------------+ |
-| | var_millis_squared_pt1 |  0.000029354252210000118  | |
+| | var_millis_squared_pt1 |  0.000018098496240000045  | |
 | +------------------------+---------------------------+ |
-| | var_millis_squared_pt2 |  0.0006773991606000185    | |
-| +------------------------+---------------------------+ |
-+--------------------------------------------------------+
-| +------------------------+------------------------+    |
-| | mean_millis_pt1        |  0.2206558             |    |
-| +------------------------+------------------------+    |
-| | mean_millis_pt2        |  0.34671900000000005   |    |
-| +------------------------+------------------------+    |
-| | problem                |  10                    |    |
-| +------------------------+------------------------+    |
-| | var_millis_squared_pt1 |  9.149020159999958e-6  |    |
-| +------------------------+------------------------+    |
-| | var_millis_squared_pt2 |  3.280899999999995e-6  |    |
-| +------------------------+------------------------+    |
-+--------------------------------------------------------+
-| +------------------------+---------------------------+ |
-| | mean_millis_pt1        |  0.6288963                | |
-| +------------------------+---------------------------+ |
-| | mean_millis_pt2        |  2.9464566000000003       | |
-| +------------------------+---------------------------+ |
-| | problem                |  11                       | |
-| +------------------------+---------------------------+ |
-| | var_millis_squared_pt1 |  0.000056972872210000015  | |
-| +------------------------+---------------------------+ |
-| | var_millis_squared_pt2 |  0.0006879644246400061    | |
+| | var_millis_squared_pt2 |  0.003609580309040064     | |
 | +------------------------+---------------------------+ |
 +--------------------------------------------------------+
-| +------------------------+---------------------------+ |
-| | mean_millis_pt1        |  2.6236582                | |
-| +------------------------+---------------------------+ |
-| | mean_millis_pt2        |  2959.9112545999997       | |
-| +------------------------+---------------------------+ |
-| | problem                |  12                       | |
-| +------------------------+---------------------------+ |
-| | var_millis_squared_pt1 |  0.000029741704159999897  | |
-| +------------------------+---------------------------+ |
-| | var_millis_squared_pt2 |  11978.055370100097       | |
-| +------------------------+---------------------------+ |
+| +------------------------+-------------------------+   |
+| | mean_millis_pt1        |  0.2484439              |   |
+| +------------------------+-------------------------+   |
+| | mean_millis_pt2        |  0.386386               |   |
+| +------------------------+-------------------------+   |
+| | problem                |  10                     |   |
+| +------------------------+-------------------------+   |
+| | var_millis_squared_pt1 |  2.1746480900000005e-6  |   |
+| +------------------------+-------------------------+   |
+| | var_millis_squared_pt2 |  9.565600000000027e-6   |   |
+| +------------------------+-------------------------+   |
++--------------------------------------------------------+
+| +------------------------+--------------------------+  |
+| | mean_millis_pt1        |  0.6975309000000001      |  |
+| +------------------------+--------------------------+  |
+| | mean_millis_pt2        |  3.3055115               |  |
+| +------------------------+--------------------------+  |
+| | problem                |  11                      |  |
+| +------------------------+--------------------------+  |
+| | var_millis_squared_pt1 |  0.00011966976409000006  |  |
+| +------------------------+--------------------------+  |
+| | var_millis_squared_pt2 |  0.0007484670204500024   |  |
+| +------------------------+--------------------------+  |
++--------------------------------------------------------+
+| +------------------------+--------------------------+  |
+| | mean_millis_pt1        |  2.9892833               |  |
+| +------------------------+--------------------------+  |
+| | mean_millis_pt2        |  3326.4305393999994      |  |
+| +------------------------+--------------------------+  |
+| | problem                |  12                      |  |
+| +------------------------+--------------------------+  |
+| | var_millis_squared_pt1 |  0.00008457792021000226  |  |
+| +------------------------+--------------------------+  |
+| | var_millis_squared_pt2 |  6249.589933854937       |  |
+| +------------------------+--------------------------+  |
 +--------------------------------------------------------+
 | +------------------------+---------------------------+ |
-| | mean_millis_pt1        |  0.12756320000000002      | |
+| | mean_millis_pt1        |  0.1573638                | |
 | +------------------------+---------------------------+ |
-| | mean_millis_pt2        |  0.283487                 | |
+| | mean_millis_pt2        |  0.3382582                | |
 | +------------------------+---------------------------+ |
 | | problem                |  13                       | |
 | +------------------------+---------------------------+ |
-| | var_millis_squared_pt1 |  0.000013250076159999999  | |
+| | var_millis_squared_pt1 |  0.000016601684159999984  | |
 | +------------------------+---------------------------+ |
-| | var_millis_squared_pt2 |  0.000013553600000000044  | |
-| +------------------------+---------------------------+ |
-+--------------------------------------------------------+
-| +------------------------+---------------------------+ |
-| | mean_millis_pt1        |  2.7943089999999997       | |
-| +------------------------+---------------------------+ |
-| | mean_millis_pt2        |  1.2732514                | |
-| +------------------------+---------------------------+ |
-| | problem                |  14                       | |
-| +------------------------+---------------------------+ |
-| | var_millis_squared_pt1 |  0.00017211994040000118   | |
-| +------------------------+---------------------------+ |
-| | var_millis_squared_pt2 |  0.000029425624239999786  | |
+| | var_millis_squared_pt2 |  2.474540160000013e-6     | |
 | +------------------------+---------------------------+ |
 +--------------------------------------------------------+
+| +------------------------+--------------------------+  |
+| | mean_millis_pt1        |  3.1634363               |  |
+| +------------------------+--------------------------+  |
+| | mean_millis_pt2        |  1.4200143000000003      |  |
+| +------------------------+--------------------------+  |
+| | problem                |  14                      |  |
+| +------------------------+--------------------------+  |
+| | var_millis_squared_pt1 |  0.00036143492441000156  |  |
+| +------------------------+--------------------------+  |
+| | var_millis_squared_pt2 |  0.00005267699220999931  |  |
+| +------------------------+--------------------------+  |
++--------------------------------------------------------+
 | +------------------------+------------------------+    |
-| | mean_millis_pt1        |  4.414549              |    |
+| | mean_millis_pt1        |  5.071752399999999     |    |
 | +------------------------+------------------------+    |
-| | mean_millis_pt2        |  199.9951777           |    |
+| | mean_millis_pt2        |  259.52807019999995    |    |
 | +------------------------+------------------------+    |
 | | problem                |  15                    |    |
 | +------------------------+------------------------+    |
-| | var_millis_squared_pt1 |  0.004360163423000006  |    |
+| | var_millis_squared_pt1 |  0.002870302577640005  |    |
 | +------------------------+------------------------+    |
-| | var_millis_squared_pt2 |  12.545484363149436    |    |
+| | var_millis_squared_pt2 |  350.594798045266      |    |
+| +------------------------+------------------------+    |
++--------------------------------------------------------+
+| +------------------------+---------------------------+ |
+| | mean_millis_pt1        |  0.1946138                | |
+| +------------------------+---------------------------+ |
+| | mean_millis_pt2        |  0.19663400000000003      | |
+| +------------------------+---------------------------+ |
+| | problem                |  16                       | |
+| +------------------------+---------------------------+ |
+| | var_millis_squared_pt1 |  9.475624160000014e-6     | |
+| +------------------------+---------------------------+ |
+| | var_millis_squared_pt2 |  0.000029579040199999985  | |
+| +------------------------+---------------------------+ |
++--------------------------------------------------------+
+| +------------------------+---------------------------+ |
+| | mean_millis_pt1        |  0.1286526                | |
+| +------------------------+---------------------------+ |
+| | mean_millis_pt2        |  2.4775506                | |
+| +------------------------+---------------------------+ |
+| | problem                |  17                       | |
+| +------------------------+---------------------------+ |
+| | var_millis_squared_pt1 |  0.0000739823802399999    | |
+| +------------------------+---------------------------+ |
+| | var_millis_squared_pt2 |  0.000059241500239998266  | |
+| +------------------------+---------------------------+ |
++--------------------------------------------------------+
+| +------------------------+--------------------------+  |
+| | mean_millis_pt1        |  152.37310259999998      |  |
+| +------------------------+--------------------------+  |
+| | mean_millis_pt2        |  0.00006000000000000001  |  |
+| +------------------------+--------------------------+  |
+| | problem                |  19                      |  |
+| +------------------------+--------------------------+  |
+| | var_millis_squared_pt1 |  0.0011598137526400835   |  |
+| +------------------------+--------------------------+  |
+| | var_millis_squared_pt2 |  4.399999999999999e-9    |  |
+| +------------------------+--------------------------+  |
++--------------------------------------------------------+
+| +------------------------+------------------------+    |
+| | mean_millis_pt1        |  0.007360200000000002  |    |
+| +------------------------+------------------------+    |
+| | mean_millis_pt2        |  4440.6331643          |    |
+| +------------------------+------------------------+    |
+| | problem                |  21                    |    |
+| +------------------------+------------------------+    |
+| | var_millis_squared_pt1 |  1.17027616e-6         |    |
+| +------------------------+------------------------+    |
+| | var_millis_squared_pt2 |  1.4716702090672091    |    |
 | +------------------------+------------------------+    |
 +--------------------------------------------------------+
 | +------------------------+--------------------------+  |
-| | mean_millis_pt1        |  0.1737343               |  |
+| | mean_millis_pt1        |  0.49086570000000007     |  |
 | +------------------------+--------------------------+  |
-| | mean_millis_pt2        |  0.1723743               |  |
+| | mean_millis_pt2        |  0.00007000000000000001  |  |
 | +------------------------+--------------------------+  |
-| | problem                |  16                      |  |
+| | problem                |  22                      |  |
 | +------------------------+--------------------------+  |
-| | var_millis_squared_pt1 |  0.00002635952220999995  |  |
+| | var_millis_squared_pt1 |  8.248256210000054e-6    |  |
 | +------------------------+--------------------------+  |
-| | var_millis_squared_pt2 |  3.6629382100000203e-6   |  |
+| | var_millis_squared_pt2 |  2.099999999999999e-9    |  |
 | +------------------------+--------------------------+  |
-+--------------------------------------------------------+
-| +------------------------+--------------------------+  |
-| | mean_millis_pt1        |  0.1128027               |  |
-| +------------------------+--------------------------+  |
-| | mean_millis_pt2        |  2.1776136999999998      |  |
-| +------------------------+--------------------------+  |
-| | problem                |  17                      |  |
-| +------------------------+--------------------------+  |
-| | var_millis_squared_pt1 |  0.00003539262020999999  |  |
-| +------------------------+--------------------------+  |
-| | var_millis_squared_pt2 |  0.00002191559620999993  |  |
-| +------------------------+--------------------------+  |
-+--------------------------------------------------------+
-| +------------------------+-------------------------+   |
-| | mean_millis_pt1        |  133.5576374            |   |
-| +------------------------+-------------------------+   |
-| | mean_millis_pt2        |  0.00005                |   |
-| +------------------------+-------------------------+   |
-| | problem                |  19                     |   |
-| +------------------------+-------------------------+   |
-| | var_millis_squared_pt1 |  0.0014199910042401159  |   |
-| +------------------------+-------------------------+   |
-| | var_millis_squared_pt2 |  1.4499999999999999e-8  |   |
-| +------------------------+-------------------------+   |
-+--------------------------------------------------------+
-| +------------------------+-------------------------+   |
-| | mean_millis_pt1        |  0.0063501              |   |
-| +------------------------+-------------------------+   |
-| | mean_millis_pt2        |  3913.4527530999994     |   |
-| +------------------------+-------------------------+   |
-| | problem                |  21                     |   |
-| +------------------------+-------------------------+   |
-| | var_millis_squared_pt1 |  3.0445009000000006e-7  |   |
-| +------------------------+-------------------------+   |
-| | var_millis_squared_pt2 |  0.2577151786146673     |   |
-| +------------------------+-------------------------+   |
 +--------------------------------------------------------+
