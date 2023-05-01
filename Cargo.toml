@@ -8,6 +8,8 @@ edition = "2021"
 [dependencies]
 clap = { version = "4.1.11", features = ["derive"] }
 env_logger = "0.10.0"
+gag = "1.0.0"
+good_lp = { version = "*", features = ["lpsolve"], default-features = false }
 itertools = "0.10.5"
 json_to_table = "0.4.0"
 log = "0.4.17"
