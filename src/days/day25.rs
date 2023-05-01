@@ -13,7 +13,7 @@ enum Direction {
 impl DayTwentyFive {
     fn read_input(input: &str) -> (HashMap<(usize, usize), Direction>, (usize, usize)) {
         let mut ret = HashMap::new();
-        let mut dims = (
+        let dims = (
             input.lines().filter(|l| !l.is_empty()).count(),
             input
                 .lines()
@@ -100,7 +100,7 @@ impl Problem for DayTwentyFive {
         format!("{}", counter)
     }
 
-    fn part_two(&self, input: &str) -> String {
+    fn part_two(&self, _input: &str) -> String {
         format!("")
     }
 }

@@ -1,8 +1,8 @@
+use log::{info,Level};
 use std::{
     collections::{HashMap, HashSet},
     str::FromStr,
 };
-use log::{debug, error, log_enabled, info, Level};
 
 use itertools::Itertools;
 
@@ -430,9 +430,12 @@ impl DayNineteen {
                         *distances.entry(distance).or_insert(0) += 1;
                     }
                 }
-                if distances.values().any(|&x| x>=12){
-                    info!("Orientation found between sensors {} and {}: {:?}", _idx1, _idx2, orientation);
-                    return Some((orientation.clone(),Offset::default()));
+                if distances.values().any(|&x| x >= 12) {
+                    info!(
+                        "Orientation found between sensors {} and {}: {:?}",
+                        _idx1, _idx2, orientation
+                    );
+                    return Some((orientation.clone(), Offset::default()));
                 }
                 //println!("{:?}", distances);
             }
