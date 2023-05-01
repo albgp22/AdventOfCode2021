@@ -60,7 +60,7 @@ impl DayTwenty {
             Some((x as i32 + dx) as usize)
         }
     }
-    fn neighbors_index(img: &Vec<Vec<Mode>>, (i, j): (usize, usize), bg_mode: Mode) -> usize {
+    fn neighbors_index(img: &[Vec<Mode>], (i, j): (usize, usize), bg_mode: Mode) -> usize {
         let mut indices: Vec<Mode> = vec![];
         for di in [-1, 0, 1] {
             for dj in [-1, 0, 1] {
@@ -95,22 +95,7 @@ impl DayTwenty {
                 )];
             }
         }
-        return new_img;
-    }
-    fn print_img(img: &Vec<Vec<Mode>>) {
-        for r in img {
-            for c in r {
-                print![
-                    "{}",
-                    match c {
-                        Mode::Off => '.',
-                        Mode::On => '#',
-                    }
-                ]
-            }
-            println!("")
-        }
-        println!("");
+        new_img
     }
 }
 
