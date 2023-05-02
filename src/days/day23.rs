@@ -62,6 +62,7 @@ enum Type {
     D2,
     None,
 }
+use itertools::Itertools;
 use Type::*;
 
 impl Type {
@@ -83,8 +84,7 @@ impl Type {
 #[derive(Debug, Clone, Eq, PartialEq, Serialize, Deserialize)]
 struct State {
     cost: i32,
-    last_moved: Type,
-    // A1,A2,B1,B2,C1,C2,D1,D2
+    last_moved: usize,
     positions: Vec<Position>,
     already_moved: HashSet<usize>,
 }
@@ -166,18 +166,15 @@ impl State {
         }
     }
 
-    // TODO: Refactor to new depth
-    fn get_neighbors(&self) -> Vec<State> {
-        let room_depth = 2;
+    fn get_neighbors(&self, room_depth: usize) -> Vec<State> {
         let mut neighbors = Vec::new();
         for i in 0..self.positions.len() {
             if self.already_moved.contains(&i) {
                 continue;
             }
-            // Room to Hall, Room
+            // Room to Hall, Room to Room
             match self.positions[i] {
-                Room(x, y) => {
-                    // TODO: Skip if last moved was the same amphipod
+                Room(_x, _y) => {
                     /* Get available Hall positions */
                     let available_hall_positions =
                         (0..11usize).filter(|i| !self.positions.contains(&Hall(*i)));
@@ -190,9 +187,8 @@ impl State {
                         let mut new_positions = self.positions.clone();
                         new_positions[i] = Hall(pos);
                         neighbors.push(State {
-                            cost: self.cost
-                                + self.positions[i].distance_to(&Hall(pos), i),
-                            last_moved: Type::from_position_index(i),
+                            cost: self.cost + self.positions[i].distance_to(&Hall(pos), i),
+                            last_moved: i,
                             positions: new_positions,
                             already_moved: self.already_moved.clone(),
                         });
@@ -214,7 +210,7 @@ impl State {
                                 cost: self.cost
                                     + self.positions[i]
                                         .distance_to(&Room(amphipod_type_index, j), amphipod_type),
-                                last_moved: Type::from_position_index(amphipod_type),
+                                last_moved: amphipod_type,
                                 positions: new_positions,
                                 already_moved: new_already_moved,
                             });
@@ -230,7 +226,6 @@ impl State {
                         .filter(|j| !self.positions.contains(&Room(amphipod_type_index, *j)))
                         .max();
                     if let Some(j) = available_positions {
-                        // Todo: Skip if destination is unreachable
                         if self.is_position_reachable(&Room(amphipod_type_index, j), i) {
                             let mut new_already_moved = self.already_moved.clone();
                             new_already_moved.insert(i);
@@ -241,7 +236,7 @@ impl State {
                                 cost: self.cost
                                     + self.positions[i]
                                         .distance_to(&Room(amphipod_type_index, j), amphipod_type),
-                                last_moved: Type::from_position_index(amphipod_type),
+                                last_moved: amphipod_type,
                                 positions: new_positions,
                                 already_moved: new_already_moved,
                             });
@@ -271,7 +266,7 @@ impl DayTwentyThree {
             if current_state.is_valid_state(room_depth) {
                 return current_state;
             }
-            for neighbor in current_state.get_neighbors() {
+            for neighbor in current_state.get_neighbors(room_depth) {
                 if !visited.contains(&neighbor.positions) {
                     pq.push(neighbor);
                 }
@@ -279,35 +274,56 @@ impl DayTwentyThree {
         }
         unreachable!("No valid state found")
     }
+    fn read_input(input: &str, part: usize) -> State {
+        let mut pos = vec![vec![]; 4];
+        let mut lines = input
+            .lines()
+            .filter(|l| !l.is_empty())
+            .skip(2)
+            .map(|l| l.replace([' ', '#'], ""))
+            .collect_vec();
+        if part == 2 {
+            lines.insert(1, "DCBA".to_string());
+            lines.insert(2, "DBAC".to_string());
+        }
+        for (i, line) in lines.iter().enumerate() {
+            for (j, c) in line.chars().enumerate() {
+                if c == 'A' {
+                    pos[0].push(Room(j, i));
+                }
+                if c == 'B' {
+                    pos[1].push(Room(j, i));
+                }
+                if c == 'C' {
+                    pos[2].push(Room(j, i));
+                }
+                if c == 'D' {
+                    pos[3].push(Room(j, i));
+                }
+            }
+        }
+        State {
+            cost: 0,
+            last_moved: 1000,
+            positions: pos.into_iter().flatten().collect(),
+            already_moved: HashSet::new(),
+        }
+    }
 }
 
 impl Problem for DayTwentyThree {
     fn part_one(&self, input: &str) -> String {
-        format!(
-            "{:?}",
-            Self::a_star(
-                State {
-                    cost: 0,
-                    last_moved: Type::None,
-                    positions: vec![
-                        Room(2, 0),
-                        Room(3, 1),
-                        Room(0, 1),
-                        Room(1, 1),
-                        Room(1, 0),
-                        Room(3, 0),
-                        Room(0, 0),
-                        Room(2, 1),
-                    ],
-                    already_moved: HashSet::new(),
-                },
-                2
-            )
-        )
+        let start_state = Self::read_input(input, 1);
+        println!("Start state: {:?}", start_state);
+        let room_depth = start_state.positions.len() / 4;
+        format!("{:?}", Self::a_star(start_state, room_depth),)
     }
 
     fn part_two(&self, input: &str) -> String {
-        format!("")
+        let start_state = Self::read_input(input, 2);
+        println!("Start state: {:?}", start_state);
+        let room_depth = start_state.positions.len() / 4;
+        format!("{:?}", Self::a_star(start_state, room_depth),)
     }
 }
 
@@ -335,7 +351,7 @@ mod tests {
     fn test_is_position_reachable() {
         let origin = State {
             cost: 0,
-            last_moved: Type::A1,
+            last_moved: 0,
             positions: vec![
                 Room(0, 0),
                 Room(1, 0),
@@ -366,12 +382,12 @@ mod tests {
     fn test_get_neighbors() {
         let origin = State {
             cost: 0,
-            last_moved: Type::A1,
+            last_moved: 0,
             positions: vec![
-                Room(0, 0),
-                Room(1, 0),
-                Room(2, 0),
-                Room(3, 0),
+                Room(0, 1),
+                Room(1, 1),
+                Room(2, 1),
+                Room(3, 1),
                 Hall(0),
                 Hall(1),
                 Hall(2),
@@ -379,7 +395,384 @@ mod tests {
             ],
             already_moved: HashSet::new(),
         };
-        println!("{:?}", origin.get_neighbors());
-        assert!(false);
+        let expected = vec![
+            State {
+                cost: 1,
+                last_moved: 0,
+                positions: vec![
+                    Room(0, 0),
+                    Room(1, 1),
+                    Room(2, 1),
+                    Room(3, 1),
+                    Hall(0),
+                    Hall(1),
+                    Hall(2),
+                    Hall(3),
+                ],
+                already_moved: HashSet::from([0]),
+            },
+            State {
+                cost: 2,
+                last_moved: 1,
+                positions: vec![
+                    Room(0, 1),
+                    Hall(4),
+                    Room(2, 1),
+                    Room(3, 1),
+                    Hall(0),
+                    Hall(1),
+                    Hall(2),
+                    Hall(3),
+                ],
+                already_moved: HashSet::new(),
+            },
+            State {
+                cost: 3,
+                last_moved: 1,
+                positions: vec![
+                    Room(0, 1),
+                    Hall(5),
+                    Room(2, 1),
+                    Room(3, 1),
+                    Hall(0),
+                    Hall(1),
+                    Hall(2),
+                    Hall(3),
+                ],
+                already_moved: HashSet::new(),
+            },
+            State {
+                cost: 4,
+                last_moved: 1,
+                positions: vec![
+                    Room(0, 1),
+                    Hall(6),
+                    Room(2, 1),
+                    Room(3, 1),
+                    Hall(0),
+                    Hall(1),
+                    Hall(2),
+                    Hall(3),
+                ],
+                already_moved: HashSet::new(),
+            },
+            State {
+                cost: 5,
+                last_moved: 1,
+                positions: vec![
+                    Room(0, 1),
+                    Hall(7),
+                    Room(2, 1),
+                    Room(3, 1),
+                    Hall(0),
+                    Hall(1),
+                    Hall(2),
+                    Hall(3),
+                ],
+                already_moved: HashSet::new(),
+            },
+            State {
+                cost: 6,
+                last_moved: 1,
+                positions: vec![
+                    Room(0, 1),
+                    Hall(8),
+                    Room(2, 1),
+                    Room(3, 1),
+                    Hall(0),
+                    Hall(1),
+                    Hall(2),
+                    Hall(3),
+                ],
+                already_moved: HashSet::new(),
+            },
+            State {
+                cost: 7,
+                last_moved: 1,
+                positions: vec![
+                    Room(0, 1),
+                    Hall(9),
+                    Room(2, 1),
+                    Room(3, 1),
+                    Hall(0),
+                    Hall(1),
+                    Hall(2),
+                    Hall(3),
+                ],
+                already_moved: HashSet::new(),
+            },
+            State {
+                cost: 8,
+                last_moved: 1,
+                positions: vec![
+                    Room(0, 1),
+                    Hall(10),
+                    Room(2, 1),
+                    Room(3, 1),
+                    Hall(0),
+                    Hall(1),
+                    Hall(2),
+                    Hall(3),
+                ],
+                already_moved: HashSet::new(),
+            },
+            State {
+                cost: 40,
+                last_moved: 2,
+                positions: vec![
+                    Room(0, 1),
+                    Room(1, 1),
+                    Hall(4),
+                    Room(3, 1),
+                    Hall(0),
+                    Hall(1),
+                    Hall(2),
+                    Hall(3),
+                ],
+                already_moved: HashSet::new(),
+            },
+            State {
+                cost: 30,
+                last_moved: 2,
+                positions: vec![
+                    Room(0, 1),
+                    Room(1, 1),
+                    Hall(5),
+                    Room(3, 1),
+                    Hall(0),
+                    Hall(1),
+                    Hall(2),
+                    Hall(3),
+                ],
+                already_moved: HashSet::new(),
+            },
+            State {
+                cost: 20,
+                last_moved: 2,
+                positions: vec![
+                    Room(0, 1),
+                    Room(1, 1),
+                    Hall(6),
+                    Room(3, 1),
+                    Hall(0),
+                    Hall(1),
+                    Hall(2),
+                    Hall(3),
+                ],
+                already_moved: HashSet::new(),
+            },
+            State {
+                cost: 30,
+                last_moved: 2,
+                positions: vec![
+                    Room(0, 1),
+                    Room(1, 1),
+                    Hall(7),
+                    Room(3, 1),
+                    Hall(0),
+                    Hall(1),
+                    Hall(2),
+                    Hall(3),
+                ],
+                already_moved: HashSet::new(),
+            },
+            State {
+                cost: 40,
+                last_moved: 2,
+                positions: vec![
+                    Room(0, 1),
+                    Room(1, 1),
+                    Hall(8),
+                    Room(3, 1),
+                    Hall(0),
+                    Hall(1),
+                    Hall(2),
+                    Hall(3),
+                ],
+                already_moved: HashSet::new(),
+            },
+            State {
+                cost: 50,
+                last_moved: 2,
+                positions: vec![
+                    Room(0, 1),
+                    Room(1, 1),
+                    Hall(9),
+                    Room(3, 1),
+                    Hall(0),
+                    Hall(1),
+                    Hall(2),
+                    Hall(3),
+                ],
+                already_moved: HashSet::new(),
+            },
+            State {
+                cost: 60,
+                last_moved: 2,
+                positions: vec![
+                    Room(0, 1),
+                    Room(1, 1),
+                    Hall(10),
+                    Room(3, 1),
+                    Hall(0),
+                    Hall(1),
+                    Hall(2),
+                    Hall(3),
+                ],
+                already_moved: HashSet::new(),
+            },
+            State {
+                cost: 50,
+                last_moved: 2,
+                positions: vec![
+                    Room(0, 1),
+                    Room(1, 1),
+                    Room(1, 0),
+                    Room(3, 1),
+                    Hall(0),
+                    Hall(1),
+                    Hall(2),
+                    Hall(3),
+                ],
+                already_moved: HashSet::from([2]),
+            },
+            State {
+                cost: 60,
+                last_moved: 3,
+                positions: vec![
+                    Room(0, 1),
+                    Room(1, 1),
+                    Room(2, 1),
+                    Hall(4),
+                    Hall(0),
+                    Hall(1),
+                    Hall(2),
+                    Hall(3),
+                ],
+                already_moved: HashSet::new(),
+            },
+            State {
+                cost: 50,
+                last_moved: 3,
+                positions: vec![
+                    Room(0, 1),
+                    Room(1, 1),
+                    Room(2, 1),
+                    Hall(5),
+                    Hall(0),
+                    Hall(1),
+                    Hall(2),
+                    Hall(3),
+                ],
+                already_moved: HashSet::new(),
+            },
+            State {
+                cost: 40,
+                last_moved: 3,
+                positions: vec![
+                    Room(0, 1),
+                    Room(1, 1),
+                    Room(2, 1),
+                    Hall(6),
+                    Hall(0),
+                    Hall(1),
+                    Hall(2),
+                    Hall(3),
+                ],
+                already_moved: HashSet::new(),
+            },
+            State {
+                cost: 30,
+                last_moved: 3,
+                positions: vec![
+                    Room(0, 1),
+                    Room(1, 1),
+                    Room(2, 1),
+                    Hall(7),
+                    Hall(0),
+                    Hall(1),
+                    Hall(2),
+                    Hall(3),
+                ],
+                already_moved: HashSet::new(),
+            },
+            State {
+                cost: 20,
+                last_moved: 3,
+                positions: vec![
+                    Room(0, 1),
+                    Room(1, 1),
+                    Room(2, 1),
+                    Hall(8),
+                    Hall(0),
+                    Hall(1),
+                    Hall(2),
+                    Hall(3),
+                ],
+                already_moved: HashSet::new(),
+            },
+            State {
+                cost: 30,
+                last_moved: 3,
+                positions: vec![
+                    Room(0, 1),
+                    Room(1, 1),
+                    Room(2, 1),
+                    Hall(9),
+                    Hall(0),
+                    Hall(1),
+                    Hall(2),
+                    Hall(3),
+                ],
+                already_moved: HashSet::new(),
+            },
+            State {
+                cost: 40,
+                last_moved: 3,
+                positions: vec![
+                    Room(0, 1),
+                    Room(1, 1),
+                    Room(2, 1),
+                    Hall(10),
+                    Hall(0),
+                    Hall(1),
+                    Hall(2),
+                    Hall(3),
+                ],
+                already_moved: HashSet::new(),
+            },
+            State {
+                cost: 70,
+                last_moved: 3,
+                positions: vec![
+                    Room(0, 1),
+                    Room(1, 1),
+                    Room(2, 1),
+                    Room(1, 0),
+                    Hall(0),
+                    Hall(1),
+                    Hall(2),
+                    Hall(3),
+                ],
+                already_moved: HashSet::from([3]),
+            },
+            State {
+                cost: 6000,
+                last_moved: 7,
+                positions: vec![
+                    Room(0, 1),
+                    Room(1, 1),
+                    Room(2, 1),
+                    Room(3, 1),
+                    Hall(0),
+                    Hall(1),
+                    Hall(2),
+                    Room(3, 0),
+                ],
+                already_moved: HashSet::from([7]),
+            },
+        ];
+        println!("{:?}", origin.get_neighbors(2));
+        assert_eq!(origin.get_neighbors(2), expected);
     }
 }
