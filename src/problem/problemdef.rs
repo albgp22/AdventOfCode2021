@@ -31,7 +31,7 @@ impl dyn Problem {
 
     pub fn benchmark(&self, input: &str) -> BenchmarkResult {
         let now = Instant::now();
-        const N: u32 = 10;
+        const N: u32 = 3;
 
         let mut durations1 = vec![];
         let mut durations2 = vec![];
