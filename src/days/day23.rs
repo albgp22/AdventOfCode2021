@@ -15,73 +15,38 @@ enum Position {
 }
 use Position::*;
 
+fn room_to_index(x: usize) -> i32 {
+    match x {
+        0 => 2,
+        1 => 4,
+        2 => 6,
+        3 => 8,
+        _ => unreachable!(),
+    }
+}
+
 impl Position {
-    fn distance_to(&self, other: &Self, amphipod_type: usize) -> i32 {
-        (match self {
-            Hall(x) => match other {
-                Hall(y) => {
-                    let x = *x as i32;
-                    let y = *y as i32;
-                    (x - y).abs()
-                }
-                Room(rx, ry) => {
-                    let x = *x as i32;
-                    let ry = *ry as i32;
-                    let room_hall_index = match rx {
-                        0 => 2,
-                        1 => 4,
-                        2 => 6,
-                        3 => 8,
-                        _ => unreachable!(),
-                    };
-                    (room_hall_index - x).abs() + 2 - ry
-                }
-            },
-            Room(x, y) => match other {
-                Hall(x2) => {
-                    let x2 = *x2 as i32;
-                    let y = *y as i32;
-                    let room_hall_index = match x {
-                        0 => 2,
-                        1 => 4,
-                        2 => 6,
-                        3 => 8,
-                        _ => unreachable!(),
-                    };
-                    (room_hall_index - x2).abs() + 2 - y
-                }
-                Room(x2, y2) => {
-                    let y = *y as i32;
-                    let y2 = *y2 as i32;
-                    let room1_hall_index = match x {
-                        0 => 2i32,
-                        1 => 4,
-                        2 => 6,
-                        3 => 8,
-                        _ => unreachable!(),
-                    };
-                    let room2_hall_index = match x2 {
-                        0 => 2i32,
-                        1 => 4,
-                        2 => 6,
-                        3 => 8,
-                        _ => unreachable!(),
-                    };
-                    (room1_hall_index - room2_hall_index).abs()
-                        + if room1_hall_index != room2_hall_index {
-                            4 - y - y2
-                        } else {
-                            (y - y2).abs()
-                        }
-                }
-            },
-        }) * match amphipod_type {
-            0 | 1 => 1,
-            2 | 3 => 10,
-            4 | 5 => 100,
-            6 | 7 => 1000,
-            _ => unreachable!(),
-        }
+    fn distance_to(&self, other: &Self, amphipod_type: usize, room_depth: usize) -> i32 {
+        let steps = match (self, other) {
+            (Hall(x), Hall(y)) => (*x as i32 - *y as i32).abs(),
+            (Hall(x), Room(x2, y2)) | (Room(x2, y2), Hall(x)) => {
+                let room_col = room_to_index(*x2);
+                (room_col - *x as i32).abs() + 2 - *y2 as i32
+            }
+            (Room(x, y), Room(x2, y2)) => {
+                let room_col = room_to_index(*x);
+                let room2_col = room_to_index(*x2);
+                let (y, y2) = (*y as i32, *y2 as i32);
+                (room_col - room2_col).abs()
+                    + if room_col != room2_col {
+                        4 - y - y2
+                    } else {
+                        (y - y2).abs()
+                    }
+            }
+        };
+        let mult_factor = 10i32.pow(amphipod_type as u32 / 2);
+        steps.checked_mul(mult_factor).unwrap()
     }
 }
 
@@ -168,79 +133,52 @@ impl State {
             && (Room(3, 0) == self.positions[7] || Room(3, 1) == self.positions[7])
     }
     fn is_position_reachable(&self, pos: &Position, amphipod_idx: usize) -> bool {
-        match self.positions[amphipod_idx] {
-            Room(x, y) => match pos {
-                Room(x2, y2) => {
-                    if x == *x2 {
-                        return true;
-                    }
-                    let room1_hall_index = match x {
-                        0 => 2i32,
-                        1 => 4,
-                        2 => 6,
-                        3 => 8,
-                        _ => unreachable!(),
-                    };
-                    let room2_hall_index = match x2 {
-                        0 => 2i32,
-                        1 => 4,
-                        2 => 6,
-                        3 => 8,
-                        _ => unreachable!(),
-                    };
-                    let (a, b) = (
-                        room1_hall_index.min(room2_hall_index) as usize,
-                        room1_hall_index.max(room2_hall_index) as usize,
-                    );
-                    (a..=b).map(Hall).all(|h| !self.positions.contains(&h))
-                        && (y == 1 || !self.positions.contains(&Room(x, 1)))
-                        && (*y2 == 1 || !self.positions.contains(&Room(*x2, 1)))
-                }
-                Hall(x2) => {
-                    let room1_hall_index = match x {
-                        0 => 2i32,
-                        1 => 4,
-                        2 => 6,
-                        3 => 8,
-                        _ => unreachable!(),
-                    };
-                    let (a, b) = (
-                        room1_hall_index.min(*x2 as i32) as usize,
-                        room1_hall_index.max(*x2 as i32) as usize,
-                    );
-                    (if a == *x2 { ((a + 1)..(b + 1)) } else { (a..b) })
+        match (&self.positions[amphipod_idx], pos) {
+            (Hall(x), Hall(y)) => (x.min(y) + 1..*x.max(y))
+                .map(Hall)
+                .all(|h| !self.positions.contains(&h)),
+            (Hall(x), Room(x2, y2)) | (Room(x2, y2), Hall(x)) => {
+                let room_col = room_to_index(*x2) as usize;
+                let (x, x2) = (*x, *x2);
+                let y2 = *y2;
+                let hall_clear = if room_col < x {
+                    (room_col..x)
                         .map(Hall)
                         .all(|h| !self.positions.contains(&h))
-                        && (y == 1 || !self.positions.contains(&Room(x, 1)))
-                }
-            },
-            Hall(x) => match pos {
-                Hall(x2) => {
-                    let (a, b) = (
-                        (x as i32).min(*x2 as i32) as usize + 1,
-                        (x as i32).max(*x2 as i32) as usize,
-                    );
-                    (a..b).map(Hall).all(|h| !self.positions.contains(&h))
-                }
-                Room(x2, y2) => {
-                    let room1_hall_index = match x2 {
-                        0 => 2i32,
-                        1 => 4,
-                        2 => 6,
-                        3 => 8,
-                        _ => unreachable!(),
-                    };
-                    let (a, b) = (
-                        room1_hall_index.min(x as i32) as usize,
-                        room1_hall_index.max(x as i32) as usize,
-                    );
-                    (if a==x{a+1..b+1}else{a..b}).map(Hall).all(|h| !self.positions.contains(&h))
-                        && (*y2 == 1 || !self.positions.contains(&Room(*x2, 1)))
-                }
-            },
+                } else {
+                    (x + 1..=room_col)
+                        .map(Hall)
+                        .all(|h| !self.positions.contains(&h))
+                };
+                // Todo: change when room depth is higher
+                let col_clear = y2 == 1usize || !self.positions.contains(&Room(x2, 1));
+                hall_clear && col_clear
+            }
+            (Room(x, y), Room(x2, y2)) => {
+                let room_col1 = room_to_index(*x) as usize;
+                let room_col2 = room_to_index(*x2) as usize;
+                let (x, x2) = (*x, *x2);
+                let (y, y2) = (*y, *y2);
+                let hall_clear = (room_col1.min(room_col2)..=room_col1.max(room_col2))
+                    .map(Hall)
+                    .all(|h| !self.positions.contains(&h));
+                // Todo: change when room depth is higher
+                let col_clear = if x == x2 {
+                    (y.min(y2) + 1..y.max(y2))
+                        .map(|r| Room(x, r))
+                        .all(|r| !self.positions.contains(&r))
+                } else {
+                    // Todo change to adress depth
+                    let col1_clear = y == 1usize || !self.positions.contains(&Room(x, 1));
+                    let col2_clear = y2 == 1usize || !self.positions.contains(&Room(x2, 1));
+                    col1_clear && col2_clear
+                };
+                hall_clear && col_clear
+            }
         }
     }
     fn get_neighbors(&self) -> Vec<State> {
+        let room_depth = self.positions.len() / 4;
         let mut neighbors = Vec::new();
         for i in 0..self.positions.len() {
             if self.already_moved.contains(&i) {
@@ -264,7 +202,11 @@ impl State {
                         new_positions[i] = Hall(pos);
                         neighbors.push(State {
                             cost: self.cost
-                                + self.positions[i].distance_to(&Hall(pos), amphipod_type),
+                                + self.positions[i].distance_to(
+                                    &Hall(pos),
+                                    amphipod_type,
+                                    room_depth,
+                                ),
                             last_moved: Type::from_position_index(amphipod_type),
                             positions: new_positions,
                             already_moved: self.already_moved.clone(),
@@ -285,8 +227,11 @@ impl State {
                             let amphipod_type = i;
                             neighbors.push(State {
                                 cost: self.cost
-                                    + self.positions[i]
-                                        .distance_to(&Room(amphipod_type_index, j), amphipod_type),
+                                    + self.positions[i].distance_to(
+                                        &Room(amphipod_type_index, j),
+                                        amphipod_type,
+                                        room_depth,
+                                    ),
                                 last_moved: Type::from_position_index(amphipod_type),
                                 positions: new_positions,
                                 already_moved: new_already_moved,
@@ -312,8 +257,11 @@ impl State {
                             let amphipod_type = i;
                             neighbors.push(State {
                                 cost: self.cost
-                                    + self.positions[i]
-                                        .distance_to(&Room(amphipod_type_index, j), amphipod_type),
+                                    + self.positions[i].distance_to(
+                                        &Room(amphipod_type_index, j),
+                                        amphipod_type,
+                                        room_depth,
+                                    ),
                                 last_moved: Type::from_position_index(amphipod_type),
                                 positions: new_positions,
                                 already_moved: new_already_moved,
@@ -387,18 +335,18 @@ mod tests {
 
     #[test]
     fn test_distance() {
-        assert_eq!(Room(0, 0).distance_to(&Room(0, 1), 0), 1);
-        assert_eq!(Room(0, 0).distance_to(&Room(1, 1), 0), 5);
-        assert_eq!(Room(0, 0).distance_to(&Room(1, 1), 2), 50);
-        assert_eq!(Room(0, 0).distance_to(&Room(1, 1), 5), 500);
-        assert_eq!(Room(0, 0).distance_to(&Room(1, 1), 6), 5000);
-        assert_eq!(Room(0, 0).distance_to(&Room(3, 1), 6), 9000);
-        assert_eq!(Hall(2).distance_to(&Room(0, 1), 0), 1);
-        assert_eq!(Hall(2).distance_to(&Room(0, 0), 0), 2);
-        assert_eq!(Room(0, 0).distance_to(&Hall(2), 0), 2);
-        assert_eq!(Hall(3).distance_to(&Hall(0), 0), 3);
-        assert_eq!(Hall(0).distance_to(&Hall(3), 0), 3);
-        assert_eq!(Hall(0).distance_to(&Hall(3), 2), 30);
+        assert_eq!(Room(0, 0).distance_to(&Room(0, 1), 0, 2), 1);
+        assert_eq!(Room(0, 0).distance_to(&Room(1, 1), 0, 2), 5);
+        assert_eq!(Room(0, 0).distance_to(&Room(1, 1), 2, 2), 50);
+        assert_eq!(Room(0, 0).distance_to(&Room(1, 1), 5, 2), 500);
+        assert_eq!(Room(0, 0).distance_to(&Room(1, 1), 6, 2), 5000);
+        assert_eq!(Room(0, 0).distance_to(&Room(3, 1), 6, 2), 9000);
+        assert_eq!(Hall(2).distance_to(&Room(0, 1), 0, 2), 1);
+        assert_eq!(Hall(2).distance_to(&Room(0, 0), 0, 2), 2);
+        assert_eq!(Room(0, 0).distance_to(&Hall(2), 0, 2), 2);
+        assert_eq!(Hall(3).distance_to(&Hall(0), 0, 2), 3);
+        assert_eq!(Hall(0).distance_to(&Hall(3), 0, 2), 3);
+        assert_eq!(Hall(0).distance_to(&Hall(3), 2, 2), 30);
     }
 
     #[test]
