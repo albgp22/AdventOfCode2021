@@ -87,6 +87,7 @@ fn main() -> Result<(), Box<dyn Error>> {
         let mut bench_results = vec![];
 
         for i in 0..=25 {
+            if i == 23 {continue;}
             let p = day_to_problem(i);
             if p.is_some() {
                 println!("Day {}:", i);
