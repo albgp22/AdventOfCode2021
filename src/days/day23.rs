@@ -122,15 +122,14 @@ impl PartialOrd for State {
 }
 
 impl State {
-    fn is_valid_state(&self) -> bool {
-        (Room(0, 0) == self.positions[0] || Room(0, 1) == self.positions[0])
-            && (Room(0, 0) == self.positions[1] || Room(0, 1) == self.positions[1])
-            && (Room(1, 0) == self.positions[2] || Room(1, 1) == self.positions[2])
-            && (Room(1, 0) == self.positions[3] || Room(1, 1) == self.positions[3])
-            && (Room(2, 0) == self.positions[4] || Room(2, 1) == self.positions[4])
-            && (Room(2, 0) == self.positions[5] || Room(2, 1) == self.positions[5])
-            && (Room(3, 0) == self.positions[6] || Room(3, 1) == self.positions[6])
-            && (Room(3, 0) == self.positions[7] || Room(3, 1) == self.positions[7])
+    fn is_valid_state(&self, room_depth: usize) -> bool {
+        self.positions.iter().enumerate().all(|(i, p)| {
+            if let Room(x, _y) = p {
+                *x == i / room_depth
+            } else {
+                false
+            }
+        })
     }
     fn is_position_reachable(&self, pos: &Position, amphipod_idx: usize) -> bool {
         match (&self.positions[amphipod_idx], pos) {
@@ -159,21 +158,20 @@ impl State {
                 let room_col2 = room_to_index(*x2) as usize;
                 let (x, x2) = (*x, *x2);
                 let (y, y2) = (*y, *y2);
-                let hall_clear = (room_col1.min(room_col2)..=room_col1.max(room_col2))
-                    .map(Hall)
-                    .all(|h| !self.positions.contains(&h));
                 // Todo: change when room depth is higher
-                let col_clear = if x == x2 {
+                if x == x2 {
                     (y.min(y2) + 1..y.max(y2))
                         .map(|r| Room(x, r))
                         .all(|r| !self.positions.contains(&r))
                 } else {
+                    let hall_clear = (room_col1.min(room_col2)..=room_col1.max(room_col2))
+                        .map(Hall)
+                        .all(|h| !self.positions.contains(&h));
                     // Todo change to adress depth
                     let col1_clear = y == 1usize || !self.positions.contains(&Room(x, 1));
                     let col2_clear = y2 == 1usize || !self.positions.contains(&Room(x2, 1));
-                    col1_clear && col2_clear
-                };
-                hall_clear && col_clear
+                    col1_clear && col2_clear && hall_clear
+                }
             }
         }
     }
@@ -279,7 +277,7 @@ impl State {
 }
 
 impl DayTwentyThree {
-    fn a_star(start_state: State) -> State {
+    fn a_star(start_state: State, room_depth: usize) -> State {
         let mut pq = BinaryHeap::new();
         let mut visited = HashSet::new();
         pq.push(start_state);
@@ -289,7 +287,7 @@ impl DayTwentyThree {
                 continue;
             }
             visited.insert(current_state.positions.clone());
-            if current_state.is_valid_state() {
+            if current_state.is_valid_state(room_depth) {
                 return current_state;
             }
             for neighbor in current_state.get_neighbors() {
@@ -306,21 +304,24 @@ impl Problem for DayTwentyThree {
     fn part_one(&self, input: &str) -> String {
         format!(
             "{:?}",
-            Self::a_star(State {
-                cost: 0,
-                last_moved: Type::None,
-                positions: vec![
-                    Room(2, 0),
-                    Room(3, 1),
-                    Room(0, 1),
-                    Room(1, 1),
-                    Room(1, 0),
-                    Room(3, 0),
-                    Room(0, 0),
-                    Room(2, 1),
-                ],
-                already_moved: HashSet::new(),
-            })
+            Self::a_star(
+                State {
+                    cost: 0,
+                    last_moved: Type::None,
+                    positions: vec![
+                        Room(2, 0),
+                        Room(3, 1),
+                        Room(0, 1),
+                        Room(1, 1),
+                        Room(1, 0),
+                        Room(3, 0),
+                        Room(0, 0),
+                        Room(2, 1),
+                    ],
+                    already_moved: HashSet::new(),
+                },
+                2
+            )
         )
     }
 
