@@ -17,7 +17,7 @@ impl FromStr for Instruction {
     type Err = ParseInstructionError;
 
     fn from_str(s: &str) -> Result<Self, Self::Err> {
-        let mut parts = s.clone().split(' ');
+        let mut parts = s.split(' ');
         let ins_base = parts.next().ok_or(ParseInstructionError)?;
         let qua_st = parts.next().ok_or(ParseInstructionError)?;
         let qua: i64 = qua_st.parse().unwrap();
