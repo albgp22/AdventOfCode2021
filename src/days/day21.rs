@@ -22,7 +22,7 @@ impl Problem for DayTwentyOne {
         let (mut pos1, mut pos2) = input
             .split('\n')
             .filter(|l| !l.is_empty())
-            .map(|l| l.split(":").nth(1).unwrap().trim().parse::<i128>().unwrap() - 1)
+            .map(|l| l.split(':').nth(1).unwrap().trim().parse::<i128>().unwrap() - 1)
             .collect_tuple()
             .unwrap();
         let (mut score1, mut score2) = (0i128, 0i128);
@@ -43,7 +43,7 @@ impl Problem for DayTwentyOne {
                 }
             }
         }
-        format!("")
+        String::new()
     }
 
     fn part_two(&self, input: &str) -> String {
@@ -51,7 +51,7 @@ impl Problem for DayTwentyOne {
         let ( pos1,  pos2) = input
             .split('\n')
             .filter(|l| !l.is_empty())
-            .map(|l| l.split(":").nth(1).unwrap().trim().parse::<i128>().unwrap()-1)
+            .map(|l| l.split(':').nth(1).unwrap().trim().parse::<i128>().unwrap()-1)
             .collect_tuple()
             .unwrap();
         let (w1, w2) = Self::wins(pos1, 21, pos2, 21, &roll_frequency);
@@ -61,5 +61,5 @@ impl Problem for DayTwentyOne {
 
 #[cfg(test)]
 mod tests {
-    use super::*;
+    
 }

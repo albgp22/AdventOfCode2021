@@ -13,13 +13,11 @@ impl DayThirteen {
         let mut dots = vec![];
         let mut foldings = vec![];
 
-        for line in input.split("\n").filter(|l| !l.is_empty()) {
+        for line in input.split('\n').filter(|l| !l.is_empty()) {
             if line.contains("fold") {
-                let op = line.split(" ").skip(2).next().unwrap();
+                let op = line.split(' ').nth(2).unwrap();
                 let rowcol = op
-                    .split("=")
-                    .skip(1)
-                    .next()
+                    .split('=').nth(1)
                     .unwrap()
                     .parse::<usize>()
                     .unwrap();
@@ -29,7 +27,7 @@ impl DayThirteen {
                     Folding::Y(rowcol)
                 });
             } else {
-                let mut coords = line.split(",");
+                let mut coords = line.split(',');
                 dots.push((
                     coords.next().unwrap().parse().unwrap(),
                     coords.next().unwrap().parse().unwrap(),
@@ -82,7 +80,7 @@ impl Problem for DayThirteen {
     fn part_one(&self, input: &str) -> String {
         let (mut dots, foldings) = Self::read_input(input);
         Self::fold(&mut dots, foldings[0]);
-        format!["{}", dots.iter().count()]
+        format!["{}", dots.len()]
     }
 
     fn part_two(&self, input: &str) -> String {

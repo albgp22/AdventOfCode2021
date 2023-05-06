@@ -48,7 +48,7 @@ impl DayFifteen {
 
         while !q.is_empty() {
             let ((i, j), d) = q.pop_min().unwrap();
-            for (ii, jj) in Self::neighbors(i, j, &m) {
+            for (ii, jj) in Self::neighbors(i, j, m) {
                 let alt = d + (m[ii][jj] as i128);
                 if alt < dists[ii][jj] {
                     dists[ii][jj] = alt;
@@ -87,5 +87,5 @@ impl Problem for DayFifteen {
 
 #[cfg(test)]
 mod tests {
-    use super::*;
+    
 }

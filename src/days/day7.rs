@@ -10,11 +10,11 @@ fn parse_input<T: FromStr>(s: &str) -> Vec<T>
 where
     <T as FromStr>::Err: Debug,
 {
-    let mut lines = s.split("\n").filter(|l| !l.is_empty());
+    let mut lines = s.split('\n').filter(|l| !l.is_empty());
     lines
         .next()
         .unwrap()
-        .split(",")
+        .split(',')
         .filter(|l| !l.is_empty())
         .map(|n_st| n_st.parse::<T>().unwrap())
         .collect_vec()
@@ -77,5 +77,5 @@ impl Problem for DaySeven {
 
 #[cfg(test)]
 mod tests {
-    use super::*;
+    
 }

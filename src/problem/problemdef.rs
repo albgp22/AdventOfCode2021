@@ -60,22 +60,22 @@ impl dyn Problem {
 
         let mean1 = durations1
             .iter()
-            .map(|f| f.as_secs_f64() * (1000 as f64))
+            .map(|f| f.as_secs_f64() * 1000_f64)
             .fold(0f64, |x, y| x + y)
             / (durations1.len() as f64);
         let var1 = durations1
             .iter()
-            .map(|f| f.as_secs_f64() * (1000 as f64))
+            .map(|f| f.as_secs_f64() * 1000_f64)
             .fold(0f64, |x, y| x + (mean1 - y).powi(2))
             / (durations1.len() as f64);
         let mean2 = durations2
             .iter()
-            .map(|f| f.as_secs_f64() * (1000 as f64))
+            .map(|f| f.as_secs_f64() * 1000_f64)
             .fold(0f64, |x, y| x + y)
             / (durations2.len() as f64);
         let var2 = durations2
             .iter()
-            .map(|f| f.as_secs_f64() * (1000 as f64))
+            .map(|f| f.as_secs_f64() * 1000_f64)
             .fold(0f64, |x, y| x + (mean2 - y).powi(2))
             / (durations2.len() as f64);
 

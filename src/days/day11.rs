@@ -7,7 +7,7 @@ pub struct DayEleven {}
 impl DayEleven {
     fn parse(input: &str) -> Vec<Vec<usize>> {
         input
-            .split("\n")
+            .split('\n')
             .filter(|l| !l.is_empty())
             .map(|l| {
                 l.chars()
@@ -19,10 +19,10 @@ impl DayEleven {
 
     fn add(u: usize, i: i32) -> Option<usize> {
         if i.is_negative() {
-            if u < (i.abs() as usize) {
+            if u < (i.unsigned_abs() as usize) {
                 None
             } else {
-                Some(u.checked_sub(i.abs() as usize).unwrap())
+                Some(u.checked_sub(i.unsigned_abs() as usize).unwrap())
             }
         } else {
             Some(u + i as usize)

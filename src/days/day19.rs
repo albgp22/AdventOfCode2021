@@ -1,32 +1,130 @@
-use log::{info,Level};
-use std::{
-    collections::{HashMap, HashSet},
-    str::FromStr,
-};
-
-use itertools::Itertools;
-
 use crate::problem::problemdef::Problem;
+use array_tool::vec::Intersect;
+use itertools::{iproduct, Itertools};
+use num::{traits::Zero, Integer, Signed};
+use std::collections::{HashMap, HashSet};
+use std::hash::Hash;
+use std::ops::{Add, Neg, Sub};
+use std::str::FromStr;
 
-#[derive(Debug, Copy, PartialEq, Eq, Clone, Hash, Default)]
-struct Point {
-    x: i32,
-    y: i32,
-    z: i32,
+const MATCH_INDICATOR: usize = 66usize;
+const MIN_MATCHES: usize = 12usize;
+
+#[derive(Clone, Debug, Eq, PartialEq, Hash)]
+struct Point<T>
+where
+    T: Clone + Signed + Integer + Zero + Neg + Copy + Eq + PartialEq + Hash,
+{
+    x: T,
+    y: T,
+    z: T,
+}
+
+fn abs<T>(x: T) -> T
+where
+    T: Signed + Integer + Zero + Neg + Copy,
+{
+    if x < T::zero() {
+        -x
+    } else {
+        x
+    }
+}
+
+impl<T> Add for Point<T>
+where
+    T: Clone + Signed + Integer + Zero + Neg + Copy + Eq + PartialEq + Sub + Hash,
+{
+    type Output = Self;
+
+    fn add(self, other: Self) -> Self::Output {
+        Self {
+            x: self.x + other.x,
+            y: self.y + other.y,
+            z: self.z + other.z,
+        }
+    }
+}
+
+impl<T> Sub for Point<T>
+where
+    T: Clone + Signed + Integer + Zero + Neg + Copy + Eq + PartialEq + Sub + Hash,
+{
+    type Output = Self;
+
+    fn sub(self, other: Self) -> Self::Output {
+        Self {
+            x: self.x - other.x,
+            y: self.y - other.y,
+            z: self.z - other.z,
+        }
+    }
+}
+
+impl<T> Point<T>
+where
+    T: Signed + Integer + Zero + Neg + Copy + Add + Clone + Hash,
+{
+    fn distance(&self, other: &Self) -> T {
+        abs(self.x - other.x) + abs(self.y - other.y) + abs(self.z - other.z)
+    }
+    fn rotate(&self, rot_idx: usize) -> Self {
+        let (x, y, z) = (self.x, self.y, self.z);
+        let (newx, newy, newz) = match rot_idx {
+            0 => [x, y, z],
+            1 => [x, z, -y],
+            2 => [x, -y, -z],
+            3 => [x, -z, y],
+            4 => [y, x, -z],
+            5 => [y, z, x],
+            6 => [y, -x, z],
+            7 => [y, -z, -x],
+            8 => [z, x, y],
+            9 => [z, y, -x],
+            10 => [z, -x, -y],
+            11 => [z, -y, x],
+            12 => [-x, y, -z],
+            13 => [-x, z, y],
+            14 => [-x, -y, z],
+            15 => [-x, -z, -y],
+            16 => [-y, x, z],
+            17 => [-y, z, -x],
+            18 => [-y, -x, -z],
+            19 => [-y, -z, x],
+            20 => [-z, x, -y],
+            21 => [-z, y, x],
+            22 => [-z, -x, y],
+            23 => [-z, -y, -x],
+            _ => unreachable!(),
+        }
+        .iter()
+        .cloned()
+        .collect_tuple()
+        .unwrap();
+
+        Point {
+            x: newx,
+            y: newy,
+            z: newz,
+        }
+    }
 }
 
 #[derive(Debug, PartialEq, Eq)]
 struct ParsePointError;
 
-impl FromStr for Point {
+impl<T> FromStr for Point<T>
+where
+    T: Signed + Integer + Zero + Neg + Copy + FromStr + Hash,
+{
     type Err = ParsePointError;
 
     fn from_str(s: &str) -> Result<Self, Self::Err> {
-        let (x, y, z) = s.split(',').tuples().next().ok_or(ParsePointError)?;
+        let (x, y, z) = s.split(',').collect_tuple().ok_or(ParsePointError)?;
 
-        let x_fromstr = x.parse::<i32>().map_err(|_| ParsePointError)?;
-        let y_fromstr = y.parse::<i32>().map_err(|_| ParsePointError)?;
-        let z_fromstr = z.parse::<i32>().map_err(|_| ParsePointError)?;
+        let x_fromstr = x.parse::<T>().map_err(|_| ParsePointError)?;
+        let y_fromstr = y.parse::<T>().map_err(|_| ParsePointError)?;
+        let z_fromstr = z.parse::<T>().map_err(|_| ParsePointError)?;
 
         Ok(Point {
             x: x_fromstr,
@@ -36,448 +134,251 @@ impl FromStr for Point {
     }
 }
 
-type Offset = Point;
-
-#[derive(Debug, Copy, PartialEq, Eq, Clone, Hash, Default)]
-enum Facing {
-    #[default]
-    Forward,
-    Backward,
-}
-use Facing::*;
-
-#[derive(Debug, Copy, PartialEq, Eq, Clone, Hash, Default)]
-struct Orientation {
-    rotx: i8,
-    roty: i8,
-    rotz: i8,
-    facx: Facing,
-    facy: Facing,
-    facz: Facing,
-}
-
-#[allow(dead_code)]
-fn get_all_orientations() -> Vec<Orientation> {
-    let mut v = vec![];
-    for rotx in 0..4 {
-        for facx in vec![Backward, Forward] {
-            v.push(Orientation {
-                rotx: rotx,
-                roty: 0,
-                rotz: 0,
-                facx: facx,
-                facy: Forward,
-                facz: Forward,
-            })
-        }
-    }
-    for roty in 0..4 {
-        for facy in vec![Backward, Forward] {
-            v.push(Orientation {
-                rotx: 0,
-                roty: roty,
-                rotz: 0,
-                facx: Forward,
-                facy: facy,
-                facz: Forward,
-            })
-        }
-    }
-    for rotz in 0..4 {
-        for facz in vec![Backward, Forward] {
-            v.push(Orientation {
-                rotx: 0,
-                roty: 0,
-                rotz: rotz,
-                facx: Forward,
-                facy: Forward,
-                facz: facz,
-            })
-        }
-    }
-    assert_eq!(v.len(), 24);
-    v
-}
-
-static ALL_ORIENTATIONS: &'static [Orientation] = &[
-    Orientation {
-        rotx: 0,
-        roty: 0,
-        rotz: 0,
-        facx: Backward,
-        facy: Forward,
-        facz: Forward,
-    },
-    Orientation {
-        rotx: 0,
-        roty: 0,
-        rotz: 0,
-        facx: Forward,
-        facy: Forward,
-        facz: Forward,
-    },
-    Orientation {
-        rotx: 1,
-        roty: 0,
-        rotz: 0,
-        facx: Backward,
-        facy: Forward,
-        facz: Forward,
-    },
-    Orientation {
-        rotx: 1,
-        roty: 0,
-        rotz: 0,
-        facx: Forward,
-        facy: Forward,
-        facz: Forward,
-    },
-    Orientation {
-        rotx: 2,
-        roty: 0,
-        rotz: 0,
-        facx: Backward,
-        facy: Forward,
-        facz: Forward,
-    },
-    Orientation {
-        rotx: 2,
-        roty: 0,
-        rotz: 0,
-        facx: Forward,
-        facy: Forward,
-        facz: Forward,
-    },
-    Orientation {
-        rotx: 3,
-        roty: 0,
-        rotz: 0,
-        facx: Backward,
-        facy: Forward,
-        facz: Forward,
-    },
-    Orientation {
-        rotx: 3,
-        roty: 0,
-        rotz: 0,
-        facx: Forward,
-        facy: Forward,
-        facz: Forward,
-    },
-    Orientation {
-        rotx: 0,
-        roty: 0,
-        rotz: 0,
-        facx: Forward,
-        facy: Backward,
-        facz: Forward,
-    },
-    Orientation {
-        rotx: 0,
-        roty: 0,
-        rotz: 0,
-        facx: Forward,
-        facy: Forward,
-        facz: Forward,
-    },
-    Orientation {
-        rotx: 0,
-        roty: 1,
-        rotz: 0,
-        facx: Forward,
-        facy: Backward,
-        facz: Forward,
-    },
-    Orientation {
-        rotx: 0,
-        roty: 1,
-        rotz: 0,
-        facx: Forward,
-        facy: Forward,
-        facz: Forward,
-    },
-    Orientation {
-        rotx: 0,
-        roty: 2,
-        rotz: 0,
-        facx: Forward,
-        facy: Backward,
-        facz: Forward,
-    },
-    Orientation {
-        rotx: 0,
-        roty: 2,
-        rotz: 0,
-        facx: Forward,
-        facy: Forward,
-        facz: Forward,
-    },
-    Orientation {
-        rotx: 0,
-        roty: 3,
-        rotz: 0,
-        facx: Forward,
-        facy: Backward,
-        facz: Forward,
-    },
-    Orientation {
-        rotx: 0,
-        roty: 3,
-        rotz: 0,
-        facx: Forward,
-        facy: Forward,
-        facz: Forward,
-    },
-    Orientation {
-        rotx: 0,
-        roty: 0,
-        rotz: 0,
-        facx: Forward,
-        facy: Forward,
-        facz: Backward,
-    },
-    Orientation {
-        rotx: 0,
-        roty: 0,
-        rotz: 0,
-        facx: Forward,
-        facy: Forward,
-        facz: Forward,
-    },
-    Orientation {
-        rotx: 0,
-        roty: 0,
-        rotz: 1,
-        facx: Forward,
-        facy: Forward,
-        facz: Backward,
-    },
-    Orientation {
-        rotx: 0,
-        roty: 0,
-        rotz: 1,
-        facx: Forward,
-        facy: Forward,
-        facz: Forward,
-    },
-    Orientation {
-        rotx: 0,
-        roty: 0,
-        rotz: 2,
-        facx: Forward,
-        facy: Forward,
-        facz: Backward,
-    },
-    Orientation {
-        rotx: 0,
-        roty: 0,
-        rotz: 2,
-        facx: Forward,
-        facy: Forward,
-        facz: Forward,
-    },
-    Orientation {
-        rotx: 0,
-        roty: 0,
-        rotz: 3,
-        facx: Forward,
-        facy: Forward,
-        facz: Backward,
-    },
-    Orientation {
-        rotx: 0,
-        roty: 0,
-        rotz: 3,
-        facx: Forward,
-        facy: Forward,
-        facz: Forward,
-    },
-];
-
-#[derive(Debug, PartialEq, Eq, Clone)]
-struct Scan {
-    dots: Vec<Point>,
-    distances: HashMap<(usize, usize), i32>,
-}
-
-impl Scan {
-    fn get_all_distances(&self) -> Vec<i32> {
-        self.distances.values().map(|i| *i).collect_vec()
-    }
-    fn overlaps_distances(&self, other: &Self) -> bool {
-        let distances_a = self.get_all_distances();
-        let distances_b = other.get_all_distances();
-        let elements_a: HashSet<i32> = HashSet::from_iter(distances_a.iter().cloned());
-        let count = |v: &Vec<i32>, e: i32| v.iter().filter(|&n| *n == e).count();
-
-        let mut matches = 0;
-        for e in elements_a {
-            matches += count(&distances_a, e).min(count(&distances_b, e));
-        }
-
-        matches >= 66
-    }
-    fn rotate(&self, o: &Orientation) -> Scan {
-        let my_cos = |k| match k {
-            0 => 1,
-            1 => 0,
-            2 => -1,
-            3 => 0,
-            _ => unreachable!(),
-        };
-        let my_sin = |k| match k {
-            0 => 0,
-            1 => 1,
-            2 => 0,
-            3 => -1,
-            _ => unreachable!(),
-        };
-
-        let rotate_x = |p: &Point, k| Point {
-            x: p.x,
-            y: p.y * my_cos(k) - p.z * my_sin(k),
-            z: p.y * my_sin(k) + p.z * my_cos(k),
-        };
-        let rotate_y = |p: Point, k| Point {
-            x: p.x * my_cos(k) + p.z * my_sin(k),
-            y: p.y,
-            z: p.z * my_cos(k) - p.x * my_sin(k),
-        };
-        let rotate_z = |p: Point, k| Point {
-            x: p.x * my_cos(k) - p.y * my_sin(k),
-            y: p.x * my_sin(k) + p.y * my_cos(k),
-            z: p.z,
-        };
-
-        let mut new_points = self
-            .dots
-            .iter()
-            .map(|p| rotate_x(p, o.rotx))
-            .map(|p| rotate_y(p, o.roty))
-            .map(|p| rotate_z(p, o.rotz))
-            .collect_vec();
-
-        for p in new_points.iter_mut() {
-            p.x = p.x * if o.facx == Forward { 1 } else { -1 };
-            p.y = p.y * if o.facy == Forward { 1 } else { -1 };
-            p.z = p.z * if o.facz == Forward { 1 } else { -1 };
-        }
-
-        Scan {
-            dots: new_points,
-            distances: self.distances.clone(),
-        }
-    }
-}
-
 pub struct DayNineteen {}
 
 impl DayNineteen {
-    fn read_input(input: &str) -> Vec<Scan> {
-        let mut v_curr = vec![];
-        let mut r = vec![];
-        let mut it = input.split('\n').filter(|l| !l.is_empty()).peekable();
-        while let Some(line) = it.next() {
+    fn calculate_distances<T>(
+        pts: impl IntoIterator<Item = Point<T>, IntoIter = ::std::vec::IntoIter<Point<T>>>,
+    ) -> Vec<T>
+    where
+        T: Signed + Integer + Zero + Neg + Copy + Add + Hash,
+    {
+        let pts = pts.into_iter().collect::<Vec<_>>();
+        iproduct!(&pts, &pts)
+            .filter(|(p1, p2)| p1 != p2)
+            .map(|(p1, p2)| p1.distance(p2))
+            .collect()
+    }
+
+    fn matches<T>(
+        distances1: impl IntoIterator<Item = T, IntoIter = ::std::vec::IntoIter<T>>,
+        distances2: impl IntoIterator<Item = T, IntoIter = ::std::vec::IntoIter<T>>,
+    ) -> bool
+    where
+        T: Eq + PartialEq + Clone,
+    {
+        distances1
+            .into_iter()
+            .collect_vec()
+            .intersect(distances2.into_iter().collect_vec())
+            .len()
+            >= MATCH_INDICATOR
+    }
+
+    fn find_rotation<T>(sensor1: &[Point<T>], sensor2: &[Point<T>]) -> Option<(Point<T>, usize)>
+    where
+        T: Signed + Integer + Zero + Neg + Copy + Add + Clone + Eq + PartialEq + Hash,
+    {
+        for rot_idx in 0..24 {
+            let rotated_sensor2 = sensor2
+                .iter()
+                .map(|p| p.rotate(rot_idx))
+                .collect::<Vec<_>>();
+
+            let mut m: HashMap<Point<T>, usize> = HashMap::new();
+            for d in iproduct!(sensor1.iter().cloned(), rotated_sensor2.iter())
+                .map(|(p1, p2)| p1 - p2.clone())
+            {
+                *m.entry(d).or_default() += 1;
+            }
+            let (most_frequent_distance, num_ocurrences) =
+                m.into_iter().max_by_key(|(_, v)| *v).unwrap();
+            if num_ocurrences >= MIN_MATCHES {
+                return Some((most_frequent_distance, rot_idx));
+            }
+        }
+        None
+    }
+
+    fn read_input<T>(input: &str) -> Vec<Vec<Point<T>>>
+    where
+        T: Signed + Integer + Zero + Neg + Copy + FromStr + Hash,
+    {
+        let lines = input.lines().filter(|l| !l.is_empty()).map(|l| l.trim());
+        let mut sensors = Vec::new();
+        let mut current_sensor = Vec::new();
+        for line in lines {
             if line.contains("---") {
-                if v_curr.is_empty() {
+                if current_sensor.is_empty() {
                     continue;
                 }
-                let distances = Self::compute_manhattan_distances(&v_curr);
-                r.push(Scan {
-                    dots: v_curr,
-                    distances: distances,
-                });
-                v_curr = vec![];
-            } else if it.peek().is_none() {
-                v_curr.push(Point::from_str(line).unwrap());
-                let distances = Self::compute_manhattan_distances(&v_curr);
-                r.push(Scan {
-                    dots: v_curr,
-                    distances: distances,
-                });
-                v_curr = vec![];
+                sensors.push(current_sensor);
+                current_sensor = Vec::new();
             } else {
-                v_curr.push(Point::from_str(line).unwrap());
+                let point = Point::<T>::from_str(line).unwrap();
+                current_sensor.push(point);
             }
         }
-        r
+        sensors
     }
-    fn compute_manhattan_distances(ps: &Vec<Point>) -> HashMap<(usize, usize), i32> {
-        // If 12 points match then at least 12*11/2=66 distances would be the same
-        let mut r = HashMap::new();
-        for (i, p1) in ps.iter().enumerate() {
-            for (j, p2) in ps.iter().skip(i).enumerate() {
-                r.insert(
-                    (i, j),
-                    (p1.x - p2.x).abs() + (p1.y - p2.y).abs() + (p1.z - p2.z).abs(),
-                );
-            }
+
+    fn dfs(
+        links: &[(usize, usize)],
+        visited: &mut HashSet<usize>,
+        currpath: &mut Vec<usize>,
+        current: usize,
+        destination: usize,
+    ) -> Option<Vec<usize>> {
+        if current == destination {
+            return Some(currpath.clone());
         }
-        r
-    }
-    fn overlapp(_idx1: usize, _idx2: usize, s0: &Scan, s1: &Scan) -> Option<(Orientation, Offset)> {
-        if s0.overlaps_distances(s1) {
-            info!("Overlapp detected between sensors {} and {}", _idx1, _idx2);
-            for orientation in ALL_ORIENTATIONS {
-                let s1_oriented = s1.rotate(&orientation);
-                let mut distances = HashMap::new();
-                let compute_distance = |p1: &Point, p2: &Point| {
-                    (p1.x - p2.x).abs() + (p1.y - p2.y).abs() + (p1.z - p2.z).abs()
-                };
-                for p1 in &s0.dots {
-                    for p2 in &s1_oriented.dots {
-                        let distance = compute_distance(&p1, &p2);
-                        *distances.entry(distance).or_insert(0) += 1;
-                    }
-                }
-                if distances.values().any(|&x| x >= 12) {
-                    info!(
-                        "Orientation found between sensors {} and {}: {:?}",
-                        _idx1, _idx2, orientation
-                    );
-                    return Some((orientation.clone(), Offset::default()));
-                }
-                //println!("{:?}", distances);
+        visited.insert(current);
+        for (i, j) in links
+            .iter()
+            .cloned()
+            .filter(|(i, j)| *i == current || *j == current)
+        {
+            // i is the current node, j is the next node
+            let (_i, j) = if i == current { (i, j) } else { (j, i) };
+            if visited.contains(&j) {
+                continue;
             }
-            //println!("overlapp detected between {} and {}!",idx1,idx2);
+            currpath.push(j);
+            if let Some(result) = Self::dfs(links, visited, currpath, j, destination) {
+                return Some(result);
+            }
+            currpath.pop();
         }
-        Some((Orientation::default(), Offset { x: 0, y: 0, z: 0 }))
+        None
     }
-    fn reconstruct(
-        scans: &Vec<Scan>,
-        orientations: &HashMap<(usize, usize), (Orientation, Offset)>,
-    ) -> HashSet<Point> {
-        HashSet::new()
+
+    fn find_path(links: &[(usize, usize)], i: usize, j: usize) -> Vec<usize> {
+        Self::dfs(links, &mut HashSet::new(), &mut vec![0], i, j).unwrap()
     }
 }
 
 impl Problem for DayNineteen {
     fn part_one(&self, input: &str) -> String {
-        let scans = Self::read_input(input);
-        let n_sensors = scans.len();
-        let mut overlaps = HashMap::new();
-        for i in 0..n_sensors {
-            for j in i + 1..n_sensors {
-                /* Idea:
-                you dont't really need to run this particular pair if there's already a path i--j
-                 */
-                let r = Self::overlapp(i, j, &scans[i], &scans[j]);
-                if r.is_some() {
-                    overlaps.insert((i, j), r.unwrap());
+        let sensors = Self::read_input::<i32>(input);
+        assert_eq!(sensors.len(), 33);
+        let mut rotation_offset = HashMap::new();
+        let mut links = vec![];
+        for i in 0..sensors.len() {
+            for j in 0..sensors.len() {
+                if i == j {
+                    continue;
+                }
+                let distances1 = Self::calculate_distances(sensors[i].clone());
+                let distances2 = Self::calculate_distances(sensors[j].clone());
+                if Self::matches(distances1, distances2) {
+                    let (offset, rotation) = Self::find_rotation(&sensors[i], &sensors[j]).unwrap();
+                    rotation_offset.insert((i, j), (rotation, offset.clone()));
+                    links.push((i, j));
+                    assert!(
+                        sensors[j]
+                            .iter()
+                            .map(|p| p.rotate(rotation) + offset.clone())
+                            .collect::<Vec<_>>()
+                            .intersect(sensors[i].to_vec())
+                            .len()
+                            >= MIN_MATCHES
+                    );
                 }
             }
         }
-        let reconstructed_map = Self::reconstruct(&scans, &overlaps);
+        let mut result = HashSet::new();
+        sensors[0].iter().for_each(|p| {
+            result.insert(p.clone());
+        });
+        for i in 1..sensors.len() {
+            let path = Self::find_path(&links, 0, i);
+            let mut new_sensors = sensors[i].clone();
+            for (ii, jj) in path.iter().rev().tuple_windows() {
+                //
+                let (rotation, offset) = rotation_offset.get(&(*jj, *ii)).unwrap();
+                new_sensors = new_sensors
+                    .iter()
+                    .map(|p| p.rotate(*rotation) + offset.clone())
+                    .collect::<Vec<_>>();
+            }
+            new_sensors.iter().for_each(|p| {
+                result.insert(p.clone());
+            });
+        }
 
-        format!("{}", reconstructed_map.len())
+        format!("{}", result.len())
     }
-
     fn part_two(&self, input: &str) -> String {
-        format!("")
+        let sensors = Self::read_input::<i32>(input);
+        assert_eq!(sensors.len(), 33);
+        let mut rotation_offset = HashMap::new();
+        let mut links = vec![];
+        for i in 0..sensors.len() {
+            for j in 0..sensors.len() {
+                if i == j {
+                    continue;
+                }
+                let distances1 = Self::calculate_distances(sensors[i].clone());
+                let distances2 = Self::calculate_distances(sensors[j].clone());
+                if Self::matches(distances1, distances2) {
+                    let (offset, rotation) = Self::find_rotation(&sensors[i], &sensors[j]).unwrap();
+                    rotation_offset.insert((i, j), (rotation, offset.clone()));
+                    links.push((i, j));
+                    assert!(
+                        sensors[j]
+                            .iter()
+                            .map(|p| p.rotate(rotation) + offset.clone())
+                            .collect::<Vec<_>>()
+                            .intersect(sensors[i].to_vec())
+                            .len()
+                            >= MIN_MATCHES
+                    );
+                }
+            }
+        }
+        let mut ssensors = vec![];
+        for i in 1..sensors.len() {
+            let path = Self::find_path(&links, 0, i);
+            let mut new_sensors = vec![Point { x: 0, y: 0, z: 0 }];
+            for (ii, jj) in path.iter().rev().tuple_windows() {
+                //
+                let (rotation, offset) = rotation_offset.get(&(*jj, *ii)).unwrap();
+                new_sensors = new_sensors
+                    .iter()
+                    .map(|p| p.rotate(*rotation) + offset.clone())
+                    .collect::<Vec<_>>();
+            }
+            ssensors.push(new_sensors[0].clone());
+        }
+        ssensors.push(Point { x: 0, y: 0, z: 0 });
+        ssensors
+            .iter()
+            .flat_map(|s1| ssensors.iter().map(|s2| s1.distance(s2)).collect_vec())
+            .max()
+            .unwrap()
+            .to_string()
     }
 }
 
 #[cfg(test)]
 mod tests {
     use super::*;
+
+    #[test]
+    fn test_distance() {
+        let a = Point { x: 0, y: 0, z: 1 };
+        let b = Point { x: 1, y: 1, z: 3 };
+        assert_eq!(a.distance(&b), 4);
+    }
+
+    #[test]
+    fn test_matches() {
+        assert!(true)
+    }
+
+    #[test]
+    fn test_from_str_point_i32() {
+        assert_eq!(
+            Point::<i32>::from_str("-3,2,4").unwrap(),
+            Point { x: -3, y: 2, z: 4 }
+        );
+        assert_eq!(
+            Point::<i128>::from_str("3,2,4").unwrap(),
+            Point {
+                x: 3_i128,
+                y: 2_i128,
+                z: 4_i128
+            }
+        );
+    }
 }

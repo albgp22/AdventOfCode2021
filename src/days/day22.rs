@@ -98,8 +98,8 @@ impl DayTwentyTwo {
                 coords.push(Interval { start: x, end: y });
             }
             ret.push(Cube {
-                at: at,
-                coords: coords,
+                at,
+                coords,
             });
         }
         ret
@@ -156,5 +156,5 @@ impl Problem for DayTwentyTwo {
 
 #[cfg(test)]
 mod tests {
-    use super::*;
+    
 }

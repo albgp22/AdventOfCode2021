@@ -1,4 +1,4 @@
-use std::{collections::HashMap, fmt::format};
+use std::{collections::HashMap};
 
 use crate::problem::problemdef::Problem;
 
@@ -16,9 +16,7 @@ impl DayTwentyFive {
         let dims = (
             input.lines().filter(|l| !l.is_empty()).count(),
             input
-                .lines()
-                .filter(|l| !l.is_empty())
-                .next()
+                .lines().find(|l| !l.is_empty())
                 .unwrap()
                 .len(),
         );
@@ -101,11 +99,11 @@ impl Problem for DayTwentyFive {
     }
 
     fn part_two(&self, _input: &str) -> String {
-        format!("")
+        String::new()
     }
 }
 
 #[cfg(test)]
 mod tests {
-    use super::*;
+    
 }

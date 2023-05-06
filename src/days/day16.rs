@@ -58,7 +58,7 @@ impl DaySixteen {
         hex.chars().map(Self::to_binary).collect()
     }
     fn is_literal_value(i: &Chars) -> bool {
-        i.as_str().to_string()[3..6] == "100".to_string()
+        i.as_str().to_string()[3..6] == *"100"
     }
     fn get_version(i: &Chars) -> i32 {
         let i = i.clone();
@@ -139,7 +139,7 @@ impl DaySixteen {
             }
         }
         OperatorData {
-            sub_operators: sub_operators,
+            sub_operators,
             operation: op,
             version: v,
             length: total_length,
@@ -177,7 +177,7 @@ impl DaySixteen {
                 3 => o
                     .sub_operators
                     .iter()
-                    .map(|od| Self::evaluate_operator(od))
+                    .map(Self::evaluate_operator)
                     .max()
                     .unwrap(),
                 5 => {

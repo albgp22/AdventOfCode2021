@@ -59,11 +59,11 @@ impl FromStr for BingoBoard {
     fn from_str(s: &str) -> Result<Self, Self::Err> {
         let mut v = vec![vec![0; 5]; 5];
 
-        s.split("\n")
+        s.split('\n')
             .filter(|l| !l.is_empty())
             .enumerate()
             .for_each(|(i, l)| {
-                l.split(" ")
+                l.split(' ')
                     .filter(|st| !st.is_empty())
                     .enumerate()
                     .for_each(|(j, c)| {
@@ -82,7 +82,7 @@ impl Problem for DayFour {
         let numbers = input_parts
             .next()
             .unwrap()
-            .split(",")
+            .split(',')
             .map(|i_st| i_st.parse::<usize>().unwrap());
 
         let mut boards: Vec<BingoBoard> = input_parts
@@ -100,7 +100,7 @@ impl Problem for DayFour {
             }
         }
 
-        format!("Fail")
+        "Fail".to_string()
     }
 
     fn part_two(&self, input: &str) -> String {
@@ -109,7 +109,7 @@ impl Problem for DayFour {
         let numbers = input_parts
             .next()
             .unwrap()
-            .split(",")
+            .split(',')
             .map(|i_st| i_st.parse::<usize>().unwrap());
 
         let mut boards: Vec<BingoBoard> = input_parts
@@ -145,11 +145,11 @@ impl Problem for DayFour {
             }
         }
 
-        format!("")
+        String::new()
     }
 }
 
 #[cfg(test)]
 mod tests {
-    use super::*;
+    
 }

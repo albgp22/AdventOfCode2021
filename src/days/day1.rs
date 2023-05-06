@@ -6,8 +6,7 @@ pub struct DayOne {}
 impl Problem for DayOne {
     fn part_one(&self, input: &str) -> String {
         input
-            .split("\n")
-            .into_iter()
+            .split('\n')
             .filter(|s| !s.is_empty())
             .map(|i| i.parse::<i32>().unwrap())
             .tuple_windows()
@@ -18,8 +17,7 @@ impl Problem for DayOne {
 
     fn part_two(&self, input: &str) -> String {
         input
-            .split("\n")
-            .into_iter()
+            .split('\n')
             .filter(|s| !s.is_empty())
             .map(|i| i.parse::<i32>().unwrap())
             .tuple_windows::<(_, _, _)>()
@@ -33,5 +31,5 @@ impl Problem for DayOne {
 
 #[cfg(test)]
 mod tests {
-    use super::*;
+    
 }
