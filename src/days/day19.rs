@@ -229,7 +229,7 @@ impl DayNineteen {
             .filter(|(i, j)| *i == current || *j == current)
         {
             // i is the current node, j is the next node
-            let (i, j) = if i == current { (i, j) } else { (j, i) };
+            let (_i, j) = if i == current { (i, j) } else { (j, i) };
             if visited.contains(&j) {
                 continue;
             }
@@ -255,7 +255,7 @@ impl Problem for DayNineteen {
         let mut links = vec![];
         for i in 0..sensors.len() {
             for j in 0..sensors.len() {
-                if (i == j) {
+                if i == j {
                     continue;
                 }
                 let distances1 = Self::calculate_distances(sensors[i].clone());
@@ -305,7 +305,7 @@ impl Problem for DayNineteen {
         let mut links = vec![];
         for i in 0..sensors.len() {
             for j in 0..sensors.len() {
-                if (i == j) {
+                if i == j {
                     continue;
                 }
                 let distances1 = Self::calculate_distances(sensors[i].clone());
