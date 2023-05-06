@@ -24,12 +24,10 @@ where
     for i in 0..occ.len() {
         occ[i] = if occ[i] < 0 {
             -1
+        } else if occ[i] == 0 {
+            0
         } else {
-            if occ[i] == 0 {
-                0
-            } else {
-                1
-            }
+            1
         };
     }
 
@@ -39,7 +37,7 @@ where
 fn get_rating(input: impl AsRef<str>, binlen: usize, o2: bool) -> i32 {
     let mut numbers = input
         .as_ref()
-        .split("\n")
+        .split('\n')
         .filter(|&s| !s.is_empty())
         .collect_vec();
     let mut i = 0;
@@ -60,12 +58,10 @@ fn get_rating(input: impl AsRef<str>, binlen: usize, o2: bool) -> i32 {
                     } else {
                         0
                     }
+                } else if mcb[i] != -1 {
+                    0
                 } else {
-                    if mcb[i] != -1 {
-                        0
-                    } else {
-                        1
-                    }
+                    1
                 }
         });
         i += 1;
@@ -89,11 +85,9 @@ impl Problem for DayThree {
         let mut eps = 0;
         let mcb = get_most_common_bits(
             input
-                .split("\n")
-                .into_iter()
-                .filter(|s| !s.is_empty())
-                .into_iter(),
-            input.split("\n").next().unwrap().len(),
+                .split('\n')
+                .filter(|s| !s.is_empty()),
+            input.split('\n').next().unwrap().len(),
         );
 
         mcb.iter().rev().enumerate().for_each(|(i, q)| {
@@ -108,7 +102,7 @@ impl Problem for DayThree {
     }
 
     fn part_two(&self, input: &str) -> String {
-        let binlen = input.split("\n").next().unwrap().len();
+        let binlen = input.split('\n').next().unwrap().len();
 
         let oxigen = get_rating(input, binlen, true);
         let co2 = get_rating(input, binlen, false);
@@ -119,5 +113,5 @@ impl Problem for DayThree {
 
 #[cfg(test)]
 mod tests {
-    use super::*;
+    
 }

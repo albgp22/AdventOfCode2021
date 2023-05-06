@@ -97,7 +97,7 @@ fn main() -> Result<(), Box<dyn Error>> {
                     Ok(None) => {}
                     Err(e) => return Err(e),
                 }
-                println!("");
+                println!();
             }
         }
         if args.benchmark {

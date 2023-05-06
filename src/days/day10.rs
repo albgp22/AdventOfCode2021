@@ -68,7 +68,7 @@ impl DayTen {
 impl Problem for DayTen {
     fn part_one(&self, input: &str) -> String {
         let mut total_score = 0i32;
-        input.split("\n").filter(|l| !l.is_empty()).for_each(|l| {
+        input.split('\n').filter(|l| !l.is_empty()).for_each(|l| {
             if let Some(corr) = Self::corrupted(l) {
                 total_score = total_score.checked_add(Self::get_score(corr)).unwrap();
             }
@@ -78,7 +78,7 @@ impl Problem for DayTen {
 
     fn part_two(&self, input: &str) -> String {
         let mut score_vec = input
-            .split("\n")
+            .split('\n')
             .filter(|l| !l.is_empty())
             .filter(|l| Self::corrupted(l).is_none())
             .map(|l| {
@@ -95,5 +95,5 @@ impl Problem for DayTen {
 
 #[cfg(test)]
 mod tests {
-    use super::*;
+    
 }

@@ -269,7 +269,7 @@ impl Problem for DayNineteen {
                             .iter()
                             .map(|p| p.rotate(rotation) + offset.clone())
                             .collect::<Vec<_>>()
-                            .intersect(sensors[i].iter().cloned().collect::<Vec<_>>())
+                            .intersect(sensors[i].to_vec())
                             .len()
                             >= MIN_MATCHES
                     );

@@ -7,19 +7,19 @@ pub struct DayEight {}
 
 fn parse_input(s: &str) -> Vec<(Vec<&str>, Vec<&str>)> {
     let mut ret = vec![];
-    let lines = s.split("\n").filter(|l| !l.is_empty());
+    let lines = s.split('\n').filter(|l| !l.is_empty());
     lines.for_each(|l| {
-        let mut lineparts = l.split("|");
+        let mut lineparts = l.split('|');
         let part1v = lineparts
             .next()
             .unwrap()
-            .split(" ")
+            .split(' ')
             .filter(|n| !n.is_empty())
             .collect();
         let part2v = lineparts
             .next()
             .unwrap()
-            .split(" ")
+            .split(' ')
             .filter(|n| !n.is_empty())
             .collect();
         ret.push((part1v, part2v));
@@ -136,8 +136,7 @@ impl Problem for DayEight {
             "{}",
             digits
                 .iter()
-                .map(|(_v1, v2)| v2)
-                .flatten()
+                .flat_map(|(_v1, v2)| v2)
                 .map(|s| s.len())
                 .filter(|n| particular_digits.contains(n))
                 .count()
@@ -167,5 +166,5 @@ impl Problem for DayEight {
 
 #[cfg(test)]
 mod tests {
-    use super::*;
+    
 }

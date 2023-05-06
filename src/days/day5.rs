@@ -29,15 +29,13 @@ impl Line<i32> {
             if c > a { a..c + 1 } else { c..a + 1 }
                 .map(|x| (x, b))
                 .collect()
+        } else if !consider_diagonals {
+            vec![]
         } else {
-            if !consider_diagonals {
-                vec![]
-            } else {
-                assert!((a - c).abs() == (b - d).abs());
-                (0..(a - c).abs() + 1)
-                    .map(|delta| (a + delta * (c - a).signum(), b + (d - b).signum() * delta))
-                    .collect()
-            }
+            assert!((a - c).abs() == (b - d).abs());
+            (0..(a - c).abs() + 1)
+                .map(|delta| (a + delta * (c - a).signum(), b + (d - b).signum() * delta))
+                .collect()
         }
     }
 }
@@ -54,13 +52,13 @@ impl FromStr for Line<i32> {
             origin: parts
                 .next()
                 .unwrap()
-                .split(",")
+                .split(',')
                 .map(|n_st| n_st.parse().unwrap())
                 .collect(),
             destination: parts
                 .next()
                 .unwrap()
-                .split(",")
+                .split(',')
                 .map(|n_st| n_st.parse().unwrap())
                 .collect(),
         })
@@ -70,7 +68,7 @@ impl FromStr for Line<i32> {
 impl Problem for DayFive {
     fn part_one(&self, input: &str) -> String {
         let lines = input
-            .split("\n")
+            .split('\n')
             .filter(|l| !l.is_empty())
             .map(|l| Line::from_str(l).unwrap())
             .collect_vec();
@@ -79,10 +77,10 @@ impl Problem for DayFive {
 
         for line in lines {
             for point in line.get_points(false) {
-                if points.contains_key(&point) {
-                    *points.get_mut(&point).unwrap() += 1;
+                if let std::collections::hash_map::Entry::Vacant(e) = points.entry(point) {
+                    e.insert(1);
                 } else {
-                    points.insert(point, 1);
+                    *points.get_mut(&point).unwrap() += 1;
                 }
             }
         }
@@ -92,7 +90,7 @@ impl Problem for DayFive {
 
     fn part_two(&self, input: &str) -> String {
         let lines = input
-            .split("\n")
+            .split('\n')
             .filter(|l| !l.is_empty())
             .map(|l| Line::from_str(l).unwrap())
             .collect_vec();
@@ -101,10 +99,10 @@ impl Problem for DayFive {
 
         for line in lines {
             for point in line.get_points(true) {
-                if points.contains_key(&point) {
-                    *points.get_mut(&point).unwrap() += 1;
+                if let std::collections::hash_map::Entry::Vacant(e) = points.entry(point) {
+                    e.insert(1);
                 } else {
-                    points.insert(point, 1);
+                    *points.get_mut(&point).unwrap() += 1;
                 }
             }
         }
@@ -115,5 +113,5 @@ impl Problem for DayFive {
 
 #[cfg(test)]
 mod tests {
-    use super::*;
+    
 }

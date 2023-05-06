@@ -99,8 +99,8 @@ impl DayTwelve {
     fn read_tunnels(input: &str) -> Graph {
         let mut edges = vec![];
         let mut labels = vec![];
-        for line in input.split("\n").filter(|l| !l.is_empty()) {
-            let mut link = line.split("-");
+        for line in input.split('\n').filter(|l| !l.is_empty()) {
+            let mut link = line.split('-');
             let origin = link.next().unwrap();
             let dest = link.next().unwrap();
 
@@ -121,8 +121,8 @@ impl DayTwelve {
             edges.push((origin_idx, dest_idx));
         }
         Graph {
-            edges: edges,
-            labels: labels,
+            edges,
+            labels,
         }
     }
 }

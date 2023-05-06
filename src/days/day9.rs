@@ -7,10 +7,10 @@ pub struct DayNine {}
 
 fn add(u: usize, i: i32) -> Option<usize> {
     if i.is_negative() {
-        if u < (i.abs() as usize) {
+        if u < (i.unsigned_abs() as usize) {
             None
         } else {
-            Some(u.checked_sub(i.abs() as usize).unwrap())
+            Some(u.checked_sub(i.unsigned_abs() as usize).unwrap())
         }
     } else {
         Some(u + i as usize)
@@ -20,7 +20,7 @@ fn add(u: usize, i: i32) -> Option<usize> {
 impl DayNine {
     fn parse_input(input: &str) -> Vec<Vec<u32>> {
         let mut ret = vec![];
-        input.split("\n").filter(|l| !l.is_empty()).for_each(|l| {
+        input.split('\n').filter(|l| !l.is_empty()).for_each(|l| {
             ret.push(
                 l.chars()
                     .map(|c| c.to_string().parse::<u32>().unwrap())
@@ -140,10 +140,8 @@ impl Problem for DayNine {
                     if map.get(ii).is_none() || map.get(ii).unwrap().get(jj).is_none() {
                         continue;
                     }
-                    if !basin.contains(&(ii, jj)) {
-                        if map[ii][jj] as usize > h {
-                            q.add(((ii, jj), map[ii][jj] as usize)).unwrap();
-                        }
+                    if !basin.contains(&(ii, jj)) && map[ii][jj] as usize > h {
+                        q.add(((ii, jj), map[ii][jj] as usize)).unwrap();
                     }
                 }
             }
@@ -170,5 +168,5 @@ impl Problem for DayNine {
 
 #[cfg(test)]
 mod tests {
-    use super::*;
+    
 }
