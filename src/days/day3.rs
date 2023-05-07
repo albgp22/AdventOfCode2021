@@ -3,12 +3,12 @@ use itertools::Itertools;
 
 pub struct DayThree {}
 
-fn get_most_common_bits<'a, T, U>(input: T, len: usize) -> Vec<i32>
+fn get_most_common_bits<T, U>(input: T, len: usize) -> Vec<i32>
 where
     T: Iterator<Item = U>,
     U: AsRef<str>,
 {
-    let mut occ = vec![0; len];
+    let mut occ = vec![0_i32; len];
 
     input.for_each(|l| {
         l.as_ref()
@@ -21,17 +21,7 @@ where
             });
     });
 
-    for i in 0..occ.len() {
-        occ[i] = if occ[i] < 0 {
-            -1
-        } else if occ[i] == 0 {
-            0
-        } else {
-            1
-        };
-    }
-
-    occ
+    occ.iter().map(|i| i.signum()).collect_vec()
 }
 
 fn get_rating(input: impl AsRef<str>, binlen: usize, o2: bool) -> i32 {

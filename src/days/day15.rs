@@ -40,9 +40,9 @@ impl DayFifteen {
 
         dists[0][0] = 0;
 
-        for i in 0..m.len() {
-            for j in 0..m[0].len() {
-                q.push((i, j), dists[i][j]);
+        for (i,dr) in dists.iter().enumerate() {
+            for (j,d) in dr.iter().enumerate() {
+                q.push((i,j),*d);
             }
         }
 

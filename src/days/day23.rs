@@ -1,778 +1,421 @@
-use std::{
-    cmp::Ordering,
-    collections::{BinaryHeap, HashSet},
-    hash::{Hash, Hasher},
-};
+use std::cmp::Ordering;
+use std::collections::BinaryHeap;
+use std::fmt::{Display, Formatter};
 
 use crate::problem::problemdef::Problem;
 
-pub struct DayTwentyThree {}
-
-#[derive(Debug, Clone, Copy, Eq, PartialEq, Hash, Serialize, Deserialize)]
-enum Position {
-    Hall(usize),
-    Room(usize, usize),
-}
-use Position::*;
-
-fn room_to_index(x: usize) -> i32 {
-    match x {
-        0 => 2,
-        1 => 4,
-        2 => 6,
-        3 => 8,
-        _ => unreachable!(),
-    }
-}
-
-impl Position {
-    fn distance_to(&self, other: &Self, amphipod_type: usize) -> i32 {
-        let steps = match (self, other) {
-            (Hall(x), Hall(y)) => (*x as i32 - *y as i32).abs(),
-            (Hall(x), Room(x2, y2)) | (Room(x2, y2), Hall(x)) => {
-                let room_col = room_to_index(*x2);
-                (room_col - *x as i32).abs() + 1 + *y2 as i32
-            }
-            (Room(x, y), Room(x2, y2)) => {
-                let room_col = room_to_index(*x);
-                let room2_col = room_to_index(*x2);
-                let (y, y2) = (*y as i32, *y2 as i32);
-                (room_col - room2_col).abs()
-                    + if room_col != room2_col {
-                        2 + y + y2
-                    } else {
-                        (y - y2).abs()
-                    }
-            }
-        };
-        let mult_factor = 10i32.pow(amphipod_type as u32 / 2);
-        steps.checked_mul(mult_factor).unwrap()
-    }
-}
-
-#[derive(Debug, Clone, Copy, Eq, PartialEq, Hash, Serialize, Deserialize)]
-enum Type {
-    A1,
-    A2,
-    B1,
-    B2,
-    C1,
-    C2,
-    D1,
-    D2,
-    None,
-}
+use hashbrown::HashMap;
 use itertools::Itertools;
-use Type::*;
 
-impl Type {
-    fn from_position_index(idx: usize) -> Self {
-        match idx {
-            0 => A1,
-            1 => A2,
-            2 => B1,
-            3 => B2,
-            4 => C1,
-            5 => C2,
-            6 => D1,
-            7 => D2,
-            _ => unreachable!(),
+#[repr(u8)]
+#[derive(Copy, Clone, Debug, Eq, PartialEq)]
+pub enum Amphipod {
+    A = 0,
+    B = 1,
+    C = 2,
+    D = 3,
+}
+
+impl Amphipod {
+    fn energy(&self) -> usize {
+        10usize.pow(*self as u32)
+    }
+
+    fn target_room_index(&self) -> usize {
+        *self as usize
+    }
+
+    fn from_room_index(room_index: usize) -> Self {
+        assert!(room_index < 4);
+        unsafe { std::mem::transmute(room_index as u8) }
+    }
+}
+
+fn abs_diff(a: usize, b: usize) -> usize {
+    if a < b {
+        b - a
+    } else {
+        a - b
+    }
+}
+
+#[derive(Copy, Clone, Debug, Eq, PartialEq)]
+struct State<const R: usize> {
+    hallway: [Option<Amphipod>; 11],
+    rooms: [[Option<Amphipod>; R]; 4],
+}
+
+impl<const R: usize> State<R> {
+    fn encode(&self) -> u64 {
+        self.rooms
+            .iter()
+            .flatten()
+            .rev()
+            .chain(self.hallway.iter().rev())
+            .map(|s| match *s {
+                None => 0,
+                Some(amphipod) => amphipod.target_room_index() as u64 + 1,
+            })
+            .fold(0, |encoded, encoded_space| encoded * 5 + encoded_space)
+    }
+
+    fn decode(mut encoded: u64) -> Self {
+        fn decode_space(encoded_space: u64) -> Option<Amphipod> {
+            match encoded_space {
+                0 => None,
+                1 | 2 | 3 | 4 => Some(Amphipod::from_room_index((encoded_space - 1) as usize)),
+                _ => unreachable!(),
+            }
+        }
+
+        let mut it = std::iter::from_fn(move || {
+            let encoded_space = encoded % 5;
+            encoded /= 5;
+            Some(decode_space(encoded_space))
+        });
+
+        Self {
+            hallway: [(); 11].map(|_| it.next().unwrap()),
+            rooms: [(); 4].map(|_| [(); R].map(|_| it.next().unwrap())),
         }
     }
-}
 
-#[derive(Debug, Clone, Eq, PartialEq, Serialize, Deserialize)]
-struct State {
-    cost: i32,
-    last_moved: usize,
-    positions: Vec<Position>,
-    already_moved: HashSet<usize>,
-}
+    fn goal() -> Self {
+        Self {
+            hallway: [None; 11],
+            rooms: [
+                [Some(Amphipod::A); R],
+                [Some(Amphipod::B); R],
+                [Some(Amphipod::C); R],
+                [Some(Amphipod::D); R],
+            ],
+        }
+    }
 
-impl Hash for State {
-    fn hash<H: Hasher>(&self, state: &mut H) {
-        self.cost.hash(state);
-        self.positions.hash(state);
+    fn is_room_enterable(&self, room_index: usize) -> bool {
+        self.rooms[room_index].iter().all(|space| match space {
+            None => true,
+            Some(amphipod) => amphipod.target_room_index() == room_index,
+        })
+    }
+
+    fn is_room_exitable(&self, room_index: usize) -> bool {
+        !self.is_room_enterable(room_index)
+    }
+
+    fn room_x(&self, room_index: usize) -> usize {
+        2 + (room_index) * 2
+    }
+
+    fn is_above_room(&self, x: usize) -> bool {
+        (x - 2) % 2 == 0 && (x - 2) / 2 < self.rooms.len()
+    }
+
+    fn is_hallway_clear(&self, start_x: usize, target_x: usize) -> bool {
+        let slice = match start_x.cmp(&target_x) {
+            Ordering::Equal => {
+                return true;
+            }
+            Ordering::Less => &self.hallway[(start_x + 1)..=target_x],
+            Ordering::Greater => &self.hallway[target_x..start_x],
+        };
+
+        slice.iter().all(|space| space.is_none())
+    }
+
+    fn iter_empty_spaces(&self, start_x: usize) -> impl Iterator<Item = usize> + '_ {
+        let left_it = (0..start_x)
+            .rev()
+            .take_while(|x| self.hallway[*x].is_none());
+        let right_it =
+            ((start_x + 1)..self.hallway.len()).take_while(|x| self.hallway[*x].is_none());
+        left_it.chain(right_it)
+    }
+
+    fn transitions(&self) -> Vec<(State<R>, usize)> {
+        let mut transitions = self.room_to_hallway_transitions();
+        transitions.extend(self.hallway_to_room_transitions().into_iter());
+        transitions
+    }
+
+    fn room_to_hallway_transitions(&self) -> Vec<(State<R>, usize)> {
+        self.rooms
+            .iter()
+            .enumerate()
+            .filter(|(room_index, _)| self.is_room_exitable(*room_index))
+            .flat_map(|(room_index, room)| {
+                let (room_depth, amphipod) = room
+                    .iter()
+                    .enumerate()
+                    .find_map(|(room_depth, space)| space.map(|amphipod| (room_depth, amphipod)))
+                    .unwrap();
+
+                let current_x = self.room_x(room_index);
+
+                self.iter_empty_spaces(current_x)
+                    .filter(|target_x| !self.is_above_room(*target_x))
+                    .map(move |target_x| {
+                        let steps = room_depth + 1 + abs_diff(current_x, target_x);
+                        let energy = steps * amphipod.energy();
+
+                        let mut state = *self;
+                        std::mem::swap(
+                            &mut state.rooms[room_index][room_depth],
+                            &mut state.hallway[target_x],
+                        );
+                        (state, energy)
+                    })
+            })
+            .collect()
+    }
+
+    fn hallway_to_room_transitions(&self) -> Vec<(State<R>, usize)> {
+        self.hallway
+            .iter()
+            .enumerate()
+            .filter_map(|(current_x, space)| space.map(|amphipod| (current_x, amphipod)))
+            .filter_map(|(current_x, amphipod)| {
+                let target_room_index = amphipod.target_room_index();
+
+                if !self.is_room_enterable(target_room_index) {
+                    return None;
+                }
+
+                let target_x = self.room_x(target_room_index);
+
+                if !self.is_hallway_clear(current_x, target_x) {
+                    return None;
+                }
+
+                let target_room_depth = self.rooms[target_room_index]
+                    .iter()
+                    .rposition(|space| space.is_none())
+                    .unwrap();
+
+                let steps = target_room_depth + 1 + abs_diff(current_x, target_x);
+                let energy = steps * amphipod.energy();
+
+                let mut state = *self;
+                std::mem::swap(
+                    &mut state.rooms[target_room_index][target_room_depth],
+                    &mut state.hallway[current_x],
+                );
+
+                Some((state, energy))
+            })
+            .collect()
+    }
+
+    fn h_score(&self) -> usize {
+        let exit_room = self
+            .rooms
+            .iter()
+            .enumerate()
+            .flat_map(|(room_index, room)| {
+                let current_x = self.room_x(room_index);
+
+                room.iter()
+                    .enumerate()
+                    .rev()
+                    .filter_map(|(room_depth, space)| space.map(|amphipod| (room_depth, amphipod)))
+                    .skip_while(move |(_, amphipod)| amphipod.target_room_index() == room_index)
+                    .map(move |(room_depth, amphipod)| {
+                        let target_room_index = amphipod.target_room_index();
+                        let target_x = self.room_x(target_room_index);
+
+                        let hallway_steps = abs_diff(current_x, target_x).max(2);
+                        let steps = room_depth + 1 + hallway_steps;
+
+                        steps * amphipod.energy()
+                    })
+            })
+            .sum::<usize>();
+
+        let move_hallway = self
+            .hallway
+            .iter()
+            .enumerate()
+            .filter_map(|(current_x, space)| space.map(|amphipod| (current_x, amphipod)))
+            .map(|(current_x, amphipod)| {
+                let target_room_index = amphipod.target_room_index();
+                let target_x = self.room_x(target_room_index);
+                let steps = abs_diff(current_x, target_x);
+
+                steps * amphipod.energy()
+            })
+            .sum::<usize>();
+
+        let enter_room = self
+            .rooms
+            .iter()
+            .enumerate()
+            .flat_map(|(room_index, room)| {
+                room.iter()
+                    .enumerate()
+                    .rev()
+                    .skip_while(move |(_, space)| {
+                        if let Some(amphipod) = space {
+                            amphipod.target_room_index() == room_index
+                        } else {
+                            false
+                        }
+                    })
+                    .map(move |(room_depth, _)| {
+                        let target_amphipod = Amphipod::from_room_index(room_index);
+                        let steps = room_depth + 1;
+
+                        steps * target_amphipod.energy()
+                    })
+            })
+            .sum::<usize>();
+
+        exit_room + move_hallway + enter_room
     }
 }
 
-impl Ord for State {
-    fn cmp(&self, other: &Self) -> Ordering {
-        self.cost.cmp(&other.cost).reverse()
+impl<const R: usize> Display for State<R> {
+    fn fmt(&self, f: &mut Formatter<'_>) -> std::fmt::Result {
+        let space_to_str = |space: Option<Amphipod>| -> &str {
+            match space {
+                None => ".",
+                Some(Amphipod::A) => "A",
+                Some(Amphipod::B) => "B",
+                Some(Amphipod::C) => "C",
+                Some(Amphipod::D) => "D",
+            }
+        };
+
+        writeln!(f, "{}", "#".repeat(self.hallway.len() + 2))?;
+        writeln!(f, "#{}#", self.hallway.map(space_to_str).join(""))?;
+        writeln!(
+            f,
+            "###{}###",
+            self.rooms.map(|r| space_to_str(r[0])).join("#")
+        )?;
+        for room_depth in 1..R {
+            writeln!(
+                f,
+                "  #{}#  ",
+                self.rooms.map(|r| space_to_str(r[room_depth])).join("#")
+            )?;
+        }
+        write!(f, "  {}  ", "#".repeat(self.rooms.len() * 2 + 1))?;
+
+        Ok(())
     }
 }
 
-impl PartialOrd for State {
+pub fn parse_input(input: &str) -> Vec<Option<Amphipod>> {
+    let input = input
+        .lines()
+        .filter(|l| !l.is_empty())
+        .map(|l| l.replace(['#', '.'], "").trim().to_owned())
+        .collect_vec();
+    let input = input.join("");
+    let amphipods = input
+        .chars()
+        .filter_map(|c| match c {
+            'A' => Some(Amphipod::A),
+            'B' => Some(Amphipod::B),
+            'C' => Some(Amphipod::C),
+            'D' => Some(Amphipod::D),
+            _ => None,
+        })
+        .map(Some)
+        .collect::<Vec<_>>();
+
+    assert_eq!(amphipods.len(), 8);
+
+    amphipods
+}
+
+#[derive(PartialEq, Eq)]
+struct Entry {
+    encoded_state: u64,
+    f_score: usize,
+}
+
+impl PartialOrd<Self> for Entry {
     fn partial_cmp(&self, other: &Self) -> Option<Ordering> {
         Some(self.cmp(other))
     }
 }
 
-impl State {
-    fn is_valid_state(&self, room_depth: usize) -> bool {
-        self.positions.iter().enumerate().all(|(i, p)| {
-            if let Room(x, _y) = p {
-                *x == i / room_depth
-            } else {
-                false
-            }
-        })
-    }
-    fn is_position_reachable(&self, pos: &Position, amphipod_idx: usize) -> bool {
-        match (&self.positions[amphipod_idx], pos) {
-            (Hall(x), Hall(y)) => (x.min(y) + 1..*x.max(y))
-                .map(Hall)
-                .all(|h| !self.positions.contains(&h)),
-            (Hall(x), Room(x2, y2)) | (Room(x2, y2), Hall(x)) => {
-                let room_col = room_to_index(*x2) as usize;
-                let (x, x2) = (*x, *x2);
-                let y2 = *y2;
-                let hall_clear = if room_col < x {
-                    (room_col..x)
-                        .map(Hall)
-                        .all(|h| !self.positions.contains(&h))
-                } else {
-                    (x + 1..=room_col)
-                        .map(Hall)
-                        .all(|h| !self.positions.contains(&h))
-                };
-                let col_clear = (0..y2)
-                    .map(|r| Room(x2, r))
-                    .all(|r| !self.positions.contains(&r));
-                hall_clear && col_clear
-            }
-            (Room(x, y), Room(x2, y2)) => {
-                let room_col1 = room_to_index(*x) as usize;
-                let room_col2 = room_to_index(*x2) as usize;
-                let (x, x2) = (*x, *x2);
-                let (y, y2) = (*y, *y2);
-                if x == x2 {
-                    (y.min(y2) + 1..y.max(y2))
-                        .map(|r| Room(x, r))
-                        .all(|r| !self.positions.contains(&r))
-                } else {
-                    let hall_clear = (room_col1.min(room_col2)..=room_col1.max(room_col2))
-                        .map(Hall)
-                        .all(|h| !self.positions.contains(&h));
-                    let col1_clear = (0..y)
-                        .map(|r| Room(x, r))
-                        .all(|r| !self.positions.contains(&r));
-                    let col2_clear = (0..y2)
-                        .map(|r| Room(x2, r))
-                        .all(|r| !self.positions.contains(&r));
-                    col1_clear && col2_clear && hall_clear
-                }
-            }
-        }
-    }
-
-    fn get_neighbors(&self, room_depth: usize) -> Vec<State> {
-        let mut neighbors = Vec::new();
-        for i in 0..self.positions.len() {
-            if self.already_moved.contains(&i) {
-                continue;
-            }
-            // Room to Hall, Room to Room
-            match self.positions[i] {
-                Room(_x, _y) => {
-                    /* Get available Hall positions */
-                    let available_hall_positions =
-                        (0..11usize).filter(|i| !self.positions.contains(&Hall(*i)));
-                    /* For each of them, move the current amphipod to this location*/
-                    for pos in available_hall_positions {
-                        // Todo: Skip if destination is unreachable
-                        if !self.is_position_reachable(&Hall(pos), i) {
-                            continue;
-                        }
-                        let mut new_positions = self.positions.clone();
-                        new_positions[i] = Hall(pos);
-                        neighbors.push(State {
-                            cost: self.cost + self.positions[i].distance_to(&Hall(pos), i),
-                            last_moved: i,
-                            positions: new_positions,
-                            already_moved: self.already_moved.clone(),
-                        });
-                    }
-                    // Get available room positions
-                    let amphipod_type_index = i / room_depth;
-                    // Only move to the bottom-most room
-                    let available_positions = (0..room_depth)
-                        .filter(|j| !self.positions.contains(&Room(amphipod_type_index, *j)))
-                        .max();
-                    if let Some(j) = available_positions {
-                        if self.is_position_reachable(&Room(amphipod_type_index, j), i) {
-                            let mut new_already_moved = self.already_moved.clone();
-                            new_already_moved.insert(i);
-                            let mut new_positions = self.positions.clone();
-                            new_positions[i] = Room(amphipod_type_index, j);
-                            let amphipod_type = i;
-                            neighbors.push(State {
-                                cost: self.cost
-                                    + self.positions[i]
-                                        .distance_to(&Room(amphipod_type_index, j), amphipod_type),
-                                last_moved: amphipod_type,
-                                positions: new_positions,
-                                already_moved: new_already_moved,
-                            });
-                        }
-                    }
-                }
-                // Hall to Room
-                Hall(_) => {
-                    // Amphipods can only move to a room of it's type.
-                    let amphipod_type_index = i / room_depth;
-                    // Only move to the bottom-most room
-                    let available_positions = (0..room_depth)
-                        .filter(|j| !self.positions.contains(&Room(amphipod_type_index, *j)))
-                        .max();
-                    if let Some(j) = available_positions {
-                        if self.is_position_reachable(&Room(amphipod_type_index, j), i) {
-                            let mut new_already_moved = self.already_moved.clone();
-                            new_already_moved.insert(i);
-                            let mut new_positions = self.positions.clone();
-                            new_positions[i] = Room(amphipod_type_index, j);
-                            let amphipod_type = i;
-                            neighbors.push(State {
-                                cost: self.cost
-                                    + self.positions[i]
-                                        .distance_to(&Room(amphipod_type_index, j), amphipod_type),
-                                last_moved: amphipod_type,
-                                positions: new_positions,
-                                already_moved: new_already_moved,
-                            });
-                        }
-                    }
-                }
-            }
-        }
-        if neighbors.contains(self) {
-            neighbors.remove(neighbors.iter().position(|n| n == self).unwrap());
-        }
-        neighbors
+impl Ord for Entry {
+    fn cmp(&self, other: &Self) -> Ordering {
+        self.f_score.cmp(&other.f_score).reverse()
     }
 }
 
-impl DayTwentyThree {
-    fn a_star(start_state: State, room_depth: usize) -> State {
-        let mut pq = BinaryHeap::new();
-        let mut visited = HashSet::new();
-        pq.push(start_state);
-        while !pq.is_empty() {
-            let current_state = pq.pop().unwrap();
-            if visited.contains(&current_state.positions) {
-                continue;
-            }
-            visited.insert(current_state.positions.clone());
-            if current_state.is_valid_state(room_depth) {
-                return current_state;
-            }
-            for neighbor in current_state.get_neighbors(room_depth) {
-                if !visited.contains(&neighbor.positions) {
-                    pq.push(neighbor);
-                }
-            }
+fn solve<const R: usize>(initial_state: State<R>) -> usize {
+    let mut q = BinaryHeap::new();
+    q.push(Entry {
+        encoded_state: initial_state.encode(),
+        f_score: 0,
+    });
+
+    let mut g_score: HashMap<u64, usize> = HashMap::new();
+    g_score.insert(initial_state.encode(), 0);
+
+    let encoded_goal_state = State::<R>::goal().encode();
+
+    while let Some(Entry {
+        encoded_state,
+        f_score,
+    }) = q.pop()
+    {
+        if encoded_state == encoded_goal_state {
+            return f_score;
         }
-        unreachable!("No valid state found")
-    }
-    fn read_input(input: &str, part: usize) -> State {
-        let mut pos = vec![vec![]; 4];
-        let mut lines = input
-            .lines()
-            .filter(|l| !l.is_empty())
-            .skip(2)
-            .map(|l| l.replace([' ', '#'], ""))
-            .collect_vec();
-        if part == 2 {
-            lines.insert(1, "DCBA".to_string());
-            lines.insert(2, "DBAC".to_string());
-        }
-        for (i, line) in lines.iter().enumerate() {
-            for (j, c) in line.chars().enumerate() {
-                if c == 'A' {
-                    pos[0].push(Room(j, i));
-                }
-                if c == 'B' {
-                    pos[1].push(Room(j, i));
-                }
-                if c == 'C' {
-                    pos[2].push(Room(j, i));
-                }
-                if c == 'D' {
-                    pos[3].push(Room(j, i));
-                }
+
+        let current_state = State::<R>::decode(encoded_state);
+        let current_g_score = g_score[&encoded_state];
+
+        for (next_state, transition_cost) in current_state.transitions() {
+            let encoded_next_state = next_state.encode();
+            let tentative_g_score = current_g_score + transition_cost;
+            if tentative_g_score < *g_score.get(&encoded_next_state).unwrap_or(&usize::MAX) {
+                g_score.insert(encoded_next_state, tentative_g_score);
+                q.push(Entry {
+                    encoded_state: encoded_next_state,
+                    f_score: tentative_g_score + next_state.h_score(),
+                });
             }
-        }
-        State {
-            cost: 0,
-            last_moved: 1000,
-            positions: pos.into_iter().flatten().collect(),
-            already_moved: HashSet::new(),
         }
     }
+
+    unreachable!();
 }
 
+pub struct DayTwentyThree;
 impl Problem for DayTwentyThree {
     fn part_one(&self, input: &str) -> String {
-        let start_state = Self::read_input(input, 1);
-        println!("Start state: {:?}", start_state);
-        let room_depth = start_state.positions.len() / 4;
-        format!("{:?}", Self::a_star(start_state, room_depth),)
+        let parsed_input = parse_input(input);
+        let initial_state = State {
+            hallway: [None; 11],
+            rooms: [
+                [parsed_input[0], parsed_input[4]],
+                [parsed_input[1], parsed_input[5]],
+                [parsed_input[2], parsed_input[6]],
+                [parsed_input[3], parsed_input[7]],
+            ],
+        };
+
+        solve(initial_state).to_string()
     }
 
     fn part_two(&self, input: &str) -> String {
-        let start_state = Self::read_input(input, 2);
-        println!("Start state: {:?}", start_state);
-        let room_depth = start_state.positions.len() / 4;
-        format!("{:?}", Self::a_star(start_state, room_depth),)
-    }
-}
-
-#[cfg(test)]
-mod tests {
-    use super::*;
-
-    #[test]
-    fn test_distance() {
-        assert_eq!(Room(0, 0).distance_to(&Room(0, 1), 0), 1);
-        assert_eq!(Room(0, 0).distance_to(&Room(1, 1), 0), 5);
-        assert_eq!(Room(0, 0).distance_to(&Room(1, 1), 2), 50);
-        assert_eq!(Room(0, 0).distance_to(&Room(1, 1), 5), 500);
-        assert_eq!(Room(0, 0).distance_to(&Room(1, 1), 6), 5000);
-        assert_eq!(Room(0, 0).distance_to(&Room(3, 1), 6), 9000);
-        assert_eq!(Hall(2).distance_to(&Room(0, 1), 0), 2);
-        assert_eq!(Hall(2).distance_to(&Room(0, 0), 0), 1);
-        assert_eq!(Room(0, 0).distance_to(&Hall(2), 0), 1);
-        assert_eq!(Hall(3).distance_to(&Hall(0), 0), 3);
-        assert_eq!(Hall(0).distance_to(&Hall(3), 0), 3);
-        assert_eq!(Hall(0).distance_to(&Hall(3), 2), 30);
-    }
-
-    #[test]
-    fn test_is_position_reachable() {
-        let origin = State {
-            cost: 0,
-            last_moved: 0,
-            positions: vec![
-                Room(0, 0),
-                Room(1, 0),
-                Room(2, 0),
-                Room(3, 0),
-                Hall(0),
-                Hall(1),
-                Hall(2),
-                Hall(3),
+        let parsed_input = parse_input(input);
+        let initial_state = State {
+            hallway: [None; 11],
+            rooms: [
+                [parsed_input[0], Some(Amphipod::D), Some(Amphipod::D), parsed_input[4]],
+                [parsed_input[1], Some(Amphipod::C), Some(Amphipod::B), parsed_input[5]],
+                [parsed_input[2], Some(Amphipod::B), Some(Amphipod::A), parsed_input[6]],
+                [parsed_input[3], Some(Amphipod::A), Some(Amphipod::C), parsed_input[7]],
             ],
-
-            already_moved: HashSet::new(),
         };
-        assert!(origin.is_position_reachable(&Room(0, 1), 0));
-        assert!(!origin.is_position_reachable(&Room(2, 1), 0));
-        assert!(!origin.is_position_reachable(&Hall(1), 0));
-        assert!(origin.is_position_reachable(&Hall(2), 0));
-        assert!(!origin.is_position_reachable(&Hall(2), 4));
-        assert!(origin.is_position_reachable(&Hall(5), 7));
-        assert!(origin.is_position_reachable(&Hall(4), 7));
-        assert!(origin.is_position_reachable(&Hall(3), 7));
-        assert!(origin.is_position_reachable(&Hall(2), 7));
-        assert!(!origin.is_position_reachable(&Hall(1), 7));
-        assert!(!origin.is_position_reachable(&Room(0, 1), 1));
-    }
 
-    #[test]
-    fn test_get_neighbors() {
-        let origin = State {
-            cost: 0,
-            last_moved: 0,
-            positions: vec![
-                Room(0, 1),
-                Room(1, 1),
-                Room(2, 1),
-                Room(3, 1),
-                Hall(0),
-                Hall(1),
-                Hall(2),
-                Hall(3),
-            ],
-            already_moved: HashSet::new(),
-        };
-        let expected = vec![
-            State {
-                cost: 1,
-                last_moved: 0,
-                positions: vec![
-                    Room(0, 0),
-                    Room(1, 1),
-                    Room(2, 1),
-                    Room(3, 1),
-                    Hall(0),
-                    Hall(1),
-                    Hall(2),
-                    Hall(3),
-                ],
-                already_moved: HashSet::from([0]),
-            },
-            State {
-                cost: 2,
-                last_moved: 1,
-                positions: vec![
-                    Room(0, 1),
-                    Hall(4),
-                    Room(2, 1),
-                    Room(3, 1),
-                    Hall(0),
-                    Hall(1),
-                    Hall(2),
-                    Hall(3),
-                ],
-                already_moved: HashSet::new(),
-            },
-            State {
-                cost: 3,
-                last_moved: 1,
-                positions: vec![
-                    Room(0, 1),
-                    Hall(5),
-                    Room(2, 1),
-                    Room(3, 1),
-                    Hall(0),
-                    Hall(1),
-                    Hall(2),
-                    Hall(3),
-                ],
-                already_moved: HashSet::new(),
-            },
-            State {
-                cost: 4,
-                last_moved: 1,
-                positions: vec![
-                    Room(0, 1),
-                    Hall(6),
-                    Room(2, 1),
-                    Room(3, 1),
-                    Hall(0),
-                    Hall(1),
-                    Hall(2),
-                    Hall(3),
-                ],
-                already_moved: HashSet::new(),
-            },
-            State {
-                cost: 5,
-                last_moved: 1,
-                positions: vec![
-                    Room(0, 1),
-                    Hall(7),
-                    Room(2, 1),
-                    Room(3, 1),
-                    Hall(0),
-                    Hall(1),
-                    Hall(2),
-                    Hall(3),
-                ],
-                already_moved: HashSet::new(),
-            },
-            State {
-                cost: 6,
-                last_moved: 1,
-                positions: vec![
-                    Room(0, 1),
-                    Hall(8),
-                    Room(2, 1),
-                    Room(3, 1),
-                    Hall(0),
-                    Hall(1),
-                    Hall(2),
-                    Hall(3),
-                ],
-                already_moved: HashSet::new(),
-            },
-            State {
-                cost: 7,
-                last_moved: 1,
-                positions: vec![
-                    Room(0, 1),
-                    Hall(9),
-                    Room(2, 1),
-                    Room(3, 1),
-                    Hall(0),
-                    Hall(1),
-                    Hall(2),
-                    Hall(3),
-                ],
-                already_moved: HashSet::new(),
-            },
-            State {
-                cost: 8,
-                last_moved: 1,
-                positions: vec![
-                    Room(0, 1),
-                    Hall(10),
-                    Room(2, 1),
-                    Room(3, 1),
-                    Hall(0),
-                    Hall(1),
-                    Hall(2),
-                    Hall(3),
-                ],
-                already_moved: HashSet::new(),
-            },
-            State {
-                cost: 40,
-                last_moved: 2,
-                positions: vec![
-                    Room(0, 1),
-                    Room(1, 1),
-                    Hall(4),
-                    Room(3, 1),
-                    Hall(0),
-                    Hall(1),
-                    Hall(2),
-                    Hall(3),
-                ],
-                already_moved: HashSet::new(),
-            },
-            State {
-                cost: 30,
-                last_moved: 2,
-                positions: vec![
-                    Room(0, 1),
-                    Room(1, 1),
-                    Hall(5),
-                    Room(3, 1),
-                    Hall(0),
-                    Hall(1),
-                    Hall(2),
-                    Hall(3),
-                ],
-                already_moved: HashSet::new(),
-            },
-            State {
-                cost: 20,
-                last_moved: 2,
-                positions: vec![
-                    Room(0, 1),
-                    Room(1, 1),
-                    Hall(6),
-                    Room(3, 1),
-                    Hall(0),
-                    Hall(1),
-                    Hall(2),
-                    Hall(3),
-                ],
-                already_moved: HashSet::new(),
-            },
-            State {
-                cost: 30,
-                last_moved: 2,
-                positions: vec![
-                    Room(0, 1),
-                    Room(1, 1),
-                    Hall(7),
-                    Room(3, 1),
-                    Hall(0),
-                    Hall(1),
-                    Hall(2),
-                    Hall(3),
-                ],
-                already_moved: HashSet::new(),
-            },
-            State {
-                cost: 40,
-                last_moved: 2,
-                positions: vec![
-                    Room(0, 1),
-                    Room(1, 1),
-                    Hall(8),
-                    Room(3, 1),
-                    Hall(0),
-                    Hall(1),
-                    Hall(2),
-                    Hall(3),
-                ],
-                already_moved: HashSet::new(),
-            },
-            State {
-                cost: 50,
-                last_moved: 2,
-                positions: vec![
-                    Room(0, 1),
-                    Room(1, 1),
-                    Hall(9),
-                    Room(3, 1),
-                    Hall(0),
-                    Hall(1),
-                    Hall(2),
-                    Hall(3),
-                ],
-                already_moved: HashSet::new(),
-            },
-            State {
-                cost: 60,
-                last_moved: 2,
-                positions: vec![
-                    Room(0, 1),
-                    Room(1, 1),
-                    Hall(10),
-                    Room(3, 1),
-                    Hall(0),
-                    Hall(1),
-                    Hall(2),
-                    Hall(3),
-                ],
-                already_moved: HashSet::new(),
-            },
-            State {
-                cost: 50,
-                last_moved: 2,
-                positions: vec![
-                    Room(0, 1),
-                    Room(1, 1),
-                    Room(1, 0),
-                    Room(3, 1),
-                    Hall(0),
-                    Hall(1),
-                    Hall(2),
-                    Hall(3),
-                ],
-                already_moved: HashSet::from([2]),
-            },
-            State {
-                cost: 60,
-                last_moved: 3,
-                positions: vec![
-                    Room(0, 1),
-                    Room(1, 1),
-                    Room(2, 1),
-                    Hall(4),
-                    Hall(0),
-                    Hall(1),
-                    Hall(2),
-                    Hall(3),
-                ],
-                already_moved: HashSet::new(),
-            },
-            State {
-                cost: 50,
-                last_moved: 3,
-                positions: vec![
-                    Room(0, 1),
-                    Room(1, 1),
-                    Room(2, 1),
-                    Hall(5),
-                    Hall(0),
-                    Hall(1),
-                    Hall(2),
-                    Hall(3),
-                ],
-                already_moved: HashSet::new(),
-            },
-            State {
-                cost: 40,
-                last_moved: 3,
-                positions: vec![
-                    Room(0, 1),
-                    Room(1, 1),
-                    Room(2, 1),
-                    Hall(6),
-                    Hall(0),
-                    Hall(1),
-                    Hall(2),
-                    Hall(3),
-                ],
-                already_moved: HashSet::new(),
-            },
-            State {
-                cost: 30,
-                last_moved: 3,
-                positions: vec![
-                    Room(0, 1),
-                    Room(1, 1),
-                    Room(2, 1),
-                    Hall(7),
-                    Hall(0),
-                    Hall(1),
-                    Hall(2),
-                    Hall(3),
-                ],
-                already_moved: HashSet::new(),
-            },
-            State {
-                cost: 20,
-                last_moved: 3,
-                positions: vec![
-                    Room(0, 1),
-                    Room(1, 1),
-                    Room(2, 1),
-                    Hall(8),
-                    Hall(0),
-                    Hall(1),
-                    Hall(2),
-                    Hall(3),
-                ],
-                already_moved: HashSet::new(),
-            },
-            State {
-                cost: 30,
-                last_moved: 3,
-                positions: vec![
-                    Room(0, 1),
-                    Room(1, 1),
-                    Room(2, 1),
-                    Hall(9),
-                    Hall(0),
-                    Hall(1),
-                    Hall(2),
-                    Hall(3),
-                ],
-                already_moved: HashSet::new(),
-            },
-            State {
-                cost: 40,
-                last_moved: 3,
-                positions: vec![
-                    Room(0, 1),
-                    Room(1, 1),
-                    Room(2, 1),
-                    Hall(10),
-                    Hall(0),
-                    Hall(1),
-                    Hall(2),
-                    Hall(3),
-                ],
-                already_moved: HashSet::new(),
-            },
-            State {
-                cost: 70,
-                last_moved: 3,
-                positions: vec![
-                    Room(0, 1),
-                    Room(1, 1),
-                    Room(2, 1),
-                    Room(1, 0),
-                    Hall(0),
-                    Hall(1),
-                    Hall(2),
-                    Hall(3),
-                ],
-                already_moved: HashSet::from([3]),
-            },
-            State {
-                cost: 6000,
-                last_moved: 7,
-                positions: vec![
-                    Room(0, 1),
-                    Room(1, 1),
-                    Room(2, 1),
-                    Room(3, 1),
-                    Hall(0),
-                    Hall(1),
-                    Hall(2),
-                    Room(3, 0),
-                ],
-                already_moved: HashSet::from([7]),
-            },
-        ];
-        println!("{:?}", origin.get_neighbors(2));
-        assert_eq!(origin.get_neighbors(2), expected);
+        solve(initial_state).to_string()
     }
 }

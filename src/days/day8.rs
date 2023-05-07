@@ -90,7 +90,7 @@ impl Mapping {
         Self { m: v }
     }
 
-    fn is_ok(v: &Vec<(HashSet<char>, i32)>) -> bool {
+    fn is_ok(v: &[(HashSet<char>, i32)]) -> bool {
         let mut contains: HashMap<i32, Vec<i32>> = HashMap::new();
         contains.insert(0, vec![1, 7]);
         contains.insert(1, vec![]);

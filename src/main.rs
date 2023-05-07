@@ -90,9 +90,9 @@ fn main() -> Result<(), Box<dyn Error>> {
         for i in 0..=25 {
             if i == 23 {continue;}
             let p = day_to_problem(i);
-            if p.is_some() {
+            if let Some(p) = p {
                 println!("Day {}:", i);
-                match run_problem(p.unwrap(), args.benchmark, i) {
+                match run_problem(p, args.benchmark, i) {
                     Ok(Some(br)) => {
                         bench_results.push(br);
                         bench_results.last_mut().unwrap().set_problem_num(i)
