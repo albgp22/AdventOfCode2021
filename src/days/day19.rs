@@ -280,9 +280,9 @@ impl Problem for DayNineteen {
         sensors[0].iter().for_each(|p| {
             result.insert(p.clone());
         });
-        for i in 1..sensors.len() {
+        for (i,sensor) in sensors.iter().enumerate() {
             let path = Self::find_path(&links, 0, i);
-            let mut new_sensors = sensors[i].clone();
+            let mut new_sensors = sensor.clone();
             for (ii, jj) in path.iter().rev().tuple_windows() {
                 //
                 let (rotation, offset) = rotation_offset.get(&(*jj, *ii)).unwrap();
@@ -359,11 +359,6 @@ mod tests {
         let a = Point { x: 0, y: 0, z: 1 };
         let b = Point { x: 1, y: 1, z: 3 };
         assert_eq!(a.distance(&b), 4);
-    }
-
-    #[test]
-    fn test_matches() {
-        assert!(true)
     }
 
     #[test]

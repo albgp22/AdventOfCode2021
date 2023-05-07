@@ -33,11 +33,10 @@ impl DayEleven {
         let mut v = vec![];
         for di in -1..=1 {
             for dj in -1..=1 {
-                let newi = Self::add(i, di);
-                let newj = Self::add(j, dj);
-
-                if newi.is_some() && newj.is_some() {
-                    v.push((newi.unwrap(), newj.unwrap()));
+                if let Some(newi) = Self::add(i, di) {
+                    if let Some(newj) = Self::add(j, dj) {
+                            v.push((newi, newj));
+                    }
                 }
             }
         }

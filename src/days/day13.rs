@@ -65,7 +65,7 @@ impl DayThirteen {
         dots.dedup();
     }
 
-    fn show_dots(dots: &Vec<(usize, usize)>) -> String {
+    fn show_dots(dots: &[(usize, usize)]) -> String {
         let mut r = "".to_string();
         for j in 0..=*dots.iter().map(|(_i, j)| j).max().unwrap() {
             for i in 0..=*dots.iter().map(|(i, _j)| i).max().unwrap() {

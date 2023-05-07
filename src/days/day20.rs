@@ -10,7 +10,7 @@ enum Mode {
 }
 
 impl Mode {
-    fn to_bin(&self) -> char {
+    fn as_bin(&self) -> char {
         match self {
             Self::Off => '0',
             Self::On => '1',
@@ -66,11 +66,7 @@ impl DayTwenty {
             for dj in [-1, 0, 1] {
                 let ii = Self::try_add(i, di);
                 let jj = Self::try_add(j, dj);
-                indices.push(if ii.is_none() || jj.is_none() {
-                    bg_mode
-                } else {
-                    let ii = ii.unwrap();
-                    let jj = jj.unwrap();
+                indices.push(if let (Some(ii), Some(jj)) = (ii, jj) {
                     match img.get(ii) {
                         Some(row) => match row.get(jj) {
                             Some(col) => *col,
@@ -78,12 +74,14 @@ impl DayTwenty {
                         },
                         None => bg_mode,
                     }
+                } else {
+                    bg_mode
                 })
             }
         }
-        usize::from_str_radix(&indices.iter().map(|m| m.to_bin()).join(""), 2).unwrap()
+        usize::from_str_radix(&indices.iter().map(|m| m.as_bin()).join(""), 2).unwrap()
     }
-    fn step(img: &mut Vec<Vec<Mode>>, alg: &Vec<Mode>, stepno: usize) -> Vec<Vec<Mode>> {
+    fn step(img: &mut Vec<Vec<Mode>>, alg: &[Mode], stepno: usize) -> Vec<Vec<Mode>> {
         Self::enlarge_image(img, if stepno % 2 == 0 { Mode::Off } else { Mode::On });
         let mut new_img = vec![vec![Mode::Off; img[0].len()]; img.len()];
         for i in 0..img.len() {
@@ -124,6 +122,4 @@ impl Problem for DayTwenty {
 }
 
 #[cfg(test)]
-mod tests {
-    
-}
+mod tests {}
